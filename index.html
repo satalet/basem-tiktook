@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استوديو بروفايلات تيك توك VIP | Basem Zerba</title>
+    <title>استوديو بروفايلات وزخارف تيك توك VIP | Basem Zerba</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
@@ -172,7 +172,7 @@
 
         .action-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
-        /* Preview Studio Card */
+        /* Preview Card */
         .preview-card {
             background: #090b10;
             border-radius: 24px;
@@ -185,7 +185,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Themes styling */
         .theme-gold { --theme-glow: #ffd700; border-color: #ffd700; box-shadow: 0 0 35px rgba(255, 215, 0, 0.25); }
         .theme-cyan { --theme-glow: #00f2fe; border-color: #00f2fe; box-shadow: 0 0 35px rgba(0, 242, 254, 0.25); }
         .theme-pink { --theme-glow: #ff0050; border-color: #ff0050; box-shadow: 0 0 35px rgba(255, 0, 80, 0.25); }
@@ -228,7 +227,7 @@
         }
 
         .preview-name {
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             font-weight: 900;
             color: #fff;
             display: flex;
@@ -236,6 +235,7 @@
             justify-content: center;
             gap: 6px;
             margin-bottom: 4px;
+            letter-spacing: 0.5px;
         }
 
         .preview-handle {
@@ -287,7 +287,7 @@
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 14px;
-            padding: 14px 18px;
+            padding: 12px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -299,19 +299,49 @@
             transform: translateY(-2px);
         }
 
-        .style-text {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: #fff;
-            white-space: pre-line;
-            word-break: break-all;
+        .style-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
+
+        .style-title {
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .style-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            direction: rtl;
+        }
+
+        .btn-actions-item {
+            display: flex;
+            gap: 6px;
+        }
+
+        .apply-btn {
+            background: rgba(0, 242, 254, 0.15);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .apply-btn:hover { background: var(--accent-cyan); color: #000; }
 
         .copy-btn {
             background: linear-gradient(135deg, var(--accent-pink), #e60046);
             color: #fff;
             border: none;
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 10px;
             font-weight: bold;
             font-size: 0.85rem;
@@ -389,15 +419,15 @@
         <div class="vip-badge" id="vipStatusBadge">
             🔒 محمي بنظام VIP Basem Zerba
         </div>
-        <h1>استوديو كروت بروفايل تيك توك</h1>
-        <p class="subtitle">صُمم لإنشاء إهداءات وكروت فخمة • Basem Zerba 👑</p>
+        <h1>مولّد زخارف تيك توك الفخمة</h1>
+        <p class="subtitle">تشكيل واستبدال الحروف التيكتوكية • Basem Zerba 👑</p>
     </header>
 
     <div class="control-panel">
         <div class="form-row">
             <div class="input-group-item">
-                <label for="nameInput">الاسم المراد زخرفته:</label>
-                <input type="text" id="nameInput" value="رنوده" placeholder="ادخل الاسم...">
+                <label for="nameInput">الاسم المراد زخرفته (عربي أو إنجليزي):</label>
+                <input type="text" id="nameInput" value="عاشقة الليل" placeholder="ادخل الاسم هنا...">
             </div>
 
             <div class="input-group-item">
@@ -461,11 +491,11 @@
         </div>
         
         <div class="preview-name">
-            <span id="previewName">رنوده</span>
+            <span id="previewName">عـآشِـقَـةُ اَلـلَّـيْـلْ</span>
             <span id="previewBadgeDisplay">👑</span>
         </div>
         
-        <div class="preview-handle" id="previewHandle">@ranodeh • TikTok VIP</div>
+        <div class="preview-handle" id="previewHandle">@asheqatalail • TikTok VIP</div>
         <div class="preview-bio" id="previewBio">🚀 صانعة محتوى مميزة • إهداء خاص من Basem Zerba 💎</div>
         
         <div class="tiktok-stats">
@@ -476,7 +506,7 @@
     </div>
 
     <div class="section-title">
-        ✨ الزخارف المتاحة للاسم المكتوب:
+        ✨ أنماط زخرفة وتشكيل الحروف (اختر نمطاً لتطبيقه على الكرت):
     </div>
 
     <div class="results-grid" id="resultsGrid"></div>
@@ -491,7 +521,7 @@
 <div class="modal-overlay" id="passModal">
     <div class="modal-box">
         <h3 style="color:#fff; margin-bottom:8px;">🔐 الحماية مفعلة!</h3>
-        <p style="color:#8e9aaf; font-size:0.88rem; margin-bottom:15px;">أدخل رمز الحماية المكون من 10 أرقام الخاص بـ باسم زربا للنسخ:</p>
+        <p style="color:#8e9aaf; font-size:0.88rem; margin-bottom:15px;">أدخل رمز الحماية الخاص بـ باسم زربا للنسخ:</p>
         <input type="password" id="passInput" class="pass-input" placeholder="••••••••••" maxlength="15">
         <button class="modal-btn" onclick="verifyPassword()">تأكيد 🚀</button>
         <p id="modalError" style="color:var(--accent-pink); font-size:0.85rem; margin-top:10px; display:none;">❌ كلمة المرور غير صحيحة!</p>
@@ -503,6 +533,7 @@
 <script>
     const SECRET_PASS = "1112223330";
     let pendingCopyText = "";
+    let currentSelectedDecoration = "";
 
     const nameInput = document.getElementById('nameInput');
     const bioInput = document.getElementById('bioInput');
@@ -528,24 +559,72 @@
     const giftBanner = document.getElementById('giftBanner');
     const giftBannerText = document.getElementById('giftBannerText');
 
-    // 100% Dynamic decorations mapped ONLY to the entered name
-    const ARABIC_DECORATIONS = [
-        "꧁༺ {} ༻꧂",
-        "♛ {} ♛",
-        "★彡 [ {} ] 彡★",
-        "『{}』",
-        "░{}░",
-        "✧○ꊞ○{}○ꊞ○✧",
-        "Iล{}Iล",
-        "•]••´º´•» {} «•´º´••[•",
-        "™﴿ {} ﴾™",
-        "꧁✨ {} ✨꧂",
-        "💎 ┆ {} ┆ 💎",
-        "✦﴿ {} ﴾✦",
-        "⚡ {} ⚡",
-        "⚜️ {} ⚜️",
-        "‏﴿ {} ﴾‏"
-    ];
+    /* ----- Engine: TikTok Arabic Character Transformation ----- */
+    const MAP_TIKTOK_SUPERSCRIPT = {
+        'ا':'اٰ', 'أ':'أٰ', 'إ':'إٰ', 'آ':'آٰ',
+        'ب':'بِٰـﮧ', 'ت':'تِٰـﮧ', 'ث':'ثِٰـﮧ', 'ج':'جِٰـﮧ', 'ح':'حِٰـﮧ', 'خ':'خِٰـﮧ',
+        'د':'دِٰ', 'ذ':'ذِٰ', 'ر':'رَٰ', 'ز':'زَٰ', 'س':'سِٰـﮧ', 'ش':'شِٰـﮧ',
+        'ص':'صِٰـﮧ', 'ض':'ضِٰـﮧ', 'ط':'طِٰـﮧ', 'ظ':'ظِٰـﮧ', 'ع':'عِٰـﮧ', 'غ':'غِٰـﮧ',
+        'ف':'فِٰـﮧ', 'ق':'قِٰـﮧ', 'ك':'كِٰـﮧ', 'ل':'لِٰـﮧ', 'م':'مِٰـﮧ', 'ن':'نِٰـﮧ',
+        'ه':'هِٰ', 'ة':'ةِٰ', 'و':'وٰ', 'ي':'يِٰـﮧ', 'ى':'ىٰ', ' ': ' '
+    };
+
+    const MAP_TIKTOK_HEAVY = {
+        'ا':'اٰ', 'ب':'بٰہٰ', 'ت':'تٰہٰ', 'ث':'ثٰہٰ', 'ج':'جٰہٰ', 'ح':'حٰہٰ', 'خ':'خٰہٰ',
+        'د':'دٰ', 'ذ':'ذٰ', 'ر':'رٰ', 'ز':'زٰ', 'س':'سٰہٰ', 'ش':'شٰہٰ',
+        'ص':'صٰہٰ', 'ض':'ضٰہٰ', 'ط':'طٰہٰ', 'ظ':'ظٰہٰ', 'ع':'عٰہٰ', 'غ':'غٰہٰ',
+        'ف':'فٰہٰ', 'ق':'قٰہٰ', 'ك':'كٰہٰ', 'ل':'لٰہٰ', 'م':'مٰہٰ', 'ن':'نٰہٰ',
+        'ه':'هٰہ', 'ة':'ةٰہ', 'و':'وٰ', 'ي':'يٰہٰ', 'ى':'ىٰ', ' ': ' '
+    };
+
+    const MAP_URDU_PERSIAN = {
+        'ا':'آ', 'ب':'ﺑــ', 'ت':'ﺗــ', 'ث':'ﺛــ', 'ج':'ﺟــ', 'ح':'ﺣــ', 'خ':'ﺧــ',
+        'د':'دَ', 'ذ':'ذَ', 'ر':'رُ', 'ز':'زُ', 'س':'ﺳــ', 'ش':'ﺷــ',
+        'ص':'ﺻــ', 'ض':'ﺿــ', 'ط':'ﻃــ', 'ظ':'ﻇــ', 'ع':'ﻋــ', 'غ':'ﻏــ',
+        'ف':'ﻓــ', 'ق':'ﻗــ', 'ك':'ﻛــ', 'ل':'ﻟــ', 'م':'ﻣــ', 'ن':'ﻧــ',
+        'ه':'ھ', 'ة':'ھ', 'و':'ﯡ', 'ي':'ﻳــ', 'ى':'ى', ' ': ' '
+    };
+
+    const MAP_GHOST_DIACRITICS = {
+        'ا':'اَٰ', 'ب':'بِّـ', 'ت':'تَّـ', 'ث':'ثَّـ', 'ج':'جِّـ', 'ح':'حَّـ', 'خ':'خَّـ',
+        'د':'دَٰ', 'ذ':'ذَٰ', 'ر':'رِٰ', 'ز':'زِٰ', 'س':'سِّـ', 'ش':'شِّـ',
+        'ص':'صِّـ', 'ض':'ضِّـ', 'ط':'طَّـ', 'ظ':'ظَّـ', 'ع':'عَّـ', 'غ':'غَّـ',
+        'ف':'فَّـ', 'ق':'قَّـ', 'ك':'كَّـ', 'ل':'لَّـ', 'م':'مَّـ', 'ن':'نِّـ',
+        'ه':'هَٰ', 'ة':'ةَٰ', 'و':'ﯟ', 'ي':'يِّـ', 'ى':'ىٰ', ' ': ' '
+    };
+
+    function transformWithMap(str, map) {
+        return str.split('').map(ch => map[ch] || ch).join('');
+    }
+
+    function applyKashidaTeshkeel(str) {
+        // زخرفة التشكيل العثماني مع الكشيدة
+        return str.replace(/ا/g, 'آ').replace(/ب/g, 'بـ').replace(/ت/g, 'تـ')
+                  .replace(/س/g, 'سـ').replace(/ل/g, 'لـ').replace(/م/g, 'مـ')
+                  .replace(/ن/g, 'نـ').replace(/ه/g, 'هـ')
+                  .split('').join('َ');
+    }
+
+    function generateTikTokDecorations(text) {
+        if (!text) text = "عاشقة الليل";
+
+        const decs = [
+            { title: "زخرفة تيك توك المرفوعة VIP", text: transformWithMap(text, MAP_TIKTOK_SUPERSCRIPT) },
+            { title: "زخرفة الهيبة والتنوين", text: transformWithMap(text, MAP_TIKTOK_HEAVY) },
+            { title: "زخرفة الكشيدة والرموز العالية", text: transformWithMap(text, MAP_GHOST_DIACRITICS) },
+            { title: "زخرفة الخط الفارسي / التيكتوكي", text: transformWithMap(text, MAP_URDU_PERSIAN) },
+            { title: "التشكيل التيكتوكي المركب", text: text.split('').join('ـِٰ') },
+            { title: "نمط النيون والسكون", text: text.split('').map(c => c === ' ' ? ' ' : c + 'ّ').join('') },
+            { title: "زخرفة الألفاظ الملكية", text: `꧁༺ ${transformWithMap(text, MAP_TIKTOK_SUPERSCRIPT)} ༻꧂` },
+            { title: "نمط التاج الملكي", text: `♛ ${transformWithMap(text, MAP_TIKTOK_HEAVY)} ♛` },
+            { title: "نمط الفخامة والقلوب", text: `رنـ﴿👑﴾ـوده`.replace("رنـ﴿👑﴾ـوده", text.split('').join('ـ')) },
+            { title: "زخرفة المظلة الماسية", text: `💎 ┆ ${transformWithMap(text, MAP_GHOST_DIACRITICS)} ┆ 💎` },
+            { title: "زخرفة الأقواس القاطعة", text: `『 ${transformWithMap(text, MAP_URDU_PERSIAN)} 』` },
+            { title: "زخرفة النجوم والرموز", text: `★彡 [ ${text} ] 彡★` }
+        ];
+
+        return decs;
+    }
 
     function checkUrlParams() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -579,45 +658,77 @@
         previewCard.className = `preview-card ${themeSelect.value}`;
     });
 
+    function applyDecorationToCard(decText) {
+        currentSelectedDecoration = decText;
+        previewName.textContent = decText;
+        showToast("✨ تم تطبيق الزخرفة على الكرت!");
+    }
+
     function updateStyles() {
-        const val = nameInput.value.trim() || "صديقي";
+        const rawVal = nameInput.value.trim() || "عاشقة الليل";
         const bioVal = bioInput.value.trim();
         const followersVal = followersInput.value.trim() || "1.2M";
         const badgeVal = badgeSelect.value;
 
-        previewName.textContent = val;
+        const decList = generateTikTokDecorations(rawVal);
+        
+        // If user hasn't explicitly clicked a custom style, use the 1st transformed style
+        if(!currentSelectedDecoration || !currentSelectedDecoration.includes(rawVal.substring(0, 2))) {
+            currentSelectedDecoration = decList[0].text;
+        }
+
+        previewName.textContent = currentSelectedDecoration;
         previewBadgeDisplay.textContent = badgeVal;
         previewBio.textContent = bioVal;
         statFollowers.textContent = followersVal;
         
-        const handleClean = val.toLowerCase().replace(/\s+/g, '_');
+        const handleClean = rawVal.toLowerCase().replace(/\s+/g, '_');
         previewHandle.textContent = `@${handleClean} • TikTok VIP`;
 
         resultsGrid.innerHTML = "";
 
-        ARABIC_DECORATIONS.forEach(pattern => {
-            const decoratedText = pattern.replace(/{}/g, val);
-            
+        decList.forEach((item) => {
             const card = document.createElement('div');
             card.className = 'style-item';
 
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'style-info';
+
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'style-title';
+            titleDiv.textContent = item.title;
+
             const textDiv = document.createElement('div');
             textDiv.className = 'style-text';
-            textDiv.textContent = decoratedText;
+            textDiv.textContent = item.text;
 
-            const btn = document.createElement('button');
-            btn.className = 'copy-btn';
-            btn.textContent = 'نسخ 📋';
-            btn.onclick = () => handleCopy(decoratedText);
+            infoDiv.appendChild(titleDiv);
+            infoDiv.appendChild(textDiv);
 
-            card.appendChild(textDiv);
-            card.appendChild(btn);
+            const btnBox = document.createElement('div');
+            btnBox.className = 'btn-actions-item';
+
+            const applyBtn = document.createElement('button');
+            applyBtn.className = 'apply-btn';
+            applyBtn.textContent = 'تطبيق 👁️';
+            applyBtn.onclick = () => applyDecorationToCard(item.text);
+
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'copy-btn';
+            copyBtn.textContent = 'نسخ 📋';
+            copyBtn.onclick = () => handleCopy(item.text);
+
+            btnBox.appendChild(applyBtn);
+            btnBox.appendChild(copyBtn);
+
+            card.appendChild(infoDiv);
+            card.appendChild(btnBox);
             resultsGrid.appendChild(card);
         });
     }
 
     function generateShareLink() {
-        const nameVal = nameInput.value.trim() || "صديقي";
+        const nameVal = nameInput.value.trim() || "عاشقة الليل";
         const bioVal = bioInput.value.trim();
         const baseUrl = window.location.href.split('?')[0];
 
@@ -632,7 +743,7 @@
         const baseUrl = window.location.href.split('?')[0];
         const shareUrl = `${baseUrl}?name=${encodeURIComponent(nameVal)}&from=${encodeURIComponent('باسم زربا')}`;
 
-        const msg = `🎁 *إهداء خاص من Basem Zerba 👑*\n\nأهلاً ${nameVal}! جهزتلك بروفايل وزخارف تيك توك VIP:\n\n✨ *الاسم المزخرف:* ꧁༺ ${nameVal} ༻꧂\n📝 *الـ Bio:* ${bioVal}\n\n🔗 *رابط المعاينة المباشر:* ${shareUrl}`;
+        const msg = `🎁 *إهداء خاص من Basem Zerba 👑*\n\nأهلاً ${nameVal}! جهزتلك بروفايل وزخارف تيك توك VIP:\n\n✨ *الاسم المزخرف:* ${previewName.textContent}\n📝 *الـ Bio:* ${bioVal}\n\n🔗 *رابط المعاينة المباشر:* ${shareUrl}`;
         window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
@@ -713,7 +824,7 @@
     }
 
     passInput.addEventListener('keypress', e => { if (e.key === 'Enter') verifyPassword(); });
-    nameInput.addEventListener('input', updateStyles);
+    nameInput.addEventListener('input', () => { currentSelectedDecoration = ""; updateStyles(); });
     bioInput.addEventListener('input', updateStyles);
     followersInput.addEventListener('input', updateStyles);
     badgeSelect.addEventListener('change', updateStyles);
