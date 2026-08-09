@@ -1,27 +1,25 @@
-<!DOCTYPE html>
+<!DOCTYPE1 html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استوديو بروفايلات وتشكيلات تيك توك الفخمة | Basem Zerba VIP</title>
-    <!-- خطوط عربية فخمة من Google Fonts -->
+    <title>استوديو بروفايلات وتشكيل أسماء التيك توك VIP</title>
+    <!-- استدعاء خطوط كاليجرافي عربية فخمة من Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;800;900&family=Reem+Kufi:wght@700&family=Tajawal:wght@500;800&display=swap" rel="stylesheet">
-    
-    <!-- مكتبة تصدير الصور ومكتبة الـ QR Code -->
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;700;900&family=Reem+Kufi:wght@500;700&family=Amiri:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <style>
         :root {
-            --bg-color: #0a0a12;
-            --card-bg: rgba(18, 19, 28, 0.85);
-            --primary-neon: #00f2fe;
-            --accent-pink: #ff2a5f;
-            --gold-vip: #ffd700;
-            --text-color: #ffffff;
-            --border-glow: rgba(0, 242, 254, 0.3);
+            --bg-color: #0d1117;
+            --card-bg: rgba(22, 27, 34, 0.85);
+            --accent-gold: #ffd700;
+            --accent-cyan: #00f2fe;
+            --accent-green: #25d366;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --border-color: #30363d;
         }
 
         * {
@@ -33,304 +31,279 @@
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             min-height: 100vh;
-            padding: 20px 10px;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* خلفية الجسيمات */
-        #cyberCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 242, 254, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 20%);
         }
 
         .container {
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
 
-        /* الهيدر والعناوين */
-        .header {
+        header {
             text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .vip-badge {
-            display: inline-block;
-            background: linear-gradient(45deg, #111, #222);
-            border: 1px solid var(--gold-vip);
-            color: var(--gold-vip);
-            padding: 4px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
             margin-bottom: 10px;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
         }
 
-        .header h1 {
-            font-size: 28px;
+        header h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(45deg, #00f2fe, #4facfe, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 15px var(--primary-neon);
             margin-bottom: 5px;
         }
 
-        .header p {
-            color: #a0a5c0;
-            font-size: 13px;
+        header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
-        /* لوحة التحكم والمدخلات */
-        .control-panel {
+        /* كرت المدخلات الرئيسي */
+        .controls-card {
             background: var(--card-bg);
-            border: 1px solid var(--border-glow);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 20px;
+            padding: 25px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-            margin-bottom: 30px;
-        }
-
-        .grid-inputs {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
-            margin-bottom: 15px;
         }
 
-        .input-group {
+        .form-group {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
 
-        .input-group label {
-            font-size: 12px;
-            color: var(--primary-neon);
-            font-weight: 600;
+        .form-group label {
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
         }
 
-        .input-group input, .input-group select {
-            background: #12131c;
-            border: 1px solid rgba(0, 242, 254, 0.2);
-            border-radius: 8px;
-            padding: 10px;
+        input, select, textarea {
+            background: rgba(13, 17, 23, 0.7);
+            border: 1px solid var(--border-color);
             color: #fff;
-            font-size: 13px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.95rem;
             outline: none;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .input-group input:focus, .input-group select:focus {
-            border-color: var(--primary-neon);
-            box-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
         }
 
-        /* العداد التفاعلي للبايو */
-        .bio-wrapper {
-            position: relative;
+        .full-width {
+            grid-column: 1 / -1;
         }
 
-        .bio-counter {
-            position: absolute;
-            left: 10px;
-            top: 36px;
-            font-size: 11px;
-            color: var(--primary-neon);
-            font-weight: bold;
-        }
-
-        /* الأزرار الرئيسيّة */
-        .actions-flex {
+        /* أزرار الإجراءات السريعة */
+        .action-btns {
             display: flex;
-            flex-wrap: wrap;
             gap: 10px;
-            margin-top: 15px;
+            flex-wrap: wrap;
         }
 
         .btn {
             flex: 1;
             min-width: 180px;
-            padding: 12px;
+            padding: 14px;
             border: none;
             border-radius: 8px;
-            font-weight: 800;
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            transition: all 0.2s ease;
-            font-size: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .btn-export { background: var(--primary-neon); color: #000; }
-        .btn-copy { background: var(--gold-vip); color: #000; }
-        .btn-whatsapp { background: #25d366; color: #fff; width: 100%; margin-top: 5px; }
+        .btn:active {
+            transform: scale(0.98);
+        }
 
-        .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
-        .btn:active { transform: translateY(0); }
+        .btn-export {
+            background: linear-gradient(45deg, #00f2fe, #0099ff);
+            color: #000;
+        }
 
-        /* كرت المعاينة التفاعلي VIP */
-        .preview-card-container {
+        .btn-whatsapp {
+            background: var(--accent-green);
+            color: #fff;
+        }
+
+        .btn-copy {
+            background: #ffd700;
+            color: #000;
+        }
+
+        /* معاينة البروفايل (مثل التيك توك) */
+        .preview-wrapper {
             display: flex;
             justify-content: center;
-            margin-bottom: 40px;
+            align-items: center;
+            margin: 10px 0;
         }
 
-        .preview-card {
-            width: 100%;
-            max-width: 420px;
-            background: #0d0e15;
-            border: 2px solid var(--gold-vip);
+        .profile-card {
+            width: 340px;
+            background: #000000;
+            border: 2px solid var(--accent-gold);
             border-radius: 20px;
             padding: 25px 20px;
             text-align: center;
             position: relative;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
-            overflow: hidden;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
 
-        .preview-card .top-tag {
+        .badge-vip {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--gold-vip);
+            top: 10px;
+            right: 15px;
+            background: var(--accent-gold);
             color: #000;
-            font-size: 10px;
+            font-size: 0.65rem;
             font-weight: 900;
             padding: 2px 8px;
             border-radius: 10px;
         }
 
-        .avatar-box {
-            width: 85px;
-            height: 85px;
-            margin: 0 auto 12px;
+        .avatar-container {
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
-            border: 3px solid var(--gold-vip);
-            overflow: hidden;
-            background: #1a1b26;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            border: 3px solid var(--accent-gold);
+            padding: 3px;
+            margin-bottom: 5px;
         }
 
-        .avatar-box img {
+        .avatar-img {
             width: 100%;
             height: 100%;
+            border-radius: 50%;
             object-fit: cover;
+            background: #1e293b;
         }
 
-        .preview-name {
-            font-size: 22px;
-            font-weight: 700;
+        .profile-name {
+            font-size: 1.4rem;
             color: #fff;
-            margin-bottom: 4px;
-        }
-
-        .preview-badge-sub {
-            font-size: 12px;
-            color: var(--primary-neon);
-            margin-bottom: 12px;
-        }
-
-        .preview-bio {
-            font-size: 13px;
-            color: #e0e0e0;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 8px 12px;
-            border-radius: 8px;
-            margin-bottom: 15px;
             word-break: break-word;
+            line-height: 1.4;
         }
 
-        .preview-stats {
+        .profile-badge-text {
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .profile-bio {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.75rem;
+            color: #cbd5e1;
+            width: 100%;
+            white-space: pre-line;
+            border: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        .stats-row {
             display: flex;
             justify-content: space-around;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 15px;
-            margin-bottom: 15px;
+            width: 100%;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 10px;
+            margin-top: 5px;
         }
 
-        .stat-num { font-size: 16px; font-weight: 900; color: #fff; }
-        .stat-lbl { font-size: 11px; color: #8a8f style; color: #8a8f structure; color: #8a8fbd; }
-
-        /* مكان عرض الـ QR Code داخل كرت المعاينة */
-        .qr-wrapper {
+        .stat-item {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 8px;
-            border-radius: 10px;
-            width: fit-content;
-            margin: 0 auto;
-            border: 1px dashed var(--primary-neon);
         }
 
-        /* قائمة زخارف التيك توك الفخمة */
-        .styles-section-title {
-            text-align: center;
-            font-size: 18px;
-            font-weight: 800;
+        .stat-num {
+            font-weight: 900;
+            font-size: 0.9rem;
             color: #fff;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
         }
 
-        .styles-list {
+        .stat-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        /* قائمة التشكيلات والزخارف المتنوعة */
+        .styles-section {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .style-item {
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 242, 254, 0.15);
-            border-radius: 12px;
-            padding: 12px 16px;
+        .section-title {
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            font-weight: 700;
             display: flex;
             align-items: center;
+            gap: 8px;
+        }
+
+        .style-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
             justify-content: space-between;
-            gap: 10px;
-            transition: 0.3s;
+            align-items: center;
+            gap: 15px;
+            transition: border-color 0.3s;
         }
 
         .style-item:hover {
-            border-color: var(--primary-neon);
-            box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+            border-color: var(--accent-cyan);
         }
 
         .style-info {
             display: flex;
             flex-direction: column;
             gap: 4px;
+            overflow: hidden;
         }
 
         .style-label {
-            font-size: 11px;
-            color: var(--primary-neon);
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
         }
 
         .style-result {
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 1.1rem;
             color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .style-btns {
@@ -340,360 +313,249 @@
 
         .btn-sm {
             padding: 6px 12px;
-            font-size: 12px;
+            font-size: 0.75rem;
             border-radius: 6px;
             border: none;
             cursor: pointer;
             font-weight: 700;
-            transition: 0.2s;
         }
 
-        .btn-apply { background: var(--primary-neon); color: #000; }
-        .btn-copy-sm { background: var(--accent-pink); color: #fff; }
+        .btn-apply {
+            background: var(--accent-cyan);
+            color: #000;
+        }
 
-        .btn-sm:hover { opacity: 0.9; transform: scale(1.05); }
-
-        @media (max-width: 600px) {
-            .style-item { flex-direction: column; align-items: flex-start; }
-            .style-btns { width: 100%; justify-content: flex-end; }
+        .btn-copy-sm {
+            background: #ff4757;
+            color: #fff;
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. خلفية الجسيمات التفاعلية Cyber Canvas -->
-    <canvas id="cyberCanvas"></canvas>
+<div class="container">
+    <header>
+        <h1>✨ استوديو بروفايلات وتشكيل أسماء التيك توك VIP</h1>
+        <p>تشكيل وتفكيك نفس أحرف الاسم • خطوط كاليجرافي • زخارف هيبة • إهداءات فاخرة</p>
+    </header>
 
-    <div class="container">
-        <!-- الهيدر -->
-        <div class="header">
-            <div class="vip-badge">🔒 محمي بنظام VIP Basem Zerba</div>
-            <h1>مولد زخارف تيك توك الفخمة</h1>
-            <p>خطوط كالايجرافي عربية • رموز هيبة • إهداءات VIP</p>
+    <!-- أدوات التحكم والمدخلات -->
+    <div class="controls-card">
+        <div class="form-group">
+            <label for="inputName">الاسم المراد تشكيله وزخرفته:</label>
+            <input type="text" id="inputName" value="أبو باسم" placeholder="اكتب اسمك هنا...">
         </div>
 
-        <!-- لوحة التحكم بالكرت -->
-        <div class="control-panel">
-            <div class="grid-inputs">
-                <div class="input-group">
-                    <label>الاسم المراد زخرفته:</label>
-                    <input type="text" id="nameInput" value="أبو باسم" oninput="updateAll()">
-                </div>
+        <div class="form-group">
+            <label for="fontSelect">خط كرت المعاينة:</label>
+            <select id="fontSelect">
+                <option value="'Reem Kufi', sans-serif">خط الكوفي العريض (Reem Kufi)</option>
+                <option value="'Aref Ruqaa', serif">خط الرقعة العربي (Aref Ruqaa)</option>
+                <option value="'Amiri', serif">خط النسخ والثلث (Amiri)</option>
+                <option value="'Cairo', sans-serif">خط السايبر الحديث (Cairo)</option>
+            </select>
+        </div>
 
-                <div class="input-group">
-                    <label>خط كرت المعاينة:</label>
-                    <select id="fontSelect" onchange="updateAll()">
-                        <option value="'Aref Ruqaa', serif">خط الرقعة العربي (Aref Ruqaa)</option>
-                        <option value="'Cairo', sans-serif">خط القاهرة الحديث (Cairo)</option>
-                        <option value="'Reem Kufi', sans-serif">خط الكوفي العريض (Reem Kufi)</option>
-                        <option value="'Tajawal', sans-serif">خط تجوال السايبر (Tajawal)</option>
-                    </select>
-                </div>
+        <div class="form-group">
+            <label for="badgeSelect">شارة التوثيق والـ VIP:</label>
+            <select id="badgeSelect">
+                <option value="👑 تاج الملك VIP">تاج الملك VIP 👑</option>
+                <option value="⚡ موثق صانع محتوى">موثق صانع محتوى ⚡</option>
+                <option value="💎 حساب ماسي VIP">حساب ماسي VIP 💎</option>
+                <option value="🔥 الهيبة الأسطورية">الهيبة الأسطورية 🔥</option>
+            </select>
+        </div>
 
-                <div class="input-group">
-                    <label>شارة التوثيق والـ VIP:</label>
-                    <select id="badgeSelect" onchange="updateAll()">
-                        <option value="👑 تاج الملك VIP">تاج الملك VIP 👑</option>
-                        <option value="⚡ صاعقة الهيبة VIP">صاعقة الهيبة VIP ⚡</option>
-                        <option value="💎 الماسي VIP">الماسي VIP 💎</option>
-                        <option value="🔥 التنين الأسود">التنين الأسود 🔥</option>
-                    </select>
-                </div>
+        <div class="form-group">
+            <label for="inputFollowers">عدد المتابعين:</label>
+            <input type="text" id="inputFollowers" value="1.2M">
+        </div>
 
-                <div class="input-group">
-                    <label>عدد المتابعين:</label>
-                    <input type="text" id="followersInput" value="1.2M" oninput="updateAll()">
-                </div>
+        <div class="form-group">
+            <label for="inputAvatar">صورة البروفايل (الأفاتار):</label>
+            <input type="file" id="inputAvatar" accept="image/*">
+        </div>
 
-                <div class="input-group">
-                    <label>صورة البروفايل (الافاتار):</label>
-                    <input type="file" id="avatarInput" accept="image/*" onchange="loadAvatar(event)">
-                </div>
+        <div class="form-group full-width">
+            <label for="inputBio">رسالة الإهداء / Bio البروفايل:</label>
+            <textarea id="inputBio" rows="2">💎 صانع محتوى مميز • إهداء خاص من Basem Zerba</textarea>
+        </div>
 
-                <!-- 3. بايو التيك توك مع العداد التفاعلي (80 حرف) -->
-                <div class="input-group bio-wrapper">
-                    <label>رسالة الإهداء / Bio البروفايل:</label>
-                    <input type="text" id="bioInput" maxlength="80" value="🚀 صانع محتوى مميز • إهداء خاص من Basem Zerba 💎" oninput="updateBioCounter()">
-                    <span id="bioCounter" class="bio-counter">0/80</span>
-                </div>
-            </div>
-
-            <!-- أزرار العمليات -->
-            <div class="actions-flex">
-                <button class="btn btn-export" onclick="exportCardPNG()">📷 تصدير الكرت صورة (PNG)</button>
-                <button class="btn btn-copy" onclick="copyGiftLink()">🔗 نسخ رابط الإهداء</button>
-            </div>
+        <div class="action-btns full-width">
+            <button class="btn btn-export" onclick="exportCard()">📷 تصدير الكرت صورة (PNG)</button>
+            <button class="btn btn-copy" onclick="copyBioLink()">🔗 نسخ رابط الإهداء</button>
             <button class="btn btn-whatsapp" onclick="sendWhatsapp()">💬 إرسال الحزمة عبر الواتساب</button>
-        </div>
-
-        <!-- كرت المعاينة التفاعلي VIP -->
-        <div class="preview-card-container">
-            <div class="preview-card" id="previewCard">
-                <div class="top-tag">Basem Zerba VIP</div>
-                <div class="avatar-box">
-                    <img id="avatarImg" src="https://via.placeholder.com/150/00f2fe/000000?text=👑" alt="Avatar">
-                </div>
-                <div class="preview-name" id="previewName">أبو باسم</div>
-                <div class="preview-badge-sub" id="previewBadge">👑 تاج الملك VIP</div>
-                <div class="preview-bio" id="previewBio">🚀 صانع محتوى مميز • إهداء خاص من Basem Zerba 💎</div>
-
-                <div class="preview-stats">
-                    <div>
-                        <div class="stat-num" id="statFollowers">1.2M</div>
-                        <div class="stat-lbl">المتابعين</div>
-                    </div>
-                    <div>
-                        <div class="stat-num">15.4M</div>
-                        <div class="stat-lbl">تسجيلات الإعجاب</div>
-                    </div>
-                    <div>
-                        <div class="stat-num">340</div>
-                        <div class="stat-lbl">يتابع</div>
-                    </div>
-                </div>
-
-                <!-- 4. رمز الـ QR Code المدمج بداخل الكرت -->
-                <div class="qr-wrapper">
-                    <div id="qrcode"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- قائمة الزخارف الفخمة -->
-        <div class="styles-section-title">
-            <span>✨ تشكيلات وزخارف التيك توك الفخمة:</span>
-        </div>
-
-        <div class="styles-list" id="stylesList">
-            <!-- سيتم توليد العناصر هنا ديناميكياً -->
         </div>
     </div>
 
-    <!-- السكربت والبرمجة التفاعلية -->
-    <script>
-        // ==========================================
-        // 1. خلفية الجسيمات السايبر التفاعلية (Canvas)
-        // ==========================================
-        const canvas = document.getElementById('cyberCanvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        for(let i = 0; i < 45; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                size: Math.random() * 2 + 1
-            });
-        }
-
-        function animateCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
-            ctx.strokeStyle = 'rgba(0, 242, 254, 0.08)';
-
-            particles.forEach((p, index) => {
-                p.x += p.vx; p.y += p.vy;
-                if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-
-                for(let j = index + 1; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if(dist < 110) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
-            });
-            requestAnimationFrame(animateCanvas);
-        }
-        animateCanvas();
-
-        // ==========================================
-        // 2. المؤثرات الصوتية المستقبلية (Web Audio Synth)
-        // ==========================================
-        function playCyberSound(type = 'click') {
-            try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                
-                if (type === 'copy') {
-                    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(1400, audioCtx.currentTime + 0.09);
-                } else {
-                    osc.frequency.setValueAtTime(500, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(250, audioCtx.currentTime + 0.07);
-                }
-
-                gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.08);
-            } catch(e) {}
-        }
-
-        // ==========================================
-        // 3. أنماط الزخارف التفاعلية
-        // ==========================================
-        const styleTemplates = [
-            { label: "زخرفة الهيبة الرائجة 2026 (Aesthetic)", fn: name => `꧁ ${name} ꧂` },
-            { label: "نمط الإطار الملكي الفخم", fn: name => `༺ 👑 ${name} 👑 ༻` },
-            { label: "زخرفة خط الرقعة العربي الأصيل", fn: name => `✍️ ${name}` },
-            { label: "نمط النسر والصاعقة VIP", fn: name => `آبـ⚡ـو بـآسـم` },
-            { label: "نمط التاج والشعار العالي", fn: name => `👑 ┆ ${name} ┆ 👑` },
-            { label: "زخرفة الكوفي العريض العثماني", fn: name => `أبُــو بَــاسِــم` },
-            { label: "نمط الأقواس المنسقة", fn: name => `𓆩 ${name} 𓆪` },
-            { label: "نمط الشارة والنجمة الفخمة", fn: name => `★彡 [ ${name} ] 彡★` },
-            { label: "نمط القاطعة السايبر", fn: name => `⚡ ${name} ⚡` }
-        ];
-
-        function renderStylesList(rawName) {
-            const container = document.getElementById('stylesList');
-            container.innerHTML = '';
-
-            styleTemplates.forEach((item, idx) => {
-                const decorated = item.fn(rawName);
-                const el = document.createElement('div');
-                el.className = 'style-item';
-                el.innerHTML = `
-                    <div class="style-info">
-                        <span class="style-label">${item.label}</span>
-                        <span class="style-result" id="res-${idx}">${decorated}</span>
-                    </div>
-                    <div class="style-btns">
-                        <button class="btn-sm btn-apply" onclick="applyToCard('${decorated}')">👁️ تطبيق</button>
-                        <button class="btn-sm btn-copy-sm" onclick="copyText('${decorated}')">📋 نسخ</button>
-                    </div>
-                `;
-                container.appendChild(el);
-            });
-        }
-
-        // ==========================================
-        // 4. تحديث الكرت وعداد البايو و QR Code
-        // ==========================================
-        function updateBioCounter() {
-            const input = document.getElementById('bioInput');
-            const counter = document.getElementById('bioCounter');
-            const len = input.value.length;
+    <!-- كرت البروفايل المباشر -->
+    <div class="preview-wrapper">
+        <div class="profile-card" id="profileCard">
+            <div class="badge-vip">Basem Zerba VIP</div>
+            <div class="avatar-container">
+                <img src="https://via.placeholder.com/150/1e293b/ffffff?text=Avatar" id="cardAvatar" class="avatar-img" alt="Avatar">
+            </div>
+            <div class="profile-name" id="cardName">أبو باسم</div>
+            <div class="profile-badge-text" id="cardBadge">👑 تاج الملك VIP</div>
+            <div class="profile-bio" id="cardBio">💎 صانع محتوى مميز • إهداء خاص من Basem Zerba</div>
             
-            counter.textContent = `${len}/80`;
-            if (len >= 80) {
-                counter.style.color = '#ff2a5f';
-            } else {
-                counter.style.color = '#00f2fe';
-            }
-            updateAll();
-        }
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-num" id="cardFollowers">1.2M</span>
+                    <span class="stat-label">المتابعين</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">15.4M</span>
+                    <span class="stat-label">تسجيلات الإعجاب</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">340</span>
+                    <span class="stat-label">يتابع</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        function renderQRCode(text) {
-            const qrContainer = document.getElementById("qrcode");
-            qrContainer.innerHTML = "";
-            new QRCode(qrContainer, {
-                text: text || "https://www.tiktok.com",
-                width: 55,
-                height: 55,
-                colorDark : "#00f2fe",
-                colorLight : "#0d0e15",
-                correctLevel : QRCode.CorrectLevel.H
-            });
-        }
+    <!-- قائمة الخيارات: المط، التشكيل، التفكيك، والزخارف -->
+    <div class="styles-section">
+        <div class="section-title">✨ تشكيلات وزخارف التيك توك الفخمة والترند:</div>
+        <div id="stylesList" class="styles-section"></div>
+    </div>
+</div>
 
-        function updateAll() {
-            const name = document.getElementById('nameInput').value || 'أبو باسم';
-            const font = document.getElementById('fontSelect').value;
-            const badge = document.getElementById('badgeSelect').value;
-            const followers = document.getElementById('followersInput').value || '1.2M';
-            const bio = document.getElementById('bioInput').value;
+<script>
+    // ==========================================
+    // 1. مصفوفة خيارات تشكيل ومط الاسم والزخارف
+    // ==========================================
+    const styleTemplates = [
+        // --- خيارات تحريك ومط نفس أحرف الاسم (الترند الحالي) ---
+        { label: "مط حروف الاسم العريض (الكشيدة)", fn: name => name.split('').join('ـ') },
+        { label: "نمط التباعد الفخم (Spaced-Out)", fn: name => name.split('').join(' ') },
+        { label: "نمط التشكيل العربي الكامل", fn: name => name.replace(/ا/g, 'آ').replace(/و/g, 'ؤ').replace(/م/g, 'مٌ').replace(/ب/g, 'بً').replace(/س/g, 'سٍ') },
+        { label: "نمط الحركات فوق الحروف", fn: name => name.split('').join('َ') },
+        { label: "نمط التفكيك بالرموز المنسقة", fn: name => name.split('').join('・') },
+        { label: "نمط الصواعق بين الحروف", fn: name => name.split('').join('⚡') },
+        
+        // --- دعم الأسماء بالإنجليزي (حجم عريض ومفرغ) ---
+        { label: "نمط الإنجليزي العريض (Fullwidth)", fn: name => name.replace(/[a-zA-A0-9]/g, c => String.fromCharCode(c.charCodeAt(0) + 0xfee0)) },
+        { label: "نمط الخط المفرغ (Outline)", fn: name => name.replace(/[a-zA-Z]/g, c => String.fromCodePoint(c.charCodeAt(0) + 0x1D538 - (c <= 'Z' ? 65 : 97))) },
 
-            // تحديث كرت المعاينة
-            const previewName = document.getElementById('previewName');
-            previewName.textContent = name;
-            previewName.style.fontFamily = font;
+        // --- أنماط الزخارف الهيبة والأطر لعام 2026 ---
+        { label: "زخرفة الهيبة الرائجة 2026 (Aesthetic)", fn: name => `꧁ ${name} ꧂` },
+        { label: "نمط الإطار الملكي الفخم", fn: name => `༺ 👑 ${name} 👑 ༻` },
+        { label: "نمط خط الرقعة العربي الأصيل", fn: name => `✍️ ${name}` },
+        { label: "نمط النسر والصاعقة VIP", fn: name => `آبـ⚡ـو بـآسـم` },
+        { label: "نمط التاج والشعار العالي", fn: name => `👑 ┆ ${name} ┆ 👑` },
+        { label: "زخرفة الكوفي العريض العثماني", fn: name => `أًبٌوُ بٌاَسٌمِ` },
+        { label: "نمط الأقواس المنسقة", fn: name => `𓆩 ${name} 𓆪` },
+        { label: "نمط الشارة والنجمة الفخمة", fn: name => `★彡 [ ${name} ] 彡★` },
+        { label: "نمط القاطعة السايبر", fn: name => `⚡ ${name} ⚡` }
+    ];
 
-            document.getElementById('previewBadge').textContent = badge;
-            document.getElementById('statFollowers').textContent = followers;
-            document.getElementById('previewBio').textContent = bio;
+    // ==========================================
+    // 2. تحديث الشاشة التفاعلية والمعاينة
+    // ==========================================
+    const inputName = document.getElementById('inputName');
+    const fontSelect = document.getElementById('fontSelect');
+    const badgeSelect = document.getElementById('badgeSelect');
+    const inputFollowers = document.getElementById('inputFollowers');
+    const inputBio = document.getElementById('inputBio');
+    const inputAvatar = document.getElementById('inputAvatar');
 
-            // تحديث القائمة و الـ QR
-            renderStylesList(name);
-            renderQRCode(`https://www.tiktok.com/search?q=${encodeURIComponent(name)}`);
-        }
+    const cardName = document.getElementById('cardName');
+    const cardBadge = document.getElementById('cardBadge');
+    const cardFollowers = document.getElementById('cardFollowers');
+    const cardBio = document.getElementById('cardBio');
+    const cardAvatar = document.getElementById('cardAvatar');
+    const stylesList = document.getElementById('stylesList');
 
-        function applyToCard(text) {
-            playCyberSound('click');
-            const previewName = document.getElementById('previewName');
-            previewName.textContent = text;
-        }
+    function updatePreview() {
+        const val = inputName.value.trim() || "أبو باسم";
+        cardName.textContent = val;
+        cardName.style.fontFamily = fontSelect.value;
+        cardBadge.textContent = badgeSelect.value;
+        cardFollowers.textContent = inputFollowers.value || "1.2M";
+        cardBio.textContent = inputBio.value;
 
-        function copyText(text) {
-            playCyberSound('copy');
-            navigator.clipboard.writeText(text);
-            alert(`✅ تم نسخ الزخرفة: ${text}`);
-        }
-
-        function loadAvatar(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(evt) {
-                    document.getElementById('avatarImg').src = evt.target.result;
-                }
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // تصدير الكرت كصورة PNG
-        function exportCardPNG() {
-            playCyberSound('click');
-            const card = document.getElementById('previewCard');
-            html2canvas(card, { backgroundColor: null, scale: 2 }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = `TikTok_VIP_${Date.now()}.png`;
-                link.href = canvas.toDataURL();
-                link.click();
-            });
-        }
-
-        function copyGiftLink() {
-            playCyberSound('copy');
-            navigator.clipboard.writeText(window.location.href);
-            alert("🔗 تم نسخ رابط الصفحة بنجاح!");
-        }
-
-        function sendWhatsapp() {
-            playCyberSound('click');
-            const name = document.getElementById('previewName').textContent;
-            const msg = `🔥 اهداء خاص من استوديو زخارف تيك توك VIP:\n\nالاسم المزخرف: ${name}\nرابط الاستوديو: ${window.location.href}`;
-            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-
-        // تشغيل أولي عند تحميل الصفحة
-        window.addEventListener('DOMContentLoaded', () => {
-            updateBioCounter();
-            document.querySelectorAll('button').forEach(btn => {
-                btn.addEventListener('click', () => playCyberSound('click'));
-            });
+        // إعادة بناء قائمة الزخارف وتشكيل الاسم
+        stylesList.innerHTML = '';
+        styleTemplates.forEach((style) => {
+            const transformed = style.fn(val);
+            
+            const item = document.createElement('div');
+            item.className = 'style-item';
+            item.innerHTML = `
+                <div class="style-info">
+                    <span class="style-label">${style.label}</span>
+                    <span class="style-result">${transformed}</span>
+                </div>
+                <div class="style-btns">
+                    <button class="btn-sm btn-apply" onclick="applyToCard('${transformed.replace(/'/g, "\\'")}')">تطبيق 👁️</button>
+                    <button class="btn-sm btn-copy-sm" onclick="copyText('${transformed.replace(/'/g, "\\'")}')">نسخ 📋</button>
+                </div>
+            `;
+            stylesList.appendChild(item);
         });
-    </script>
+    }
+
+    // تطبيق النمط المختار مباشرة على كرت المعاينة
+    function applyToCard(text) {
+        cardName.textContent = text;
+    }
+
+    // نسخ النص للحافظة
+    function copyText(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert("تم نسخ الاسم بنجاح: " + text);
+        });
+    }
+
+    // رفع صورة الأفاتار
+    inputAvatar.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                cardAvatar.src = evt.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // الاستماع للتغييرات بجميع الحقول
+    [inputName, fontSelect, badgeSelect, inputFollowers, inputBio].forEach(el => {
+        el.addEventListener('input', updatePreview);
+    });
+
+    // ==========================================
+    // 3. التصدير والمشاركة (Image / Whatsapp / Link)
+    // ==========================================
+    function exportCard() {
+        const card = document.getElementById('profileCard');
+        html2canvas(card, { backgroundColor: '#000000', scale: 2 }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = `Tiktok_Profile_${Date.now()}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+
+    function copyBioLink() {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+            alert("تم نسخ رابط الاستوديو بنجاح!");
+        });
+    }
+
+    function sendWhatsapp() {
+        const name = cardName.textContent;
+        const text = `🔥 هدية بروفايل تيك توك VIP 🔥\n\nالاسم المزخرف: ${name}\nالشارة: ${badgeSelect.value}\n\nتم التصميم عبر استوديو التشكيل والزخارف: ${window.location.href}`;
+        window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    // التشغيل الأولي
+    updatePreview();
+</script>
+
 </body>
 </html>
