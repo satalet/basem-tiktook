@@ -1,4 +1,4 @@
-<!DOCTYPE1 html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -64,6 +64,19 @@
         header p {
             color: var(--text-muted);
             font-size: 0.95rem;
+        }
+
+        /* كرت الحماية العلوي */
+        .security-badge {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
         }
 
         /* كرت المدخلات الرئيسي */
@@ -335,14 +348,15 @@
 
 <div class="container">
     <header>
-        <h1>✨ استوديو بروفايلات وتشكيل أسماء التيك توك VIP</h1>
-        <p>تشكيل وتفكيك نفس أحرف الاسم • خطوط كاليجرافي • زخارف هيبة • إهداءات فاخرة</p>
+        <div class="security-badge">🔒 VIP Basem Zerba محمّي بنظام</div>
+        <h1>مولد زخارف تيك توك الفخمة</h1>
+        <p>خطوط كالليجرافي عربية • رموز هيبة • إهداءات VIP</p>
     </header>
 
     <!-- أدوات التحكم والمدخلات -->
     <div class="controls-card">
         <div class="form-group">
-            <label for="inputName">الاسم المراد تشكيله وزخرفته:</label>
+            <label for="inputName">الاسم المراد زخرفته:</label>
             <input type="text" id="inputName" value="أبو باسم" placeholder="اكتب اسمك هنا...">
         </div>
 
@@ -382,8 +396,8 @@
         </div>
 
         <div class="action-btns full-width">
-            <button class="btn btn-export" onclick="exportCard()">📷 تصدير الكرت صورة (PNG)</button>
-            <button class="btn btn-copy" onclick="copyBioLink()">🔗 نسخ رابط الإهداء</button>
+            <button class="btn btn-export" onclick="exportCard()">📸 تصدير الكرت صورة (PNG)</button>
+            <button class="btn btn-copy" onclick="copyBioLink()">🔑 نسخ رابط الإهداء</button>
             <button class="btn btn-whatsapp" onclick="sendWhatsapp()">💬 إرسال الحزمة عبر الواتساب</button>
         </div>
     </div>
@@ -395,7 +409,7 @@
             <div class="avatar-container">
                 <img src="https://via.placeholder.com/150/1e293b/ffffff?text=Avatar" id="cardAvatar" class="avatar-img" alt="Avatar">
             </div>
-            <div class="profile-name" id="cardName">أبو باسم</div>
+            <div class="profile-name" id="cardName">༺ 👑 أبو باسم 👑 ༻</div>
             <div class="profile-badge-text" id="cardBadge">👑 تاج الملك VIP</div>
             <div class="profile-bio" id="cardBio">💎 صانع محتوى مميز • إهداء خاص من Basem Zerba</div>
             
@@ -418,7 +432,7 @@
 
     <!-- قائمة الخيارات: المط، التشكيل، التفكيك، والزخارف -->
     <div class="styles-section">
-        <div class="section-title">✨ تشكيلات وزخارف التيك توك الفخمة والترند:</div>
+        <div class="section-title">✨ تشكيلات وزخارف التيك توك الفخمة:</div>
         <div id="stylesList" class="styles-section"></div>
     </div>
 </div>
@@ -437,13 +451,13 @@
         { label: "نمط الصواعق بين الحروف", fn: name => name.split('').join('⚡') },
         
         // --- دعم الأسماء بالإنجليزي (حجم عريض ومفرغ) ---
-        { label: "نمط الإنجليزي العريض (Fullwidth)", fn: name => name.replace(/[a-zA-A0-9]/g, c => String.fromCharCode(c.charCodeAt(0) + 0xfee0)) },
+        { label: "نمط الإنجليزي العريض (Fullwidth)", fn: name => name.replace(/[a-zA-Z0-9]/g, c => String.fromCharCode(c.charCodeAt(0) + 0xfee0)) },
         { label: "نمط الخط المفرغ (Outline)", fn: name => name.replace(/[a-zA-Z]/g, c => String.fromCodePoint(c.charCodeAt(0) + 0x1D538 - (c <= 'Z' ? 65 : 97))) },
 
         // --- أنماط الزخارف الهيبة والأطر لعام 2026 ---
         { label: "زخرفة الهيبة الرائجة 2026 (Aesthetic)", fn: name => `꧁ ${name} ꧂` },
         { label: "نمط الإطار الملكي الفخم", fn: name => `༺ 👑 ${name} 👑 ༻` },
-        { label: "نمط خط الرقعة العربي الأصيل", fn: name => `✍️ ${name}` },
+        { label: "زخرفة خط الرقعة العربي الأصيل", fn: name => `✍️ ${name}` },
         { label: "نمط النسر والصاعقة VIP", fn: name => `آبـ⚡ـو بـآسـم` },
         { label: "نمط التاج والشعار العالي", fn: name => `👑 ┆ ${name} ┆ 👑` },
         { label: "زخرفة الكوفي العريض العثماني", fn: name => `أًبٌوُ بٌاَسٌمِ` },
@@ -471,7 +485,7 @@
 
     function updatePreview() {
         const val = inputName.value.trim() || "أبو باسم";
-        cardName.textContent = val;
+        cardName.textContent = `༺ 👑 ${val} 👑 ༻`;
         cardName.style.fontFamily = fontSelect.value;
         cardBadge.textContent = badgeSelect.value;
         cardFollowers.textContent = inputFollowers.value || "1.2M";
