@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زخارف تيك توك | Basem Zerba VIP</title>
+    <title>استوديو بروفايلات تيك توك VIP | Basem Zerba</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- مكتبة تحويل العناصر لصورة PNG -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
-            --bg-color: #0d0f17;
-            --card-bg: rgba(22, 27, 46, 0.85);
+            --bg-color: #0b0d14;
+            --card-bg: rgba(20, 24, 40, 0.85);
             --accent-pink: #ff0050;
             --accent-cyan: #00f2fe;
             --accent-gold: #ffd700;
+            --theme-glow: #00f2fe;
             --text-main: #ffffff;
             --text-muted: #8e9aaf;
-            --border-glow: rgba(0, 242, 254, 0.25);
         }
 
         * {
@@ -30,8 +29,8 @@
         body {
             background-color: var(--bg-color);
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 80, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.15) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 80, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.12) 0%, transparent 40%);
             color: var(--text-main);
             min-height: 100vh;
             padding: 20px 15px;
@@ -42,7 +41,7 @@
 
         .container {
             width: 100%;
-            max-width: 650px;
+            max-width: 680px;
         }
 
         .gift-banner {
@@ -53,25 +52,11 @@
             padding: 15px;
             margin-bottom: 20px;
             text-align: center;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
-            animation: pulse 2s infinite alternate;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
         }
 
-        @keyframes pulse {
-            0% { transform: scale(0.99); }
-            100% { transform: scale(1.01); }
-        }
-
-        .gift-banner h3 {
-            color: var(--accent-gold);
-            font-size: 1.1rem;
-            margin-bottom: 4px;
-        }
-
-        .gift-banner p {
-            color: #fff;
-            font-size: 0.95rem;
-        }
+        .gift-banner h3 { color: var(--accent-gold); font-size: 1.1rem; margin-bottom: 4px; }
+        .gift-banner p { color: #fff; font-size: 0.95rem; }
 
         header {
             text-align: center;
@@ -90,7 +75,6 @@
             font-weight: 700;
             color: var(--accent-cyan);
             margin-bottom: 12px;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
         }
 
         h1 {
@@ -102,22 +86,29 @@
             margin-bottom: 6px;
         }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
+        .subtitle { color: var(--text-muted); font-size: 0.95rem; }
 
-        .input-card {
+        .control-panel {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
-            border: 1px solid var(--border-glow);
-            border-radius: 18px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 500px) {
+            .form-row { grid-template-columns: 1fr; }
         }
 
         .input-group-item {
@@ -129,22 +120,22 @@
         label {
             font-weight: 700;
             color: var(--accent-cyan);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
-        input[type="text"], input[type="file"] {
+        input[type="text"], select, input[type="file"] {
             width: 100%;
-            background: rgba(10, 12, 20, 0.8);
+            background: rgba(10, 12, 20, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
-            padding: 12px 16px;
+            padding: 10px 14px;
             color: #fff;
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
             transition: all 0.3s ease;
         }
 
-        input[type="text"]:focus {
+        input[type="text"]:focus, select:focus {
             border-color: var(--accent-cyan);
             box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
         }
@@ -171,64 +162,56 @@
             color: #000;
         }
 
-        .btn-link {
-            background: linear-gradient(135deg, var(--accent-gold), #ff8c00);
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-        }
-
-        .btn-png {
-            background: linear-gradient(135deg, var(--accent-cyan), #00b4d8);
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
-        }
-
+        .btn-link { background: linear-gradient(135deg, var(--accent-gold), #ff8c00); }
+        .btn-png { background: linear-gradient(135deg, var(--accent-cyan), #00b4d8); }
         .btn-wa {
             grid-column: span 2;
             background: linear-gradient(135deg, #25d366, #128c7e);
             color: #fff;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
-        .action-btn:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-        }
+        .action-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
-        /* Card Export Target */
+        /* Preview Studio Card */
         .preview-card {
             background: #090b10;
-            border-radius: 20px;
-            padding: 25px 20px;
+            border-radius: 24px;
+            padding: 28px 20px 20px;
             margin-bottom: 25px;
-            border: 2px solid rgba(0, 242, 254, 0.3);
+            border: 2px solid var(--theme-glow);
             text-align: center;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            overflow: hidden;
+            box-shadow: 0 0 35px rgba(0, 242, 254, 0.2);
+            transition: all 0.3s ease;
         }
 
-        .preview-card::before {
-            content: "Basem Zerba VIP Profile";
+        /* Themes styling */
+        .theme-gold { --theme-glow: #ffd700; border-color: #ffd700; box-shadow: 0 0 35px rgba(255, 215, 0, 0.25); }
+        .theme-cyan { --theme-glow: #00f2fe; border-color: #00f2fe; box-shadow: 0 0 35px rgba(0, 242, 254, 0.25); }
+        .theme-pink { --theme-glow: #ff0050; border-color: #ff0050; box-shadow: 0 0 35px rgba(255, 0, 80, 0.25); }
+        .theme-purple { --theme-glow: #a855f7; border-color: #a855f7; box-shadow: 0 0 35px rgba(168, 85, 247, 0.25); }
+
+        .card-tag {
             position: absolute;
-            top: 10px;
-            right: 14px;
-            font-size: 0.7rem;
+            top: 12px;
+            right: 16px;
+            font-size: 0.72rem;
             font-weight: bold;
             color: var(--accent-gold);
-            background: rgba(255, 215, 0, 0.1);
-            padding: 3px 10px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.12);
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
 
         .avatar-box {
-            width: 85px;
-            height: 85px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             margin: 10px auto 12px;
             padding: 3px;
-            background: linear-gradient(45deg, #ff0050, #00f2fe, #ffd700);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
-            position: relative;
+            background: linear-gradient(45deg, var(--accent-pink), var(--theme-glow), var(--accent-gold));
+            box-shadow: 0 0 20px var(--theme-glow);
         }
 
         .avatar-img {
@@ -241,27 +224,32 @@
             align-items: center;
             justify-content: center;
             font-size: 2.2rem;
+            overflow: hidden;
         }
 
         .preview-name {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-weight: 900;
             color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
             margin-bottom: 4px;
         }
 
         .preview-handle {
             font-size: 0.85rem;
             color: var(--accent-cyan);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-weight: bold;
         }
 
         .preview-bio {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: #d1d5db;
-            margin-bottom: 15px;
-            padding: 0 10px;
+            margin-bottom: 18px;
+            padding: 0 15px;
             line-height: 1.4;
         }
 
@@ -269,10 +257,10 @@
             display: flex;
             justify-content: center;
             gap: 25px;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.65);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 12px;
+            padding-top: 14px;
         }
 
         .tiktok-stats span {
@@ -309,7 +297,6 @@
         .style-item:hover {
             border-color: var(--accent-pink);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 0, 80, 0.2);
         }
 
         .style-text {
@@ -329,7 +316,6 @@
             font-weight: bold;
             font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.2s ease;
             white-space: nowrap;
         }
 
@@ -343,127 +329,51 @@
             margin-top: auto;
         }
 
-        .footer-sig {
-            color: var(--accent-cyan);
-            font-weight: bold;
-        }
-
-        .relock-btn {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: 12px;
-            margin-top: 8px;
-            cursor: pointer;
-        }
-
         .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px; z-index: 1000;
+            opacity: 0; pointer-events: none; transition: all 0.3s ease;
         }
 
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
 
         .modal-box {
             background: #161b2e;
             border: 2px solid var(--accent-pink);
-            border-radius: 20px;
-            padding: 25px;
-            width: 100%;
-            max-width: 380px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(255, 0, 80, 0.4);
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-        }
-
-        .modal-overlay.active .modal-box {
-            transform: translateY(0);
-        }
-
-        .modal-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .modal-desc {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            margin-bottom: 18px;
+            border-radius: 20px; padding: 25px;
+            width: 100%; max-width: 380px; text-align: center;
         }
 
         .pass-input {
-            width: 100%;
-            padding: 12px;
+            width: 100%; padding: 12px;
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid var(--accent-cyan);
-            border-radius: 10px;
-            color: #fff;
-            text-align: center;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            outline: none;
+            border-radius: 10px; color: #fff;
+            text-align: center; font-size: 1.2rem;
+            margin-bottom: 15px; outline: none;
         }
 
         .modal-btn {
-            width: 100%;
-            padding: 12px;
+            width: 100%; padding: 12px;
             background: linear-gradient(135deg, var(--accent-cyan), #00b4d8);
-            border: none;
-            border-radius: 10px;
-            color: #000;
-            font-weight: 900;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .modal-error {
-            color: var(--accent-pink);
-            font-size: 0.85rem;
-            margin-top: 10px;
-            display: none;
+            border: none; border-radius: 10px; color: #000;
+            font-weight: 900; font-size: 1rem; cursor: pointer;
         }
 
         .toast {
-            position: fixed;
-            bottom: 30px;
+            position: fixed; bottom: 30px;
             background: rgba(0, 242, 254, 0.95);
-            color: #000;
-            font-weight: bold;
-            padding: 12px 24px;
-            border-radius: 25px;
-            box-shadow: 0 5px 20px rgba(0, 242, 254, 0.4);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 999;
+            color: #000; font-weight: bold;
+            padding: 12px 24px; border-radius: 25px;
+            transform: translateY(100px); opacity: 0;
+            transition: all 0.3s ease; z-index: 999;
         }
 
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
+        .toast.show { transform: translateY(0); opacity: 1; }
     </style>
 </head>
 <body>
@@ -472,30 +382,60 @@
     
     <div class="gift-banner" id="giftBanner">
         <h3>🎁 إهداء خاص مجهز لك!</h3>
-        <p id="giftBannerText">تم إعداد هاد البروفايل والزخارف خصيصاً لك بواسطة <b>Basem Zerba 👑</b></p>
+        <p id="giftBannerText">تم إعداد هاد البروفايل خصيصاً لك بواسطة <b>Basem Zerba 👑</b></p>
     </div>
 
     <header>
         <div class="vip-badge" id="vipStatusBadge">
             🔒 محمي بنظام VIP Basem Zerba
         </div>
-        <h1>مولّد زخارف تيك توك الفخم</h1>
-        <p class="subtitle">صُمم خصيصاً لبروفايل باسم زربا (Basem Zerba) 👑</p>
+        <h1>استوديو كروت بروفايل تيك توك</h1>
+        <p class="subtitle">صُمم لإنشاء إهداءات وكروت فخمة • Basem Zerba 👑</p>
     </header>
 
-    <div class="input-card">
-        <div class="input-group-item">
-            <label for="nameInput">الاسم المراد زخرفته:</label>
-            <input type="text" id="nameInput" value="ابو باسم" placeholder="ادخل الاسم هنا...">
+    <div class="control-panel">
+        <div class="form-row">
+            <div class="input-group-item">
+                <label for="nameInput">الاسم المراد زخرفته:</label>
+                <input type="text" id="nameInput" value="رنوده" placeholder="ادخل الاسم...">
+            </div>
+
+            <div class="input-group-item">
+                <label for="badgeSelect">شارة التوثيق والـ VIP:</label>
+                <select id="badgeSelect">
+                    <option value="👑">تاج الملك VIP 👑</option>
+                    <option value="✔️">شارة التوثيق الرسمية ✔️</option>
+                    <option value="🌟">نجم التيك توك 🌟</option>
+                    <option value="💎">الماس مميز 💎</option>
+                    <option value="">بدون شارة</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="input-group-item">
+                <label for="themeSelect">ثيم ولون الكرت:</label>
+                <select id="themeSelect">
+                    <option value="theme-cyan">النيون السايبر (Cyan)</option>
+                    <option value="theme-gold">الذهبي الملكي (Gold)</option>
+                    <option value="theme-pink">أحمر التيك توك (Pink)</option>
+                    <option value="theme-purple">الفيوليت الفخم (Purple)</option>
+                </select>
+            </div>
+
+            <div class="input-group-item">
+                <label for="followersInput">عدد المتابعين:</label>
+                <input type="text" id="followersInput" value="1.2M" placeholder="مثال: 1.2M">
+            </div>
         </div>
 
         <div class="input-group-item">
-            <label for="bioInput">رسالة الإهداء / الوصف (Bio):</label>
-            <input type="text" id="bioInput" value="🚀 صانع محتوى مميز • إهداء خاص من Basem Zerba 💎" placeholder="اكتب وصفاً أو رسالة...">
+            <label for="bioInput">رسالة الإهداء / Bio البروفايل:</label>
+            <input type="text" id="bioInput" value="🚀 صانعة محتوى مميزة • إهداء خاص من Basem Zerba 💎" placeholder="اكتب وصفاً...">
         </div>
 
         <div class="input-group-item">
-            <label for="imageUpload">صورة الصديق (اختياري للأفاتار):</label>
+            <label for="imageUpload">صورة البروفايل (الأفاتار):</label>
             <input type="file" id="imageUpload" accept="image/*">
         </div>
 
@@ -504,50 +444,57 @@
                 🔗 نسخ رابط الإهداء
             </button>
             <button class="action-btn btn-png" onclick="exportCardAsPNG()">
-                📸 تصدير كرت الإهداء (PNG)
+                📸 تصدير الكرت صورة (PNG)
             </button>
             <button class="action-btn btn-wa" onclick="shareWhatsApp()">
-                💬 إرسال الحزمة الكاملة عبر الواتساب
+                💬 إرسال الحزمة عبر الواتساب
             </button>
         </div>
     </div>
 
-    <!-- Live Preview Target for PNG Export -->
-    <div class="preview-card" id="previewCard">
+    <!-- Live Interactive Studio Card -->
+    <div class="preview-card theme-cyan" id="previewCard">
+        <div class="card-tag">Basem Zerba VIP</div>
+        
         <div class="avatar-box">
             <div class="avatar-img" id="avatarDisplay">👑</div>
         </div>
-        <div class="preview-name" id="previewName">ابو باسم</div>
-        <div class="preview-handle" id="previewHandle">@abu_basem • TikTok VIP</div>
-        <div class="preview-bio" id="previewBio">🚀 صانع محتوى مميز • إهداء خاص من Basem Zerba 💎</div>
+        
+        <div class="preview-name">
+            <span id="previewName">رنوده</span>
+            <span id="previewBadgeDisplay">👑</span>
+        </div>
+        
+        <div class="preview-handle" id="previewHandle">@ranodeh • TikTok VIP</div>
+        <div class="preview-bio" id="previewBio">🚀 صانعة محتوى مميزة • إهداء خاص من Basem Zerba 💎</div>
         
         <div class="tiktok-stats">
-            <div><span>1.2M</span> المتابعين</div>
-            <div><span>15.4M</span> تسجيلات الإعجاب</div>
+            <div><span id="statFollowers">1.2M</span> المتابعين</div>
+            <div><span id="statLikes">15.4M</span> تسجيلات الإعجاب</div>
             <div><span>340</span> يتابع</div>
         </div>
     </div>
 
     <div class="section-title">
-        ✨ الخيارات المزخرفة للنسخ:
+        ✨ الزخارف المتاحة للاسم المكتوب:
     </div>
 
     <div class="results-grid" id="resultsGrid"></div>
 </div>
 
 <footer>
-    <div>حقوق الملكية والتصميم © 2026 <span class="footer-sig">Basem Zerba (باسم زربا)</span></div>
+    <div>حقوق التصميم والتطوير © 2026 <span style="color:var(--accent-cyan); font-weight:bold;">Basem Zerba</span></div>
     <div>All Rights Reserved • Crafted with Kali Linux 🐉</div>
-    <button class="relock-btn" onclick="relockApp()">🔒 إعادة تفعيل القفل</button>
+    <button onclick="relockApp()" style="background:transparent; border:1px solid rgba(255,255,255,0.2); color:#8e9aaf; font-size:0.75rem; padding:4px 10px; border-radius:12px; margin-top:8px; cursor:pointer;">🔒 إعادة الحظر</button>
 </footer>
 
 <div class="modal-overlay" id="passModal">
     <div class="modal-box">
-        <div class="modal-title">🔐 الحماية مفعلة!</div>
-        <div class="modal-desc">أهلاً بك! هاد الموقع خاص بـ <b>باسم زربا</b>. أدخل رمز الحماية المكون من 10 أرقام للنسخ:</div>
+        <h3 style="color:#fff; margin-bottom:8px;">🔐 الحماية مفعلة!</h3>
+        <p style="color:#8e9aaf; font-size:0.88rem; margin-bottom:15px;">أدخل رمز الحماية المكون من 10 أرقام الخاص بـ باسم زربا للنسخ:</p>
         <input type="password" id="passInput" class="pass-input" placeholder="••••••••••" maxlength="15">
-        <button class="modal-btn" onclick="verifyPassword()">تأكيد وإلغاء القفل 🚀</button>
-        <div class="modal-error" id="modalError">❌ كلمة المرور غير صحيحة!</div>
+        <button class="modal-btn" onclick="verifyPassword()">تأكيد 🚀</button>
+        <p id="modalError" style="color:var(--accent-pink); font-size:0.85rem; margin-top:10px; display:none;">❌ كلمة المرور غير صحيحة!</p>
     </div>
 </div>
 
@@ -559,12 +506,18 @@
 
     const nameInput = document.getElementById('nameInput');
     const bioInput = document.getElementById('bioInput');
+    const followersInput = document.getElementById('followersInput');
+    const badgeSelect = document.getElementById('badgeSelect');
+    const themeSelect = document.getElementById('themeSelect');
     const imageUpload = document.getElementById('imageUpload');
-    const avatarDisplay = document.getElementById('avatarDisplay');
     
+    const previewCard = document.getElementById('previewCard');
+    const avatarDisplay = document.getElementById('avatarDisplay');
     const previewName = document.getElementById('previewName');
+    const previewBadgeDisplay = document.getElementById('previewBadgeDisplay');
     const previewHandle = document.getElementById('previewHandle');
     const previewBio = document.getElementById('previewBio');
+    const statFollowers = document.getElementById('statFollowers');
     const resultsGrid = document.getElementById('resultsGrid');
     
     const passModal = document.getElementById('passModal');
@@ -575,6 +528,7 @@
     const giftBanner = document.getElementById('giftBanner');
     const giftBannerText = document.getElementById('giftBannerText');
 
+    // 100% Dynamic decorations mapped ONLY to the entered name
     const ARABIC_DECORATIONS = [
         "꧁༺ {} ༻꧂",
         "♛ {} ♛",
@@ -583,19 +537,15 @@
         "░{}░",
         "✧○ꊞ○{}○ꊞ○✧",
         "Iล{}Iล",
-        "بٰـہاسٰـہمٰـہ زربٰـہاق 👑",
-        "بُـاڛـّم زڕبـا ✨",
-        "بِـٱسْـم زَرْبٰـا 💎",
         "•]••´º´•» {} «•´º´••[•",
         "™﴿ {} ﴾™",
-        "꧁✨ {} ✨꧂"
+        "꧁✨ {} ✨꧂",
+        "💎 ┆ {} ┆ 💎",
+        "✦﴿ {} ﴾✦",
+        "⚡ {} ⚡",
+        "⚜️ {} ⚜️",
+        "‏﴿ {} ﴾‏"
     ];
-
-    const FONTS = {
-        script: str => str.replace(/[a-zA-Z]/g, c => String.fromCodePoint(c.charCodeAt(0) + (c <= 'Z' ? 119964 : 119958))),
-        doubleStruck: str => str.replace(/[a-zA-Z]/g, c => String.fromCodePoint(c.charCodeAt(0) + (c <= 'Z' ? 120068 : 120062))),
-        bold: str => str.replace(/[a-zA-Z]/g, c => String.fromCodePoint(c.charCodeAt(0) + (c <= 'Z' ? 119742 : 119736)))
-    };
 
     function checkUrlParams() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -609,14 +559,11 @@
             
             giftBanner.style.display = 'block';
             if (fromParam) {
-                giftBannerText.innerHTML = `تم إعداد هاد البروفايل والزخارف خصيصاً لـ <b>${nameParam}</b> بإهداء من <b>${fromParam} 👑</b>`;
-            } else {
-                giftBannerText.innerHTML = `تم إعداد هاد البروفايل والزخارف خصيصاً لـ <b>${nameParam}</b> بواسطة <b>Basem Zerba 👑</b>`;
+                giftBannerText.innerHTML = `تم إعداد هاد البروفايل خصيصاً لـ <b>${nameParam}</b> بإهداء من <b>${fromParam} 👑</b>`;
             }
         }
     }
 
-    // Handle Custom Image Upload
     imageUpload.addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (file) {
@@ -628,15 +575,55 @@
         }
     });
 
+    themeSelect.addEventListener('change', function() {
+        previewCard.className = `preview-card ${themeSelect.value}`;
+    });
+
+    function updateStyles() {
+        const val = nameInput.value.trim() || "صديقي";
+        const bioVal = bioInput.value.trim();
+        const followersVal = followersInput.value.trim() || "1.2M";
+        const badgeVal = badgeSelect.value;
+
+        previewName.textContent = val;
+        previewBadgeDisplay.textContent = badgeVal;
+        previewBio.textContent = bioVal;
+        statFollowers.textContent = followersVal;
+        
+        const handleClean = val.toLowerCase().replace(/\s+/g, '_');
+        previewHandle.textContent = `@${handleClean} • TikTok VIP`;
+
+        resultsGrid.innerHTML = "";
+
+        ARABIC_DECORATIONS.forEach(pattern => {
+            const decoratedText = pattern.replace(/{}/g, val);
+            
+            const card = document.createElement('div');
+            card.className = 'style-item';
+
+            const textDiv = document.createElement('div');
+            textDiv.className = 'style-text';
+            textDiv.textContent = decoratedText;
+
+            const btn = document.createElement('button');
+            btn.className = 'copy-btn';
+            btn.textContent = 'نسخ 📋';
+            btn.onclick = () => handleCopy(decoratedText);
+
+            card.appendChild(textDiv);
+            card.appendChild(btn);
+            resultsGrid.appendChild(card);
+        });
+    }
+
     function generateShareLink() {
         const nameVal = nameInput.value.trim() || "صديقي";
         const bioVal = bioInput.value.trim();
         const baseUrl = window.location.href.split('?')[0];
 
         const shareUrl = `${baseUrl}?name=${encodeURIComponent(nameVal)}&from=${encodeURIComponent('باسم زربا')}&bio=${encodeURIComponent(bioVal)}`;
-        
         executeCopy(shareUrl);
-        showToast("🔗 تم نسخ رابط الإهداء المباشر!");
+        showToast("🔗 تم نسخ رابط الإهداء!");
     }
 
     function shareWhatsApp() {
@@ -645,78 +632,27 @@
         const baseUrl = window.location.href.split('?')[0];
         const shareUrl = `${baseUrl}?name=${encodeURIComponent(nameVal)}&from=${encodeURIComponent('باسم زربا')}`;
 
-        const msg = `🎁 *إهداء خاص من Basem Zerba 👑*\n\nأهلاً ${nameVal}! جهزتلك بروفايل وزخارف تيك توك فخمة:\n\n✨ *الاسم المزخرف:* ꧁༺ ${nameVal} ༻꧂\n📝 *الـ Bio:* ${bioVal}\n\n🔗 *رابط المعاينة المباشر:* ${shareUrl}`;
-        
+        const msg = `🎁 *إهداء خاص من Basem Zerba 👑*\n\nأهلاً ${nameVal}! جهزتلك بروفايل وزخارف تيك توك VIP:\n\n✨ *الاسم المزخرف:* ꧁༺ ${nameVal} ༻꧂\n📝 *الـ Bio:* ${bioVal}\n\n🔗 *رابط المعاينة المباشر:* ${shareUrl}`;
         window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
     function exportCardAsPNG() {
-        const card = document.getElementById('previewCard');
         showToast("⏳ جاري تصدير صورة الإهداء...");
-        
-        html2canvas(card, {
+        html2canvas(previewCard, {
             backgroundColor: "#090b10",
             scale: 2
         }).then(canvas => {
             const link = document.createElement('a');
-            link.download = `BasemZerba_Gift_${nameInput.value.trim()}.png`;
+            link.download = `BasemZerba_Card_${nameInput.value.trim()}.png`;
             link.href = canvas.toDataURL('image/png');
             link.click();
             showToast("📸 تم تصدير الصورة وتحميلها بنجاح!");
         });
     }
 
-    function updateStyles() {
-        const val = nameInput.value.trim() || "ابو باسم";
-        const bioVal = bioInput.value.trim();
-
-        previewName.textContent = val;
-        previewBio.textContent = bioVal;
-        
-        const handleClean = val.toLowerCase().replace(/\s+/g, '_');
-        previewHandle.textContent = `@${handleClean} • TikTok VIP`;
-
-        resultsGrid.innerHTML = "";
-        let items = [];
-
-        ARABIC_DECORATIONS.forEach(pattern => {
-            if(pattern.includes("{}")) {
-                items.push(pattern.replace(/{}/g, val));
-            } else {
-                items.push(pattern);
-            }
-        });
-
-        const engVal = val.match(/[a-zA-Z]/) ? val : "Basem Zerba";
-        items.push("𝒡𝒶𝓃𝒸𝓎: " + FONTS.script(engVal));
-        items.push("𝔹𝕠𝕝𝕕: " + FONTS.doubleStruck(engVal));
-
-        items.push(`👑 | ${val}\n🚀 | ${bioVal}\n💎 | Designed by Basem Zerba`);
-
-        items.forEach((text) => {
-            const card = document.createElement('div');
-            card.className = 'style-item';
-
-            const textDiv = document.createElement('div');
-            textDiv.className = 'style-text';
-            textDiv.textContent = text;
-
-            const btn = document.createElement('button');
-            btn.className = 'copy-btn';
-            btn.textContent = 'نسخ 📋';
-            btn.onclick = () => handleCopy(text);
-
-            card.appendChild(textDiv);
-            card.appendChild(btn);
-            resultsGrid.appendChild(card);
-        });
-    }
-
     function handleCopy(text) {
         pendingCopyText = text;
-        const isUnlocked = localStorage.getItem('basem_unlocked');
-
-        if (isUnlocked === 'true') {
+        if (localStorage.getItem('basem_unlocked') === 'true') {
             executeCopy(text);
         } else {
             passInput.value = "";
@@ -727,15 +663,12 @@
     }
 
     function verifyPassword() {
-        const inputVal = passInput.value.trim();
-        if (inputVal === SECRET_PASS) {
+        if (passInput.value.trim() === SECRET_PASS) {
             localStorage.setItem('basem_unlocked', 'true');
             passModal.classList.remove('active');
             updateBadgeStatus();
-            showToast("🔓 تم إلغاء القفل بنجاح كـ VIP!");
-            if (pendingCopyText) {
-                executeCopy(pendingCopyText);
-            }
+            showToast("🔓 تم إلغاء القفل كـ VIP!");
+            if (pendingCopyText) executeCopy(pendingCopyText);
         } else {
             modalError.style.display = "block";
         }
@@ -743,7 +676,7 @@
 
     function executeCopy(text) {
         navigator.clipboard.writeText(text).then(() => {
-            showToast("📋 تم النسخ إلى الحافظة بنجاح!");
+            showToast("📋 تم النسخ إلى الحافظة!");
         }).catch(() => {
             const textarea = document.createElement('textarea');
             textarea.value = text;
@@ -776,15 +709,14 @@
     function relockApp() {
         localStorage.removeItem('basem_unlocked');
         updateBadgeStatus();
-        showToast("🔒 تم إعادة تفعيل قفل الحماية!");
+        showToast("🔒 تم إعادة القفل!");
     }
 
-    passInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') verifyPassword();
-    });
-
+    passInput.addEventListener('keypress', e => { if (e.key === 'Enter') verifyPassword(); });
     nameInput.addEventListener('input', updateStyles);
     bioInput.addEventListener('input', updateStyles);
+    followersInput.addEventListener('input', updateStyles);
+    badgeSelect.addEventListener('change', updateStyles);
 
     checkUrlParams();
     updateBadgeStatus();
