@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زخارف تيك توك | Basem Zerba VIP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0f17;
+            --card-bg: rgba(22, 27, 46, 0.75);
+            --accent-pink: #ff0050;
+            --accent-cyan: #00f2fe;
+            --accent-gold: #ffd700;
+            --text-main: #ffffff;
+            --text-muted: #8e9aaf;
+            --border-glow: rgba(0, 242, 254, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 80, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.12) 0%, transparent 40%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+        }
+
+        .gift-banner {
+            display: none;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 0, 80, 0.2));
+            border: 1px solid var(--accent-gold);
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.99); }
+            100% { transform: scale(1.01); }
+        }
+
+        .gift-banner h3 {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .gift-banner p {
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .vip-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, rgba(255,0,80,0.2), rgba(0,242,254,0.2));
+            border: 1px solid var(--accent-cyan);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 12px;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #ffffff, var(--accent-cyan), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .input-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow);
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-cyan);
+            font-size: 0.95rem;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            background: rgba(10, 12, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #fff;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
+        }
+
+        .share-btn {
+            background: linear-gradient(135deg, var(--accent-gold), #ff8c00);
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 900;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .preview-card {
+            background: #000;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .preview-card::before {
+            content: "معاينة البروفايل Live";
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.08);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff0050, #00f2fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 10px auto 10px;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+        }
+
+        .preview-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+            min-height: 30px;
+        }
+
+        .preview-handle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .tiktok-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 12px;
+        }
+
+        .tiktok-stats span {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .results-grid {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .style-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+        }
+
+        .style-item:hover {
+            border-color: var(--accent-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 0, 80, 0.2);
+        }
+
+        .style-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #fff;
+            white-space: pre-line;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--accent-pink), #e60046);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .footer-sig {
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .relock-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-box {
+            background: #161b2e;
+            border: 2px solid var(--accent-pink);
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 0, 80, 0.4);
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .modal-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .pass-input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 10px;
+            color: #fff;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--accent-cyan), #00b4d8);
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-weight: 900;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .modal-error {
+            color: var(--accent-pink);
+            font-size: 0.85rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            background: rgba(0, 242, 254, 0.95);
+            color: #000;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 25px;
+            box-shadow: 0 5px 20px rgba(0, 242, 254, 0.4);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="gift-banner" id="giftBanner">
+        <h3>🎁 إهداء خاص مجهز لك!</h3>
+        <p id="giftBannerText">تم إعداد هاد البروفايل والزخارف خصيصاً لك بواسطة <b>Basem Zerba 👑</b></p>
+    </div>
+
+    <header>
+        <div class="vip-badge" id="vipStatusBadge">
+            🔒 محمي بنظام VIP Basem Zerba
+        </div>
+        <h1>مولّد زخارف تيك توك الفخم</h1>
+        <p class="subtitle">صُمم خصيصاً لبروفايل باسم زربا (Basem Zerba) 👑</p>
+    </header>
+
+    <div class="input-card">
+        <label for="nameInput">اكتب الاسم لزخرفته فاعية فخمة:</label>
+        <div class="input-group">
+            <input type="text" id="nameInput" value="باسم زربا" placeholder="ادخل الاسم هنا...">
+            <button class="share-btn" onclick="generateShareLink()">
+                🎁 أنشئ رابط إهداء مباشر للصديق 🔗
+            </button>
+        </div>
+    </div>
+
+    <div class="preview-card">
+        <div class="avatar">👑</div>
+        <div class="preview-name" id="previewName">باسم زربا</div>
+        <div class="preview-handle" id="previewHandle">@basem_zerba • TikTok VIP</div>
+        <div class="tiktok-stats">
+            <div><span>1.2M</span> المتابعين</div>
+            <div><span>15.4M</span> تسجيلات الإعجاب</div>
+            <div><span>340</span> يتابع</div>
+        </div>
+    </div>
+
+    <div class="section-title">
+        ✨ الخيارات المزخرفة للنسخ:
+    </div>
+
+    <div class="results-grid" id="resultsGrid"></div>
+</div>
+
+<footer>
+    <div>حقوق الملكية والتصميم © 2026 <span class="footer-sig">Basem Zerba (باسم زربا)</span></div>
+    <div>All Rights Reserved • Crafted with Kali Linux 🐉</div>
+    <button class="relock-btn" onclick="relockApp()">🔒 إعادة تفعيل القفل</button>
+</footer>
+
+<div class="modal-overlay" id="passModal">
+    <div class="modal-box">
+        <div class="modal-title">🔐 الحماية مفعلة!</div>
+        <div class="modal-desc">أهلاً بك! هاد الموقع خاص بـ <b>باسم زربا</b>. أدخل رمز الحماية المكون من 10 أرقام للنسخ:</div>
+        <input type="password" id="passInput" class="pass-input" placeholder="••••••••••" maxlength="15">
+        <button class="modal-btn" onclick="verifyPassword()">تأكيد وإلغاء القفل 🚀</button>
+        <div class="modal-error" id="modalError">❌ كلمة المرور غير صحيحة!</div>
+    </div>
+</div>
+
+<div class="toast" id="toast">تم النسخ بنجاح! 🚀</div>
+
+<script>
+    const SECRET_PASS = "1112223330";
+    let pendingCopyText = "";
+
+    const nameInput = document.getElementById('nameInput');
+    const previewName = document.getElementById('previewName');
+    const previewHandle = document.getElementById('previewHandle');
+    const resultsGrid = document.getElementById('resultsGrid');
+    const passModal = document.getElementById('passModal');
+    const passInput = document.getElementById('passInput');
+    const modalError = document.getElementById('modalError');
+    const vipStatusBadge = document.getElementById('vipStatusBadge');
+    const toast = document.getElementById('toast');
+    const giftBanner = document.getElementById('giftBanner');
+    const giftBannerText = document.getElementById('giftBannerText');
+
+    const ARABIC_DECORATIONS = [
+        "꧁༺ {} ༻꧂",
+        "♛ {} ♛",
+        "★彡 [ {} ] 彡★",
+        "『{}』",
+        "░{}░",
+        "✧○ꊞ○{}○ꊞ○✧",
+        "Iล{}Iล",
+        "بٰـہاسٰـہمٰـہ زربٰـہاق 👑",
+        "بُـاڛـّم زڕبـا ✨",
+        "بِـٱسْـم زَرْبٰـا 💎",
+        "•]••´º´•» {} «•´º´••[•",
+        "™﴿ {} ﴾™",
+        "꧁✨ {} ✨꧂"
+    ];
+
+    const FONTS = {
+        script: str => str.replace(/[a-zA-Z]/g, c => String.fromCodePoint(c.charCodeAt(0) + (c <= 'Z' ? 119964 : 119958))),
+        doubleStruck: str => str.replace(/[a-zA-Z]/g, c => String.fromCodePoint(c.charCodeAt(0) + (c <= 'Z' ? 120068 : 120062))),
+        bold: str => str.replace(/[a-zA-Z]/g, c => String.fromCodePoint(c.charCodeAt(0) + (c <= 'Z' ? 119742 : 119736)))
+    };
+
+    function checkUrlParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const nameParam = urlParams.get('name');
+        const fromParam = urlParams.get('from');
+
+        if (nameParam) {
+            nameInput.value = nameParam;
+            giftBanner.style.display = 'block';
+            if (fromParam) {
+                giftBannerText.innerHTML = `تم إعداد هاد البروفايل والزخارف خصيصاً لـ <b>${nameParam}</b> بإهداء من <b>${fromParam} 👑</b>`;
+            } else {
+                giftBannerText.innerHTML = `تم إعداد هاد البروفايل والزخارف خصيصاً لـ <b>${nameParam}</b> بواسطة <b>Basem Zerba 👑</b>`;
+            }
+        }
+    }
+
+    function generateShareLink() {
+        const nameVal = nameInput.value.trim() || "صديقي";
+        
+        let baseUrl = window.location.href.split('?')[0];
+        if (window.location.protocol === 'file:') {
+            baseUrl = 'http://localhost:8080/';
+        }
+
+        const shareUrl = `${baseUrl}?name=${encodeURIComponent(nameVal)}&from=${encodeURIComponent('باسم زربا')}`;
+        
+        executeCopy(shareUrl);
+        showToast("🔗 تم نسخ رابط الإهداء المباشر إلى الحافظة!");
+    }
+
+    function updateStyles() {
+        const val = nameInput.value.trim() || "باسم زربا";
+        previewName.textContent = val;
+        
+        const handleClean = val.toLowerCase().replace(/\s+/g, '_');
+        previewHandle.textContent = `@${handleClean} • TikTok VIP`;
+
+        resultsGrid.innerHTML = "";
+        let items = [];
+
+        ARABIC_DECORATIONS.forEach(pattern => {
+            if(pattern.includes("{}")) {
+                items.push(pattern.replace(/{}/g, val));
+            } else {
+                items.push(pattern);
+            }
+        });
+
+        const engVal = val.match(/[a-zA-Z]/) ? val : "Basem Zerba";
+        items.push("𝒡𝒶𝓃𝒸𝓎: " + FONTS.script(engVal));
+        items.push("𝔹𝕠𝕝怠: " + FONTS.doubleStruck(engVal));
+
+        items.push(`👑 | ${val}\n🚀 | TikTok Content Creator\n💎 | Designed by Basem Zerba`);
+
+        items.forEach((text) => {
+            const card = document.createElement('div');
+            card.className = 'style-item';
+
+            const textDiv = document.createElement('div');
+            textDiv.className = 'style-text';
+            textDiv.textContent = text;
+
+            const btn = document.createElement('button');
+            btn.className = 'copy-btn';
+            btn.textContent = 'نسخ 📋';
+            btn.onclick = () => handleCopy(text);
+
+            card.appendChild(textDiv);
+            card.appendChild(btn);
+            resultsGrid.appendChild(card);
+        });
+    }
+
+    function handleCopy(text) {
+        pendingCopyText = text;
+        const isUnlocked = localStorage.getItem('basem_unlocked');
+
+        if (isUnlocked === 'true') {
+            executeCopy(text);
+        } else {
+            passInput.value = "";
+            modalError.style.display = "none";
+            passModal.classList.add('active');
+            passInput.focus();
+        }
+    }
+
+    function verifyPassword() {
+        const inputVal = passInput.value.trim();
+        if (inputVal === SECRET_PASS) {
+            localStorage.setItem('basem_unlocked', 'true');
+            passModal.classList.remove('active');
+            updateBadgeStatus();
+            showToast("🔓 تم إلغاء القفل بنجاح كـ VIP!");
+            if (pendingCopyText) {
+                executeCopy(pendingCopyText);
+            }
+        } else {
+            modalError.style.display = "block";
+        }
+    }
+
+    function executeCopy(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast("📋 تم النسخ إلى الحافظة بنجاح!");
+        }).catch(() => {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast("📋 تم النسخ بنجاح!");
+        });
+    }
+
+    function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+
+    function updateBadgeStatus() {
+        if (localStorage.getItem('basem_unlocked') === 'true') {
+            vipStatusBadge.innerHTML = "🔓 مفعّل VIP • مرحباً باسم زربا";
+            vipStatusBadge.style.borderColor = "#00f2fe";
+            vipStatusBadge.style.color = "#00f2fe";
+        } else {
+            vipStatusBadge.innerHTML = "🔒 محمي بنظام VIP Basem Zerba";
+            vipStatusBadge.style.borderColor = "#ff0050";
+            vipStatusBadge.style.color = "#ff0050";
+        }
+    }
+
+    function relockApp() {
+        localStorage.removeItem('basem_unlocked');
+        updateBadgeStatus();
+        showToast("🔒 تم إعادة تفعيل قفل الحماية!");
+    }
+
+    passInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            verifyPassword();
+        }
+    });
+
+    nameInput.addEventListener('input', updateStyles);
+
+    checkUrlParams();
+    updateBadgeStatus();
+    updateStyles();
+</script>
+</body>
+</html>
