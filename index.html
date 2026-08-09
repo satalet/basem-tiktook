@@ -349,14 +349,14 @@
 <div class="container">
     <header>
         <div class="security-badge">🔒 VIP Basem Zerba محمّي بنظام</div>
-        <h1>مولد زخارف تيك توك الفخمة</h1>
-        <p>خطوط كالليجرافي عربية • رموز هيبة • إهداءات VIP</p>
+        <h1>مولد زخارف وتشكيلات تيك توك الفخمة</h1>
+        <p>استبدال واستبدال الحروف تلقائياً • كاليجرافي عربي • زخارف هيبة</p>
     </header>
 
     <!-- أدوات التحكم والمدخلات -->
     <div class="controls-card">
         <div class="form-group">
-            <label for="inputName">الاسم المراد زخرفته:</label>
+            <label for="inputName">الاسم المراد زخرفته وتشكيله:</label>
             <input type="text" id="inputName" value="أبو باسم" placeholder="اكتب اسمك هنا...">
         </div>
 
@@ -409,7 +409,7 @@
             <div class="avatar-container">
                 <img src="https://via.placeholder.com/150/1e293b/ffffff?text=Avatar" id="cardAvatar" class="avatar-img" alt="Avatar">
             </div>
-            <div class="profile-name" id="cardName">༺ 👑 أبو باسم 👑 ༻</div>
+            <div class="profile-name" id="cardName">آلِـنَّـصُّ_آلَّـذِي كَـتَـبْـتَـهُ</div>
             <div class="profile-badge-text" id="cardBadge">👑 تاج الملك VIP</div>
             <div class="profile-bio" id="cardBio">💎 صانع محتوى مميز • إهداء خاص من Basem Zerba</div>
             
@@ -432,42 +432,64 @@
 
     <!-- قائمة الخيارات: المط، التشكيل، التفكيك، والزخارف -->
     <div class="styles-section">
-        <div class="section-title">✨ تشكيلات وزخارف التيك توك الفخمة:</div>
+        <div class="section-title">✨ تشكيلات واستبدال الأحرف الاحترافية:</div>
         <div id="stylesList" class="styles-section"></div>
     </div>
 </div>
 
 <script>
     // ==========================================
-    // 1. مصفوفة خيارات تشكيل ومط الاسم والزخارف
+    // 1. خريطة استبدال الحروف للزخارف المتقدمة
+    // ==========================================
+    const charMaps = {
+        // نمط التشكيل الكاليجرافي الترند (نفس الصورة)
+        cali: {
+            'ا': 'آلـ', 'ب': 'بْـ', 'ت': 'تَـ', 'ث': 'ثُـ', 'ج': 'جـّ', 'ح': 'حًـ', 'خ': 'خْـ',
+            'د': 'دَ', 'ذ': 'ذِ', 'ر': 'رَّ', 'ز': 'زٍ', 'س': 'سُّ', 'ش': 'شًـ', 'ص': 'صُّ',
+            'ض': 'ضْـ', 'ط': 'طَّ', 'ظ': 'ظًـ', 'ع': 'عـِ', 'غ': 'غُـ', 'ف': 'فُـ', 'ق': 'قـَّ',
+            'ك': 'كَـ', 'ل': 'لَّـ', 'م': 'مُّـ', 'ن': 'نَّـ', 'ه': 'هـّ', 'و': 'وُ', 'ي': 'يـّ', 'ى': 'ىٰ'
+        },
+        // نمط الرموز الناعمة
+        symbols: {
+            'ا': 'آ', 'ب': 'بّ', 'ت': 'تُ', 'ث': 'ثً', 'ج': 'جـ', 'ح': 'حـ', 'خ': 'خـ',
+            'د': 'د', 'ذ': 'ذ', 'ر': 'ر', 'ز': 'ز', 'س': 'سً', 'ش': 'شُ', 'ص': 'صً',
+            'ض': 'ض', 'ط': 'طّ', 'ظ': 'ظ', 'ع': 'عّ', 'غ': 'غ', 'ف': 'فُ', 'ق': 'قٌ',
+            'ك': 'كـ', 'ل': 'لِـ', 'م': 'مـ', 'ن': 'نـ', 'ه': 'هـ', 'و': 'و', 'ي': 'يـ'
+        }
+    };
+
+    function replaceChars(text, map) {
+        return text.split('').map(char => map[char] || char).join('');
+    }
+
+    // ==========================================
+    // 2. مصفوفة التشكيلات والزخارف
     // ==========================================
     const styleTemplates = [
-        // --- خيارات تحريك ومط نفس أحرف الاسم (الترند الحالي) ---
-        { label: "مط حروف الاسم العريض (الكشيدة)", fn: name => name.split('').join('ـ') },
+        // --- التشكيلات القائمة على استبدال الحروف (زي الصورة تماماً) ---
+        { label: "نمط التشكيل الكاليجرافي الممطوط", fn: name => replaceChars(name, charMaps.cali).split(' ').join('ـ_ـ') },
+        { label: "نمط التشكيل العربي المكثف", fn: name => replaceChars(name, charMaps.cali) },
+        { label: "نمط الحروف العثمانية المتقطعة", fn: name => replaceChars(name, charMaps.symbols).split('').join('ـ') },
+        { label: "نمط التشكيل بالأقواس والقلوب", fn: name => `♥iغـ™` + name.split('').join('•') + `♥i` },
+        { label: "نمط المط العريض الممتد (الكشيدة)", fn: name => name.split('').join('ـ') },
         { label: "نمط التباعد الفخم (Spaced-Out)", fn: name => name.split('').join(' ') },
-        { label: "نمط التشكيل العربي الكامل", fn: name => name.replace(/ا/g, 'آ').replace(/و/g, 'ؤ').replace(/م/g, 'مٌ').replace(/ب/g, 'بً').replace(/س/g, 'سٍ') },
-        { label: "نمط الحركات فوق الحروف", fn: name => name.split('').join('َ') },
         { label: "نمط التفكيك بالرموز المنسقة", fn: name => name.split('').join('・') },
-        { label: "نمط الصواعق بين الحروف", fn: name => name.split('').join('⚡') },
-        
-        // --- دعم الأسماء بالإنجليزي (حجم عريض ومفرغ) ---
+        { label: "نمط الصواعق بوسط الحروف", fn: name => name.split('').join('⚡') },
+
+        // --- دعم الأسماء بالإنجليزي ---
         { label: "نمط الإنجليزي العريض (Fullwidth)", fn: name => name.replace(/[a-zA-Z0-9]/g, c => String.fromCharCode(c.charCodeAt(0) + 0xfee0)) },
         { label: "نمط الخط المفرغ (Outline)", fn: name => name.replace(/[a-zA-Z]/g, c => String.fromCodePoint(c.charCodeAt(0) + 0x1D538 - (c <= 'Z' ? 65 : 97))) },
 
-        // --- أنماط الزخارف الهيبة والأطر لعام 2026 ---
+        // --- أنماط الزخارف الإضافية ---
         { label: "زخرفة الهيبة الرائجة 2026 (Aesthetic)", fn: name => `꧁ ${name} ꧂` },
         { label: "نمط الإطار الملكي الفخم", fn: name => `༺ 👑 ${name} 👑 ༻` },
-        { label: "زخرفة خط الرقعة العربي الأصيل", fn: name => `✍️ ${name}` },
-        { label: "نمط النسر والصاعقة VIP", fn: name => `آبـ⚡ـو بـآسـم` },
         { label: "نمط التاج والشعار العالي", fn: name => `👑 ┆ ${name} ┆ 👑` },
-        { label: "زخرفة الكوفي العريض العثماني", fn: name => `أًبٌوُ بٌاَسٌمِ` },
         { label: "نمط الأقواس المنسقة", fn: name => `𓆩 ${name} 𓆪` },
-        { label: "نمط الشارة والنجمة الفخمة", fn: name => `★彡 [ ${name} ] 彡★` },
-        { label: "نمط القاطعة السايبر", fn: name => `⚡ ${name} ⚡` }
+        { label: "نمط الشارة والنجمة الفخمة", fn: name => `★彡 [ ${name} ] 彡★` }
     ];
 
     // ==========================================
-    // 2. تحديث الشاشة التفاعلية والمعاينة
+    // 3. تحديث الشاشة التفاعلية والمعاينة
     // ==========================================
     const inputName = document.getElementById('inputName');
     const fontSelect = document.getElementById('fontSelect');
@@ -485,13 +507,13 @@
 
     function updatePreview() {
         const val = inputName.value.trim() || "أبو باسم";
-        cardName.textContent = `༺ 👑 ${val} 👑 ༻`;
+        cardName.textContent = replaceChars(val, charMaps.cali);
         cardName.style.fontFamily = fontSelect.value;
         cardBadge.textContent = badgeSelect.value;
         cardFollowers.textContent = inputFollowers.value || "1.2M";
         cardBio.textContent = inputBio.value;
 
-        // إعادة بناء قائمة الزخارف وتشكيل الاسم
+        // إعادة بناء قائمة التشكيلات والزخارف
         stylesList.innerHTML = '';
         styleTemplates.forEach((style) => {
             const transformed = style.fn(val);
@@ -520,7 +542,7 @@
     // نسخ النص للحافظة
     function copyText(text) {
         navigator.clipboard.writeText(text).then(() => {
-            alert("تم نسخ الاسم بنجاح: " + text);
+            alert("تم نسخ النص بنجاح: " + text);
         });
     }
 
@@ -542,7 +564,7 @@
     });
 
     // ==========================================
-    // 3. التصدير والمشاركة (Image / Whatsapp / Link)
+    // 4. التصدير والمشاركة (Image / Whatsapp / Link)
     // ==========================================
     function exportCard() {
         const card = document.getElementById('profileCard');
