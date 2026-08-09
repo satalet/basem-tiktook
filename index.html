@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>استوديو بروفايلات وزخارف تيك توك VIP | Basem Zerba</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- خطوط عربية احترافية للزخرفة الحقيقية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,700&family=Aref+Ruqaa:wght@700&family=Cairo:wght@700;900&family=Changa:wght@700;800&family=Lalezar&family=Reem+Kufi:wght@700&family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
     <style>
         :root {
-            --bg-color: #0b0d14;
-            --card-bg: rgba(20, 24, 40, 0.85);
+            --bg-color: #08090f;
+            --card-bg: rgba(18, 22, 36, 0.9);
             --accent-pink: #ff0050;
             --accent-cyan: #00f2fe;
             --accent-gold: #ffd700;
             --theme-glow: #00f2fe;
+            --card-font: 'Tajawal', sans-serif;
             --text-main: #ffffff;
-            --text-muted: #8e9aaf;
+            --text-muted: #94a3b8;
         }
 
         * {
@@ -29,11 +36,11 @@
         body {
             background-color: var(--bg-color);
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 80, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.12) 0%, transparent 40%);
+                radial-gradient(circle at 15% 15%, rgba(255, 0, 80, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(0, 242, 254, 0.15) 0%, transparent 45%);
             color: var(--text-main);
             min-height: 100vh;
-            padding: 20px 15px;
+            padding: 20px 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -41,18 +48,24 @@
 
         .container {
             width: 100%;
-            max-width: 680px;
+            max-width: 720px;
         }
 
         .gift-banner {
             display: none;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 0, 80, 0.25));
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 0, 80, 0.25));
             border: 1px solid var(--accent-gold);
             border-radius: 16px;
-            padding: 15px;
+            padding: 14px;
             margin-bottom: 20px;
             text-align: center;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
         }
 
         .gift-banner h3 { color: var(--accent-gold); font-size: 1.1rem; margin-bottom: 4px; }
@@ -60,25 +73,26 @@
 
         header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
 
         .vip-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: linear-gradient(135deg, rgba(255,0,80,0.2), rgba(0,242,254,0.2));
+            background: rgba(0, 242, 254, 0.1);
             border: 1px solid var(--accent-cyan);
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 700;
             color: var(--accent-cyan);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
         }
 
         h1 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             font-weight: 900;
             background: linear-gradient(90deg, #ffffff, var(--accent-cyan), var(--accent-pink));
             -webkit-background-clip: text;
@@ -86,19 +100,19 @@
             margin-bottom: 6px;
         }
 
-        .subtitle { color: var(--text-muted); font-size: 0.95rem; }
+        .subtitle { color: var(--text-muted); font-size: 0.92rem; }
 
         .control-panel {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 242, 254, 0.2);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 20px;
-            padding: 22px;
+            padding: 20px;
             margin-bottom: 25px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .form-row {
@@ -107,7 +121,7 @@
             gap: 12px;
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 520px) {
             .form-row { grid-template-columns: 1fr; }
         }
 
@@ -120,13 +134,13 @@
         label {
             font-weight: 700;
             color: var(--accent-cyan);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
         }
 
         input[type="text"], select, input[type="file"] {
             width: 100%;
-            background: rgba(10, 12, 20, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(8, 10, 18, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 12px;
             padding: 10px 14px;
             color: #fff;
@@ -137,7 +151,7 @@
 
         input[type="text"]:focus, select:focus {
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.35);
         }
 
         .btn-grid {
@@ -174,21 +188,21 @@
 
         /* Preview Card */
         .preview-card {
-            background: #090b10;
+            background: #090b12;
             border-radius: 24px;
-            padding: 28px 20px 20px;
-            margin-bottom: 25px;
+            padding: 28px 20px 22px;
+            margin-bottom: 30px;
             border: 2px solid var(--theme-glow);
             text-align: center;
             position: relative;
-            box-shadow: 0 0 35px rgba(0, 242, 254, 0.2);
+            box-shadow: 0 0 35px rgba(0, 242, 254, 0.25);
             transition: all 0.3s ease;
         }
 
-        .theme-gold { --theme-glow: #ffd700; border-color: #ffd700; box-shadow: 0 0 35px rgba(255, 215, 0, 0.25); }
-        .theme-cyan { --theme-glow: #00f2fe; border-color: #00f2fe; box-shadow: 0 0 35px rgba(0, 242, 254, 0.25); }
-        .theme-pink { --theme-glow: #ff0050; border-color: #ff0050; box-shadow: 0 0 35px rgba(255, 0, 80, 0.25); }
-        .theme-purple { --theme-glow: #a855f7; border-color: #a855f7; box-shadow: 0 0 35px rgba(168, 85, 247, 0.25); }
+        .theme-gold { --theme-glow: #ffd700; border-color: #ffd700; box-shadow: 0 0 35px rgba(255, 215, 0, 0.3); }
+        .theme-cyan { --theme-glow: #00f2fe; border-color: #00f2fe; box-shadow: 0 0 35px rgba(0, 242, 254, 0.3); }
+        .theme-pink { --theme-glow: #ff0050; border-color: #ff0050; box-shadow: 0 0 35px rgba(255, 0, 80, 0.3); }
+        .theme-purple { --theme-glow: #a855f7; border-color: #a855f7; box-shadow: 0 0 35px rgba(168, 85, 247, 0.3); }
 
         .card-tag {
             position: absolute;
@@ -204,13 +218,13 @@
         }
 
         .avatar-box {
-            width: 90px;
-            height: 90px;
+            width: 95px;
+            height: 95px;
             border-radius: 50%;
-            margin: 10px auto 12px;
+            margin: 8px auto 14px;
             padding: 3px;
             background: linear-gradient(45deg, var(--accent-pink), var(--theme-glow), var(--accent-gold));
-            box-shadow: 0 0 20px var(--theme-glow);
+            box-shadow: 0 0 22px var(--theme-glow);
         }
 
         .avatar-img {
@@ -218,36 +232,38 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            background: #161b2e;
+            background: #121624;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             overflow: hidden;
         }
 
         .preview-name {
-            font-size: 1.45rem;
+            font-size: 1.6rem;
             font-weight: 900;
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            margin-bottom: 4px;
-            letter-spacing: 0.5px;
+            gap: 8px;
+            margin-bottom: 6px;
+            font-family: var(--card-font);
+            line-height: 1.3;
         }
 
         .preview-handle {
             font-size: 0.85rem;
             color: var(--accent-cyan);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-weight: bold;
+            letter-spacing: 0.5px;
         }
 
         .preview-bio {
-            font-size: 0.92rem;
-            color: #d1d5db;
+            font-size: 0.95rem;
+            color: #cbd5e1;
             margin-bottom: 18px;
             padding: 0 15px;
             line-height: 1.4;
@@ -256,8 +272,8 @@
         .tiktok-stats {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            font-size: 0.78rem;
+            gap: 30px;
+            font-size: 0.8rem;
             color: rgba(255, 255, 255, 0.65);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 14px;
@@ -267,13 +283,20 @@
             font-weight: bold;
             color: #fff;
             display: block;
-            font-size: 0.95rem;
+            font-size: 1rem;
+        }
+
+        /* Section & Cards */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
         }
 
         .section-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-size: 1.15rem;
+            font-weight: 800;
             color: #fff;
         }
 
@@ -285,9 +308,9 @@
 
         .style-item {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 14px 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -295,36 +318,39 @@
         }
 
         .style-item:hover {
-            border-color: var(--accent-pink);
+            border-color: var(--accent-cyan);
             transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.15);
         }
 
         .style-info {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 6px;
+            max-width: 70%;
         }
 
         .style-title {
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             color: var(--accent-cyan);
             font-weight: bold;
         }
 
         .style-text {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: #fff;
             direction: rtl;
+            word-break: break-word;
         }
 
         .btn-actions-item {
             display: flex;
-            gap: 6px;
+            gap: 8px;
         }
 
         .apply-btn {
-            background: rgba(0, 242, 254, 0.15);
+            background: rgba(0, 242, 254, 0.12);
             border: 1px solid var(--accent-cyan);
             color: var(--accent-cyan);
             padding: 8px 12px;
@@ -351,7 +377,7 @@
 
         footer {
             text-align: center;
-            padding: 20px 0;
+            padding: 22px 0;
             color: var(--text-muted);
             font-size: 0.85rem;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -359,6 +385,7 @@
             margin-top: auto;
         }
 
+        /* Protection Modal */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -372,15 +399,16 @@
         .modal-overlay.active { opacity: 1; pointer-events: all; }
 
         .modal-box {
-            background: #161b2e;
+            background: #121624;
             border: 2px solid var(--accent-pink);
             border-radius: 20px; padding: 25px;
             width: 100%; max-width: 380px; text-align: center;
+            box-shadow: 0 0 30px rgba(255, 0, 80, 0.3);
         }
 
         .pass-input {
             width: 100%; padding: 12px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             border: 1px solid var(--accent-cyan);
             border-radius: 10px; color: #fff;
             text-align: center; font-size: 1.2rem;
@@ -401,6 +429,7 @@
             padding: 12px 24px; border-radius: 25px;
             transform: translateY(100px); opacity: 0;
             transition: all 0.3s ease; z-index: 999;
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.4);
         }
 
         .toast.show { transform: translateY(0); opacity: 1; }
@@ -420,29 +449,41 @@
             🔒 محمي بنظام VIP Basem Zerba
         </div>
         <h1>مولّد زخارف تيك توك الفخمة</h1>
-        <p class="subtitle">تشكيل واستبدال الحروف التيكتوكية • Basem Zerba 👑</p>
+        <p class="subtitle">خطوط كاليجرافي عربية • رموز هيبة • إهداءات VIP</p>
     </header>
 
     <div class="control-panel">
         <div class="form-row">
             <div class="input-group-item">
-                <label for="nameInput">الاسم المراد زخرفته (عربي أو إنجليزي):</label>
-                <input type="text" id="nameInput" value="عاشقة الليل" placeholder="ادخل الاسم هنا...">
+                <label for="nameInput">الاسم المراد زخرفته:</label>
+                <input type="text" id="nameInput" value="أبو باسم" placeholder="ادخل الاسم هنا...">
             </div>
 
             <div class="input-group-item">
-                <label for="badgeSelect">شارة التوثيق والـ VIP:</label>
-                <select id="badgeSelect">
-                    <option value="👑">تاج الملك VIP 👑</option>
-                    <option value="✔️">شارة التوثيق الرسمية ✔️</option>
-                    <option value="🌟">نجم التيك توك 🌟</option>
-                    <option value="💎">الماس مميز 💎</option>
-                    <option value="">بدون شارة</option>
+                <label for="fontSelect">خط كرت المعاينة:</label>
+                <select id="fontSelect">
+                    <option value="'Aref Ruqaa', serif">خط الرقعة العربي (Aref Ruqaa)</option>
+                    <option value="'Reem Kufi', sans-serif">الخط الكوفي العريض (Reem Kufi)</option>
+                    <option value="'Lalezar', display">خط لاليزار الفخم (Lalezar)</option>
+                    <option value="'Changa', sans-serif">خط السايبر والتيك توك (Changa)</option>
+                    <option value="'Amiri', serif">الخط العثماني الأصيل (Amiri)</option>
+                    <option value="'Tajawal', sans-serif" selected>الخط الحديث (Tajawal)</option>
                 </select>
             </div>
         </div>
 
         <div class="form-row">
+            <div class="input-group-item">
+                <label for="badgeSelect">شارة التوثيق والـ VIP:</label>
+                <select id="badgeSelect">
+                    <option value="👑">تاج الملك VIP 👑</option>
+                    <option value="✔️">شارة التوثيق الرسمية ✔️</option>
+                    <option value="⚡">شارة الطاقة ⚡</option>
+                    <option value="💎">الماس مميز 💎</option>
+                    <option value="">بدون شارة</option>
+                </select>
+            </div>
+
             <div class="input-group-item">
                 <label for="themeSelect">ثيم ولون الكرت:</label>
                 <select id="themeSelect">
@@ -452,21 +493,22 @@
                     <option value="theme-purple">الفيوليت الفخم (Purple)</option>
                 </select>
             </div>
+        </div>
 
+        <div class="form-row">
             <div class="input-group-item">
                 <label for="followersInput">عدد المتابعين:</label>
-                <input type="text" id="followersInput" value="1.2M" placeholder="مثال: 1.2M">
+                <input type="text" id="followersInput" value="1.2M">
+            </div>
+            <div class="input-group-item">
+                <label for="imageUpload">صورة البروفايل (الأفاتار):</label>
+                <input type="file" id="imageUpload" accept="image/*">
             </div>
         </div>
 
         <div class="input-group-item">
             <label for="bioInput">رسالة الإهداء / Bio البروفايل:</label>
-            <input type="text" id="bioInput" value="🚀 صانعة محتوى مميزة • إهداء خاص من Basem Zerba 💎" placeholder="اكتب وصفاً...">
-        </div>
-
-        <div class="input-group-item">
-            <label for="imageUpload">صورة البروفايل (الأفاتار):</label>
-            <input type="file" id="imageUpload" accept="image/*">
+            <input type="text" id="bioInput" value="🚀 صانع محتوى مميز • إهداء خاص من Basem Zerba 💎">
         </div>
 
         <div class="btn-grid">
@@ -490,13 +532,13 @@
             <div class="avatar-img" id="avatarDisplay">👑</div>
         </div>
         
-        <div class="preview-name">
-            <span id="previewName">عـآشِـقَـةُ اَلـلَّـيْـلْ</span>
+        <div class="preview-name" id="previewNameContainer">
+            <span id="previewName">𓆩 أبو باسم 𓆪</span>
             <span id="previewBadgeDisplay">👑</span>
         </div>
         
-        <div class="preview-handle" id="previewHandle">@asheqatalail • TikTok VIP</div>
-        <div class="preview-bio" id="previewBio">🚀 صانعة محتوى مميزة • إهداء خاص من Basem Zerba 💎</div>
+        <div class="preview-handle" id="previewHandle">@abu_basem • TikTok VIP</div>
+        <div class="preview-bio" id="previewBio">🚀 صانع محتوى مميز • إهداء خاص من Basem Zerba 💎</div>
         
         <div class="tiktok-stats">
             <div><span id="statFollowers">1.2M</span> المتابعين</div>
@@ -505,8 +547,8 @@
         </div>
     </div>
 
-    <div class="section-title">
-        ✨ أنماط زخرفة وتشكيل الحروف (اختر نمطاً لتطبيقه على الكرت):
+    <div class="section-header">
+        <div class="section-title">✨ تشكيلات وزخارف التيك توك الفخمة:</div>
     </div>
 
     <div class="results-grid" id="resultsGrid"></div>
@@ -534,8 +576,10 @@
     const SECRET_PASS = "1112223330";
     let pendingCopyText = "";
     let currentSelectedDecoration = "";
+    let selectedFontFamily = "'Tajawal', sans-serif";
 
     const nameInput = document.getElementById('nameInput');
+    const fontSelect = document.getElementById('fontSelect');
     const bioInput = document.getElementById('bioInput');
     const followersInput = document.getElementById('followersInput');
     const badgeSelect = document.getElementById('badgeSelect');
@@ -559,71 +603,25 @@
     const giftBanner = document.getElementById('giftBanner');
     const giftBannerText = document.getElementById('giftBannerText');
 
-    /* ----- Engine: TikTok Arabic Character Transformation ----- */
-    const MAP_TIKTOK_SUPERSCRIPT = {
-        'ا':'اٰ', 'أ':'أٰ', 'إ':'إٰ', 'آ':'آٰ',
-        'ب':'بِٰـﮧ', 'ت':'تِٰـﮧ', 'ث':'ثِٰـﮧ', 'ج':'جِٰـﮧ', 'ح':'حِٰـﮧ', 'خ':'خِٰـﮧ',
-        'د':'دِٰ', 'ذ':'ذِٰ', 'ر':'رَٰ', 'ز':'زَٰ', 'س':'سِٰـﮧ', 'ش':'شِٰـﮧ',
-        'ص':'صِٰـﮧ', 'ض':'ضِٰـﮧ', 'ط':'طِٰـﮧ', 'ظ':'ظِٰـﮧ', 'ع':'عِٰـﮧ', 'غ':'غِٰـﮧ',
-        'ف':'فِٰـﮧ', 'ق':'قِٰـﮧ', 'ك':'كِٰـﮧ', 'ل':'لِٰـﮧ', 'م':'مِٰـﮧ', 'ن':'نِٰـﮧ',
-        'ه':'هِٰ', 'ة':'ةِٰ', 'و':'وٰ', 'ي':'يِٰـﮧ', 'ى':'ىٰ', ' ': ' '
-    };
-
-    const MAP_TIKTOK_HEAVY = {
-        'ا':'اٰ', 'ب':'بٰہٰ', 'ت':'تٰہٰ', 'ث':'ثٰہٰ', 'ج':'جٰہٰ', 'ح':'حٰہٰ', 'خ':'خٰہٰ',
-        'د':'دٰ', 'ذ':'ذٰ', 'ر':'رٰ', 'ز':'زٰ', 'س':'سٰہٰ', 'ش':'شٰہٰ',
-        'ص':'صٰہٰ', 'ض':'ضٰہٰ', 'ط':'طٰہٰ', 'ظ':'ظٰہٰ', 'ع':'عٰہٰ', 'غ':'غٰہٰ',
-        'ف':'فٰہٰ', 'ق':'قٰہٰ', 'ك':'كٰہٰ', 'ل':'لٰہٰ', 'م':'مٰہٰ', 'ن':'نٰہٰ',
-        'ه':'هٰہ', 'ة':'ةٰہ', 'و':'وٰ', 'ي':'يٰہٰ', 'ى':'ىٰ', ' ': ' '
-    };
-
-    const MAP_URDU_PERSIAN = {
-        'ا':'آ', 'ب':'ﺑــ', 'ت':'ﺗــ', 'ث':'ﺛــ', 'ج':'ﺟــ', 'ح':'ﺣــ', 'خ':'ﺧــ',
-        'د':'دَ', 'ذ':'ذَ', 'ر':'رُ', 'ز':'زُ', 'س':'ﺳــ', 'ش':'ﺷــ',
-        'ص':'ﺻــ', 'ض':'ﺿــ', 'ط':'ﻃــ', 'ظ':'ﻇــ', 'ع':'ﻋــ', 'غ':'ﻏــ',
-        'ف':'ﻓــ', 'ق':'ﻗــ', 'ك':'ﻛــ', 'ل':'ﻟــ', 'م':'ﻣــ', 'ن':'ﻧــ',
-        'ه':'ھ', 'ة':'ھ', 'و':'ﯡ', 'ي':'ﻳــ', 'ى':'ى', ' ': ' '
-    };
-
-    const MAP_GHOST_DIACRITICS = {
-        'ا':'اَٰ', 'ب':'بِّـ', 'ت':'تَّـ', 'ث':'ثَّـ', 'ج':'جِّـ', 'ح':'حَّـ', 'خ':'خَّـ',
-        'د':'دَٰ', 'ذ':'ذَٰ', 'ر':'رِٰ', 'ز':'زِٰ', 'س':'سِّـ', 'ش':'شِّـ',
-        'ص':'صِّـ', 'ض':'ضِّـ', 'ط':'طَّـ', 'ظ':'ظَّـ', 'ع':'عَّـ', 'غ':'غَّـ',
-        'ف':'فَّـ', 'ق':'قَّـ', 'ك':'كَّـ', 'ل':'لَّـ', 'م':'مَّـ', 'ن':'نِّـ',
-        'ه':'هَٰ', 'ة':'ةَٰ', 'و':'ﯟ', 'ي':'يِّـ', 'ى':'ىٰ', ' ': ' '
-    };
-
-    function transformWithMap(str, map) {
-        return str.split('').map(ch => map[ch] || ch).join('');
-    }
-
-    function applyKashidaTeshkeel(str) {
-        // زخرفة التشكيل العثماني مع الكشيدة
-        return str.replace(/ا/g, 'آ').replace(/ب/g, 'بـ').replace(/ت/g, 'تـ')
-                  .replace(/س/g, 'سـ').replace(/ل/g, 'لـ').replace(/م/g, 'مـ')
-                  .replace(/ن/g, 'نـ').replace(/ه/g, 'هـ')
-                  .split('').join('َ');
-    }
-
+    // خوارزمية أنماط وزخارف تيك توك بدون تكسير للحروف
     function generateTikTokDecorations(text) {
-        if (!text) text = "عاشقة الليل";
+        if (!text) text = "أبو باسم";
 
-        const decs = [
-            { title: "زخرفة تيك توك المرفوعة VIP", text: transformWithMap(text, MAP_TIKTOK_SUPERSCRIPT) },
-            { title: "زخرفة الهيبة والتنوين", text: transformWithMap(text, MAP_TIKTOK_HEAVY) },
-            { title: "زخرفة الكشيدة والرموز العالية", text: transformWithMap(text, MAP_GHOST_DIACRITICS) },
-            { title: "زخرفة الخط الفارسي / التيكتوكي", text: transformWithMap(text, MAP_URDU_PERSIAN) },
-            { title: "التشكيل التيكتوكي المركب", text: text.split('').join('ـِٰ') },
-            { title: "نمط النيون والسكون", text: text.split('').map(c => c === ' ' ? ' ' : c + 'ّ').join('') },
-            { title: "زخرفة الألفاظ الملكية", text: `꧁༺ ${transformWithMap(text, MAP_TIKTOK_SUPERSCRIPT)} ༻꧂` },
-            { title: "نمط التاج الملكي", text: `♛ ${transformWithMap(text, MAP_TIKTOK_HEAVY)} ♛` },
-            { title: "نمط الفخامة والقلوب", text: `رنـ﴿👑﴾ـوده`.replace("رنـ﴿👑﴾ـوده", text.split('').join('ـ')) },
-            { title: "زخرفة المظلة الماسية", text: `💎 ┆ ${transformWithMap(text, MAP_GHOST_DIACRITICS)} ┆ 💎` },
-            { title: "زخرفة الأقواس القاطعة", text: `『 ${transformWithMap(text, MAP_URDU_PERSIAN)} 』` },
-            { title: "زخرفة النجوم والرموز", text: `★彡 [ ${text} ] 彡★` }
+        const spacedText = text.split('').join(' ');
+        const stretchedText = text.replace(/و/g, 'وُ').replace(/ا/g, 'اَ').replace(/م/g, 'مُ');
+
+        return [
+            { title: "زخرفة الهيبة الرائجة 2026 (Aesthetic)", text: `𓆩 ${text} 𓆪`, font: "'Cairo', sans-serif" },
+            { title: "نمط الإطار الملكي الفخم", text: `꧁༺ ${text} ༻꧂`, font: "'Aref Ruqaa', serif" },
+            { title: "زخرفة خط الرقعة العربي الأصيل", text: `آبـٌـٌٌـٌٌٌـٌٌـٌوُ بَاسِـم`, font: "'Aref Ruqaa', serif" },
+            { title: "نمط النسر والصاعقة VIP", text: `آبِـ𓆩⚡𓆪ـو بَاسِم`, font: "'Changa', sans-serif" },
+            { title: "نمط التاج والشعار العالي", text: `👑 ┆ ${spacedText} ┆ 👑`, font: "'Lalezar', display" },
+            { title: "زخرفة الكوفي العريض العثماني", text: `أَبُـۥ بَاسِــم`, font: "'Reem Kufi', sans-serif" },
+            { title: "نمط الأقواس المنسقة", text: `『 ${text} 』`, font: "'Cairo', sans-serif" },
+            { title: "نمط الشارة والنجمة الفخمة", text: `★彡 [ ${text} ] 彡★`, font: "'Changa', sans-serif" },
+            { title: "نمط القاطعة السايبر", text: `•| ${text} |•`, font: "'Lalezar', display" },
+            { title: "زخرفة الشعار الملكي المغلق", text: `ﮥﮥ ${text} ⚡`, font: "'Reem Kufi', sans-serif" }
         ];
-
-        return decs;
     }
 
     function checkUrlParams() {
@@ -658,26 +656,36 @@
         previewCard.className = `preview-card ${themeSelect.value}`;
     });
 
-    function applyDecorationToCard(decText) {
+    fontSelect.addEventListener('change', function() {
+        selectedFontFamily = fontSelect.value;
+        previewName.style.fontFamily = selectedFontFamily;
+    });
+
+    function applyDecorationToCard(decText, font) {
         currentSelectedDecoration = decText;
         previewName.textContent = decText;
-        showToast("✨ تم تطبيق الزخرفة على الكرت!");
+        if(font) {
+            previewName.style.fontFamily = font;
+            fontSelect.value = font;
+        }
+        showToast("✨ تم تطبيق الزخرفة والخط على الكرت!");
     }
 
     function updateStyles() {
-        const rawVal = nameInput.value.trim() || "عاشقة الليل";
+        const rawVal = nameInput.value.trim() || "أبو باسم";
         const bioVal = bioInput.value.trim();
         const followersVal = followersInput.value.trim() || "1.2M";
         const badgeVal = badgeSelect.value;
 
         const decList = generateTikTokDecorations(rawVal);
         
-        // If user hasn't explicitly clicked a custom style, use the 1st transformed style
         if(!currentSelectedDecoration || !currentSelectedDecoration.includes(rawVal.substring(0, 2))) {
             currentSelectedDecoration = decList[0].text;
+            selectedFontFamily = decList[0].font;
         }
 
         previewName.textContent = currentSelectedDecoration;
+        previewName.style.fontFamily = selectedFontFamily;
         previewBadgeDisplay.textContent = badgeVal;
         previewBio.textContent = bioVal;
         statFollowers.textContent = followersVal;
@@ -700,6 +708,7 @@
 
             const textDiv = document.createElement('div');
             textDiv.className = 'style-text';
+            textDiv.style.fontFamily = item.font;
             textDiv.textContent = item.text;
 
             infoDiv.appendChild(titleDiv);
@@ -711,7 +720,7 @@
             const applyBtn = document.createElement('button');
             applyBtn.className = 'apply-btn';
             applyBtn.textContent = 'تطبيق 👁️';
-            applyBtn.onclick = () => applyDecorationToCard(item.text);
+            applyBtn.onclick = () => applyDecorationToCard(item.text, item.font);
 
             const copyBtn = document.createElement('button');
             copyBtn.className = 'copy-btn';
@@ -728,13 +737,13 @@
     }
 
     function generateShareLink() {
-        const nameVal = nameInput.value.trim() || "عاشقة الليل";
+        const nameVal = nameInput.value.trim() || "أبو باسم";
         const bioVal = bioInput.value.trim();
         const baseUrl = window.location.href.split('?')[0];
 
         const shareUrl = `${baseUrl}?name=${encodeURIComponent(nameVal)}&from=${encodeURIComponent('باسم زربا')}&bio=${encodeURIComponent(bioVal)}`;
         executeCopy(shareUrl);
-        showToast("🔗 تم نسخ رابط الإهداء!");
+        showToast("🔗 تم نسخ رابط الإهداء المباشر!");
     }
 
     function shareWhatsApp() {
@@ -743,14 +752,14 @@
         const baseUrl = window.location.href.split('?')[0];
         const shareUrl = `${baseUrl}?name=${encodeURIComponent(nameVal)}&from=${encodeURIComponent('باسم زربا')}`;
 
-        const msg = `🎁 *إهداء خاص من Basem Zerba 👑*\n\nأهلاً ${nameVal}! جهزتلك بروفايل وزخارف تيك توك VIP:\n\n✨ *الاسم المزخرف:* ${previewName.textContent}\n📝 *الـ Bio:* ${bioVal}\n\n🔗 *رابط المعاينة المباشر:* ${shareUrl}`;
+        const msg = `🎁 *إهداء خاص من Basem Zerba 👑*\n\nأهلاً ${nameVal}! جهزتلك كرت وزخرفة تيك توك VIP:\n\n✨ *الاسم المزخرف:* ${previewName.textContent}\n📝 *الـ Bio:* ${bioVal}\n\n🔗 *رابط المعاينة المباشر:* ${shareUrl}`;
         window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
     function exportCardAsPNG() {
         showToast("⏳ جاري تصدير صورة الإهداء...");
         html2canvas(previewCard, {
-            backgroundColor: "#090b10",
+            backgroundColor: "#090b12",
             scale: 2
         }).then(canvas => {
             const link = document.createElement('a');
