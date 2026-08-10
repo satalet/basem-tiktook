@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basem Zorba - Real Name</title>
     
-    <!-- استدعاء الخطوط مع Noto Naskh لدعم كافة الرموز والتشكيلات على الجوال -->
+    <!-- Google Fonts لتغطية كافة التشكيلات على جميع الأجهزة والجوالات -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;700;900&family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
@@ -30,11 +30,46 @@
         body {
             background-color: var(--bg-main);
             color: var(--text-white);
+            padding: 20px 10px;
+            min-height: 100vh;
+        }
+
+        .header-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header-title h1 {
+            font-size: 24px;
+            color: var(--text-white);
+            margin-bottom: 5px;
+        }
+
+        .header-title p {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 850px) {
+            .main-container {
+                display: grid;
+                grid-template-columns: 1fr 380px;
+            }
+        }
+
+        /* كارت المعاينة */
+        .preview-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px 10px;
-            min-height: 100vh;
         }
 
         .card {
@@ -43,11 +78,10 @@
             border-radius: 20px;
             padding: 25px;
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             position: relative;
-            margin-bottom: 25px;
         }
 
         .badge-top {
@@ -61,24 +95,34 @@
             padding: 3px 8px;
             border-radius: 12px;
             font-weight: bold;
-            letter-spacing: 1px;
         }
 
-        .avatar-ring {
+        .avatar-container {
             width: 90px;
             height: 90px;
             border-radius: 50%;
             border: 2px solid var(--accent-gold);
             margin: 10px auto 15px;
+            overflow: hidden;
             background: #0d1117;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .display-name {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: bold;
             margin-bottom: 5px;
             min-height: 45px;
             color: var(--text-white);
+            word-break: break-word;
         }
 
         .sub-badge {
@@ -87,13 +131,14 @@
             margin-bottom: 15px;
         }
 
-        .input-box {
+        .input-box-preview {
             border: 1px dashed var(--border-color);
             border-radius: 10px;
             padding: 10px;
             margin-bottom: 20px;
             color: var(--text-gray);
-            font-size: 13px;
+            font-size: 12px;
+            line-height: 1.6;
         }
 
         .stats-container {
@@ -106,11 +151,11 @@
 
         .stat-item .num {
             font-weight: bold;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .stat-item .label {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-gray);
         }
 
@@ -119,20 +164,82 @@
             color: var(--text-gray);
         }
 
-        .controls-panel {
-            width: 100%;
-            max-width: 420px;
+        /* لوحة التحكم */
+        .controls-section {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 15px;
-            padding: 15px;
+            padding: 20px;
+            height: fit-content;
         }
 
-        .controls-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .section-title {
+            font-size: 16px;
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            color: var(--text-gray);
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: #0d1117;
+            border: 1px solid var(--border-color);
+            color: var(--text-white);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-gold);
+        }
+
+        .btn-group-main {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .btn-main {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-gold { background: var(--accent-gold); color: #000; }
+        .btn-green { background: #238636; color: #fff; }
+        .btn-blue { background: #1f6feb; color: #fff; }
+
+        /* نتائج المحرك */
+        .results-section {
+            grid-column: 1 / -1;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
         }
 
         .filter-tags {
@@ -147,7 +254,7 @@
             background: #21262d;
             border: 1px solid var(--border-color);
             color: var(--text-white);
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 15px;
             font-size: 12px;
             white-space: nowrap;
@@ -161,36 +268,38 @@
         }
 
         .results-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
         }
 
         .result-card {
             background: #0d1117;
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 12px;
+            padding: 15px;
         }
 
         .result-title {
-            font-size: 10px;
+            font-size: 11px;
             color: var(--text-gray);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .result-text {
-            font-size: 20px;
+            font-size: 22px;
             text-align: center;
-            margin: 10px 0;
+            margin: 15px 0;
+            min-height: 40px;
+            word-break: break-word;
         }
 
         .result-actions {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .btn {
+        .btn-sub {
             flex: 1;
             padding: 6px;
             border-radius: 6px;
@@ -199,17 +308,6 @@
             cursor: pointer;
         }
 
-        .btn-copy {
-            background: #238636;
-            color: white;
-        }
-
-        .btn-apply {
-            background: #1f6feb;
-            color: white;
-        }
-
-        /* دمج Noto Naskh لمنع ظهور المربعات الشاذة */
         .font-amiri { font-family: 'Amiri', 'Noto Naskh Arabic', serif; }
         .font-aref { font-family: 'Aref Ruqaa', 'Noto Naskh Arabic', serif; }
         .font-reem { font-family: 'Reem Kufi', 'Noto Naskh Arabic', sans-serif; }
@@ -219,89 +317,241 @@
 </head>
 <body>
 
-    <!-- كارت المعاينة -->
-    <div class="card" id="preview-card">
-        <div class="badge-top">BASEM ZORBA • VIP</div>
-        <div class="avatar-ring"></div>
-        <div class="display-name font-aref" id="main-display">أبُو بَاسِم</div>
-        <div class="sub-badge">VIP ملكي 👑</div>
-        <div class="input-box">🔥 اسمك، بطريقتك<br>صمم • زخرف • انسخ</div>
+    <div class="header-title">
+        <h1>🔥 هسا الاسم نفسه بتزخرف</h1>
+        <p>المحرك بغير الحروف والتشكيل والكشيدة والعلامات الداخلية — مش بس بحط رموز حول الاسم</p>
+    </div>
+
+    <div class="main-container">
         
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="num">1.2M</div>
-                <div class="label">المتابعين</div>
-            </div>
-            <div class="stat-item">
-                <div class="num">15.4M</div>
-                <div class="label">الإعجابات</div>
-            </div>
-            <div class="stat-item">
-                <div class="num">340</div>
-                <div class="label">يتابع</div>
+        <!-- معاينة الكارت -->
+        <div class="preview-section">
+            <div class="card" id="preview-card">
+                <div class="badge-top">BASEM ZORBA • VIP</div>
+                <div class="avatar-container" id="avatar-box"></div>
+                <div class="display-name font-aref" id="main-display">أبُو بَاسِم</div>
+                <div class="sub-badge" id="badge-display">VIP ملكي 👑</div>
+                <div class="input-box-preview">🔥 اسمك، بطريقتك<br>صمم • زخرف • انسخ</div>
+                
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="num" id="followers-display">1.2M</div>
+                        <div class="label">المتابعين</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="num">15.4M</div>
+                        <div class="label">الإعجابات</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="num">340</div>
+                        <div class="label">يتابع</div>
+                    </div>
+                </div>
+                <div class="footer-tag">crafted by Basem Zorba</div>
             </div>
         </div>
-        <div class="footer-tag">crafted by Basem Zorba</div>
+
+        <!-- لوحة التحكم الكاملة -->
+        <div class="controls-section">
+            <div class="section-title">🎛️ تحكم</div>
+            
+            <div class="form-group">
+                <label>الاسم</label>
+                <input type="text" id="input-name" class="form-control" value="أبو باسم" oninput="generateAll()">
+            </div>
+
+            <div class="form-group">
+                <label>خط المعاينة</label>
+                <select id="select-font" class="form-control" onchange="updateMainDisplayFont()">
+                    <option value="font-aref">رقعة</option>
+                    <option value="font-reem">كوفي</option>
+                    <option value="font-amiri">أميري</option>
+                    <option value="font-cairo">كايرو</option>
+                    <option value="font-noto">نسخ</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>مستوى العجقة</label>
+                <select id="select-level" class="form-control" onchange="generateAll()">
+                    <option value="medium">متوسط</option>
+                    <option value="high">عالي</option>
+                    <option value="low">بسيط</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>الشارة</label>
+
+                <select id="select-badge" class="form-control" onchange="updateBadge()">
+                    <option value="VIP ملكي 👑">VIP ملكي 👑</option>
+                    <option value="حساب موثق 🌐">حساب موثق 🌐</option>
+                    <option value="صانع محتوى 🎬">صانع محتوى 🎬</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>المتابعون</label>
+                <select id="select-followers" class="form-control" onchange="updateFollowers()">
+                    <option value="1.2M">1.2M</option>
+                    <option value="500K">500K</option>
+                    <option value="2.5M">2.5M</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>صورة البروفايل</label>
+                <input type="file" id="file-avatar" class="form-control" accept="image/*" onchange="loadAvatar(event)">
+            </div>
+
+            <div class="btn-group-main">
+                <button class="btn-main btn-gold" onclick="generateAll()">✨ زخرف الاسم جديد</button>
+                <button class="btn-main btn-green" onclick="downloadPNG()">📸 حفظ PNG</button>
+                <button class="btn-main btn-blue" onclick="shareWhatsapp()">💬 واتساب</button>
+            </div>
+        </div>
+
+        <!-- نتائج المحرك الـ 16 -->
+        <div class="results-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <div class="section-title" style="margin: 0;">🧬 نتائج المحرك</div>
+                <span style="font-size: 12px; color: var(--text-gray);" id="results-count">16 نتيجة</span>
+            </div>
+
+            <div class="filter-tags">
+                <button class="tag-btn active" onclick="filterResults('all', this)">الكل</button>
+                <button class="tag-btn" onclick="filterResults('تشكيل', this)">تشكيل</button>
+                <button class="tag-btn" onclick="filterResults('داخل الحروف', this)">داخل الحروف</button>
+                <button class="tag-btn" onclick="filterResults('الحروف', this)">الحروف</button>
+                <button class="tag-btn" onclick="filterResults('كشيدة', this)">كشيدة</button>
+            </div>
+
+            <div class="results-grid" id="results-container">
+                <!-- المولد الأوتوماتيكي سينتج 16 نتيجة هنا -->
+            </div>
+        </div>
+
     </div>
 
-    <!-- لوحة التحكم والنتائج -->
-    <div class="controls-panel">
-        <div class="controls-header">
-            <h3>🧬 نتائج المحرك</h3>
-            <span style="font-size: 12px; color: var(--text-gray);">16 نتيجة</span>
-        </div>
-
-        <div class="filter-tags">
-            <button class="tag-btn active">الكل</button>
-            <button class="tag-btn">تشكيل</button>
-            <button class="tag-btn">داخل الحروف</button>
-            <button class="tag-btn">الحروف</button>
-            <button class="tag-btn">كشيدة</button>
-        </div>
-
-        <div class="results-grid">
-            <div class="result-card">
-                <div class="result-title">تشكيل • تشكيل مرکب 01</div>
-                <div class="result-text font-noto">أبُو بَاسِم</div>
-                <div class="result-actions">
-                    <button class="btn btn-copy" onclick="copyText('أبُو بَاسِم')">نسخ 📋</button>
-                    <button class="btn btn-apply" onclick="applyText('أبُو بَاسِم', 'font-noto')">تطبيق 👁️</button>
-                </div>
-            </div>
-
-            <div class="result-card">
-                <div class="result-title">داخل الحروف • خط داخلي مزدوج</div>
-                <div class="result-text font-reem">أبــو بـاســم</div>
-                <div class="result-actions">
-                    <button class="btn btn-copy" onclick="copyText('أبــو بـاســم')">نسخ 📋</button>
-                    <button class="btn btn-apply" onclick="applyText('أبــو بـاســم', 'font-reem')">تطبيق 👁️</button>
-                </div>
-            </div>
-
-            <div class="result-card">
-                <div class="result-title">تشكيل • خط أميري تقليدي</div>
-                <div class="result-text font-amiri">أَبُو بَاسِمٍ</div>
-                <div class="result-actions">
-                    <button class="btn btn-copy" onclick="copyText('أَبُو بَاسِمٍ')">نسخ 📋</button>
-                    <button class="btn btn-apply" onclick="applyText('أَبُو بَاسِمٍ', 'font-amiri')">تطبيق 👁️</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- استدعاء html2canvas -->
+    <!-- المكتبة المحلية html2canvas -->
     <script src="assets/js/html2canvas.min.js"></script>
     <script>
-        function applyText(text, fontClass) {
+        const fonts = ['font-aref', 'font-reem', 'font-amiri', 'font-cairo', 'font-noto'];
+        const categories = ['تشكيل', 'داخل الحروف', 'الحروف', 'كشيدة'];
+
+        function applyTashkeel(text) {
+            return text.replace(/أ/g, 'أُ').replace(/و/g, 'وُ').replace(/ب/g, 'بَ').replace(/س/g, 'سِ');
+        }
+
+        function applyKashida(text) {
+            return text.replace(/اب/g, 'اــب').replace(/سم/g, 'ســم').replace(/بو/g, 'بــو');
+        }
+
+        function generateAll() {
+            const rawName = document.getElementById('input-name').value || 'أبو باسم';
+            const container = document.getElementById('results-container');
+            container.innerHTML = '';
+
+            const styles = [
+                { title: 'تشكيل • تشكيل مرکب 01', text: applyTashkeel(rawName), cat: 'تشكيل', font: 'font-noto' },
+                { title: 'تشكيل • تشكيل مرکب 02', text: 'أَبُـو بَـاسِـم', cat: 'تشكيل', font: 'font-aref' },
+                { title: 'داخل الحروف • خط داخلي مزدوج', text: applyKashida(rawName), cat: 'داخل الحروف', font: 'font-reem' },
+                { title: 'داخل الحروف • حروف مسطرة', text: 'أ ب و  ب ا س م', cat: 'داخل الحروف', font: 'font-cairo' },
+                { title: 'كشيدة • كشيدة عريضة', text: rawName.split('').join('ـ'), cat: 'كشيدة', font: 'font-amiri' },
+                { title: 'تشكيل • أميري فاخر', text: 'أَبُـــو بَاسِمٍ', cat: 'تشكيل', font: 'font-amiri' },
+                { title: 'الحروف • كوفي حديث', text: rawName, cat: 'الحروف', font: 'font-reem' },
+                { title: 'الحروف • رقعة كلاسيك', text: rawName, cat: 'الحروف', font: 'font-aref' },
+                { title: 'داخل الحروف • زخرفة نقاط', text: 'أ.ب.و ب.ا.س.م', cat: 'داخل الحروف', font: 'font-cairo' },
+                { title: 'كشيدة • ممتد طويلاً', text: 'أبـــــو بــــاســـــم', cat: 'كشيدة', font: 'font-noto' },
+                { title: 'تشكيل • مشكل كامل', text: 'أَ بُ و بَ ا سِ مْ', cat: 'تشكيل', font: 'font-noto' },
+                { title: 'الحروف • ديواني ملكي', text: 'أبـو بـاسم', cat: 'الحروف', font: 'font-aref' },
+                { title: 'داخل الحروف • مقطع', text: 'أ-ب-و ب-ا-س-م', cat: 'داخل الحروف', font: 'font-cairo' },
+                { title: 'كشيدة • متناسق', text: 'أبــو بــاســم', cat: 'كشيدة', font: 'font-reem' },
+                { title: 'تشكيل • حركات خفيفة', text: 'أبُو بَاسِم', cat: 'تشكيل', font: 'font-aref' },
+                { title: 'الحروف • خط عريض', text: rawName, cat: 'الحروف', font: 'font-cairo' }
+            ];
+
+            styles.forEach((item) => {
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                card.setAttribute('data-cat', item.cat);
+                card.innerHTML = `
+                    <div class="result-title">${item.title}</div>
+                    <div class="result-text ${item.font}">${item.text}</div>
+                    <div class="result-actions">
+                        <button class="btn-sub btn-green" onclick="copyText('${item.text}')">نسخ 📋</button>
+                        <button class="btn-sub btn-blue" onclick="applyToPreview('${item.text}', '${item.font}')">تطبيق 👁️</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            document.getElementById('main-display').innerText = rawName;
+        }
+
+        function applyToPreview(text, fontClass) {
             const mainDisplay = document.getElementById('main-display');
             mainDisplay.innerText = text;
             mainDisplay.className = 'display-name ' + fontClass;
+            alert('تم تطبيق الاسم المزخرف على الكارت!');
+        }
+
+        function updateMainDisplayFont() {
+            const font = document.getElementById('select-font').value;
+            document.getElementById('main-display').className = 'display-name ' + font;
+        }
+
+        function updateBadge() {
+            document.getElementById('badge-display').innerText = document.getElementById('select-badge').value;
+        }
+
+        function updateFollowers() {
+            document.getElementById('followers-display').innerText = document.getElementById('select-followers').value;
+        }
+
+        function loadAvatar(event) {
+            const container = document.getElementById('avatar-box');
+            container.innerHTML = '';
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(event.target.files[0]);
+            container.appendChild(img);
         }
 
         function copyText(text) {
             navigator.clipboard.writeText(text);
-            alert('تم النسخ: ' + text);
+            alert('تم نسخ: ' + text);
         }
+
+        function filterResults(cat, btn) {
+            document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.result-card');
+            cards.forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function downloadPNG() {
+            const card = document.getElementById('preview-card');
+            html2canvas(card, { backgroundColor: null }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'Basem-Zorba-Card.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+
+        function shareWhatsapp() {
+            const text = encodeURIComponent('شوف كارت الاسم المزخرف الخاص بي: ' + window.location.href);
+            window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
+        }
+
+        window.onload = generateAll;
     </script>
 </body>
 </html>
