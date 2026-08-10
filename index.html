@@ -2,25 +2,132 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>Basem Zorba — Real Name Decorator</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Reem+Kufi:wght@500;700&family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
+/* -------------------------------------------------------------
+   1. تعريف الخطوط المحلية (Local Fonts)
+------------------------------------------------------------- */
+@font-face {
+    font-family: 'Cairo';
+    src: url('assets/fonts/Cairo-Bold.ttf') format('truetype');
+    font-weight: 400 900;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Reem Kufi';
+    src: url('assets/fonts/ReemKufi-Regular.ttf') format('truetype');
+    font-weight: 500 700;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Aref Ruqaa';
+    src: url('assets/fonts/ArefRuqaa-Regular.ttf') format('truetype');
+    font-weight: 400 700;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Amiri';
+    src: url('assets/fonts/Amiri-Regular.ttf') format('truetype');
+    font-weight: 400 700;
+    font-display: swap;
+}
+
+/* -------------------------------------------------------------
+   2. تنسیقات الصفحة العامة والتصاميم
+------------------------------------------------------------- */
 :root{--bg:#07090d;--p:#0e131b;--p2:#111823;--line:#242e3d;--txt:#f7f8fb;--muted:#7e8a9b;--gold:#f5ca63;--gold2:#ffe49b;--cyan:#59d9ff;--green:#22c979}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(800px 420px at 50% -160px,#f5ca6315,transparent 70%),var(--bg);color:var(--txt);font-family:Cairo,sans-serif}
-button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1080px;margin:auto;padding:18px}
-.head{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{display:flex;gap:11px;align-items:center}.logo{width:46px;height:46px;border:1px solid #554625;border-radius:14px;display:grid;place-items:center;color:var(--gold2);font-size:23px;background:#161209}.brand b{display:block;font-size:.95rem}.brand small{color:var(--muted);font-size:.62rem}.sig{font-size:.68rem;font-weight:900;color:var(--gold2);border:1px solid #4e4126;background:#151109;padding:6px 11px;border-radius:99px}
-.hero{text-align:center;padding:24px 0 20px}.hero small{color:var(--gold);font-weight:900;letter-spacing:2px;font-size:.62rem}.hero h1{font-size:clamp(1.7rem,5vw,2.8rem);margin:6px 0;font-weight:900}.hero h1 span{color:var(--gold2)}.hero p{margin:auto;color:var(--muted);font-size:.78rem;max-width:650px}
-.main{display:grid;grid-template-columns:330px 1fr;gap:15px}.box{background:linear-gradient(180deg,#101620f5,#0b1017f5);border:1px solid var(--line);border-radius:19px;overflow:hidden;box-shadow:0 18px 55px #0007}.boxhead{padding:15px 17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.boxhead b{font-size:.78rem}.boxhead span{color:var(--muted);font-size:.6rem}.controls{padding:15px 17px}.field{margin-bottom:11px}label{display:block;color:#cbd5e1;font-size:.67rem;font-weight:800;margin-bottom:6px}input,select{width:100%;background:#080c12;border:1px solid #273245;color:#fff;border-radius:10px;padding:9px 11px;outline:0;font-size:.75rem}input:focus,select:focus{border-color:#68778d}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.btns{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:13px}.btn{border:0;border-radius:10px;padding:9px;font-size:.64rem;font-weight:900}.gold{background:linear-gradient(135deg,#dcae45,#ffe292);color:#171108}.dark{background:#17202c;color:#dce5ef;border:1px solid #2b384a}.green{background:#159856;color:#fff}.cyan{background:#142c36;color:var(--cyan);border:1px solid #245264}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(800px 420px at 50% -160px,#f5ca6315,transparent 70%),var(--bg);color:var(--txt);font-family:'Cairo',sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.app{max-width:1080px;margin:auto;padding:18px}
+.head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{display:flex;gap:11px;align-items:center}
+.logo{width:46px;height:46px;border:1px solid #554625;border-radius:14px;display:grid;place-items:center;color:var(--gold2);font-size:23px;background:#161209}
+.brand b{display:block;font-size:.95rem}
+.brand small{color:var(--muted);font-size:.62rem}
+.sig{font-size:.68rem;font-weight:900;color:var(--gold2);border:1px solid #4e4126;background:#151109;padding:6px 11px;border-radius:99px}
+.hero{text-align:center;padding:24px 0 20px}
+.hero small{color:var(--gold);font-weight:900;letter-spacing:2px;font-size:.62rem}
+.hero h1{font-size:clamp(1.7rem,5vw,2.8rem);margin:6px 0;font-weight:900}
+.hero h1 span{color:var(--gold2)}
+.hero p{margin:auto;color:var(--muted);font-size:.78rem;max-width:650px}
+.main{display:grid;grid-template-columns:330px 1fr;gap:15px}
+.box{background:linear-gradient(180deg,#101620f5,#0b1017f5);border:1px solid var(--line);border-radius:19px;overflow:hidden;box-shadow:0 18px 55px #0007}
+.boxhead{padding:15px 17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.boxhead b{font-size:.78rem}
+.boxhead span{color:var(--muted);font-size:.6rem}
+.controls{padding:15px 17px}
+.field{margin-bottom:11px}
+label{display:block;color:#cbd5e1;font-size:.67rem;font-weight:800;margin-bottom:6px}
+input,select{width:100%;background:#080c12;border:1px solid #273245;color:#fff;border-radius:10px;padding:9px 11px;outline:0;font-size:.75rem}
+input:focus,select:focus{border-color:#68778d}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:13px}
+.btn{border:0;border-radius:10px;padding:9px;font-size:.64rem;font-weight:900}
+.gold{background:linear-gradient(135deg,#dcae45,#ffe292);color:#171108}
+.dark{background:#17202c;color:#dce5ef;border:1px solid #2b384a}
+.green{background:#159856;color:#fff}
+.cyan{background:#142c36;color:var(--cyan);border:1px solid #245264}
 .preview{padding:18px;display:grid;place-items:center;min-height:455px;background:radial-gradient(300px 260px at 50% 45%,#f5ca630b,transparent 70%)}
 .profile{width:min(350px,100%);min-height:410px;border-radius:27px;padding:27px 20px 17px;background:radial-gradient(180px 110px at 50% 0,#f5ca6312,transparent 80%),linear-gradient(155deg,#151b24,#05070a 78%);border:1px solid #4b412a;box-shadow:0 25px 75px #000a;text-align:center;display:flex;flex-direction:column;align-items:center;overflow:hidden;position:relative}
-.profile .tag{position:absolute;top:12px;right:12px;color:var(--gold2);font-size:.52rem;font-weight:900;border:1px solid #5b4b28;border-radius:99px;padding:4px 8px;background:#151109}.avatar{width:88px;height:88px;padding:3px;border-radius:50%;background:linear-gradient(145deg,#ffe59a,#9b6a19);margin:13px 0}.avatar img{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%;background:#141b25}.pname{font-size:1.45rem;line-height:1.65;font-weight:900;max-width:100%;overflow-wrap:anywhere}.pbadge{color:var(--gold2);font-size:.67rem;font-weight:800}.pbio{width:100%;margin-top:12px;padding:9px;border:1px dashed #ffffff15;border-radius:11px;color:#b6c0ce;font-size:.62rem;line-height:1.7}.stats{width:100%;margin-top:auto;padding-top:15px;display:grid;grid-template-columns:repeat(3,1fr)}.stat{border-top:1px solid #ffffff0d;padding-top:8px}.stat b{display:block;font-size:.72rem}.stat span{font-size:.52rem;color:#6d798a}.author{font-size:.51rem;color:#788495;direction:ltr;margin-top:11px}.author strong{color:#d5bd74}
-.engine{margin-top:15px}.filters{display:flex;gap:6px;overflow:auto;padding:12px 15px 0;scrollbar-width:none}.filters::-webkit-scrollbar{display:none}.filter{white-space:nowrap;background:#0a0f16;border:1px solid #273245;color:#7f8b9c;border-radius:99px;padding:6px 10px;font-size:.59rem;font-weight:900}.filter.active{background:var(--gold2);border-color:var(--gold2);color:#171108}
-.results{padding:12px 15px 17px;display:grid;grid-template-columns:1fr 1fr;gap:8px}.res{background:#0b1018;border:1px solid #202b3a;border-radius:13px;padding:11px;min-width:0}.res:hover{border-color:#39475b}.rmeta{font-size:.52rem;color:#69778a;font-weight:800}.rname{font-size:1.02rem;color:#fff;direction:auto;unicode-bidi:plaintext;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:3px 0 8px;min-height:29px}.rbuttons{display:flex;gap:5px}.mini{flex:1;border:1px solid #2a3749;background:#151e2b;color:#dbe4ee;border-radius:8px;padding:6px 5px;font-size:.57rem;font-weight:900}.mini.apply{color:var(--cyan);border-color:#245264;background:#10232b}.mini.copy{color:var(--gold2);border-color:#4b3d22;background:#17130b}
-.power{margin-top:10px;padding:9px 11px;border:1px solid #2d3a4c;background:#0b1119;border-radius:11px;color:#8995a6;font-size:.58rem;line-height:1.7}.power b{color:#dbe3ee}
-.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,25px);opacity:0;background:#151d29;border:1px solid #354257;border-radius:10px;padding:9px 13px;font-size:.65rem;font-weight:900;transition:.2s;z-index:20;box-shadow:0 15px 40px #0009}.toast.show{opacity:1;transform:translate(-50%,0)}
+.profile .tag{position:absolute;top:12px;right:12px;color:var(--gold2);font-size:.52rem;font-weight:900;border:1px solid #5b4b28;border-radius:99px;padding:4px 8px;background:#151109}
+.avatar{width:88px;height:88px;padding:3px;border-radius:50%;background:linear-gradient(145deg,#ffe59a,#9b6a19);margin:13px 0}
+.avatar img{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%;background:#141b25}
+
+/* تحسين إظهار الزخارف المركبة والجوال */
+.pname{
+    font-size:1.45rem;
+    line-height:2.2;
+    font-weight:900;
+    max-width:100%;
+    overflow-wrap:anywhere;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+}
+.pbadge{color:var(--gold2);font-size:.67rem;font-weight:800}
+.pbio{width:100%;margin-top:12px;padding:9px;border:1px dashed #ffffff15;border-radius:11px;color:#b6c0ce;font-size:.62rem;line-height:1.7}
+.stats{width:100%;margin-top:auto;padding-top:15px;display:grid;grid-template-columns:repeat(3,1fr)}
+.stat{border-top:1px solid #ffffff0d;padding-top:8px}
+.stat b{display:block;font-size:.72rem}
+.stat span{font-size:.52rem;color:#6d798a}
+.author{font-size:.51rem;color:#788495;direction:ltr;margin-top:11px}
+.author strong{color:#d5bd74}
+.engine{margin-top:15px}
+.filters{display:flex;gap:6px;overflow:auto;padding:12px 15px 0;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filter{white-space:nowrap;background:#0a0f16;border:1px solid #273245;color:#7f8b9c;border-radius:99px;padding:6px 10px;font-size:.59rem;font-weight:900}
+.filter.active{background:var(--gold2);border-color:var(--gold2);color:#171108}
+.results{padding:12px 15px 17px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.res{background:#0b1018;border:1px solid #202b3a;border-radius:13px;padding:11px;min-width:0}
+.res:hover{border-color:#39475b}
+.rmeta{font-size:.52rem;color:#69778a;font-weight:800}
+
+/* تحسين إظهار نصوص النتائج مع الزخرفة */
+.rname{
+    font-size:1.02rem;
+    color:#fff;
+    direction:auto;
+    unicode-bidi:plaintext;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    margin:3px 0 8px;
+    min-height:35px;
+    line-height:2;
+    text-rendering:optimizeLegibility;
+}
+.rbuttons{display:flex;gap:5px}
+.mini{flex:1;border:1px solid #2a3749;background:#151e2b;color:#dbe4ee;border-radius:8px;padding:6px 5px;font-size:.57rem;font-weight:900}
+.mini.apply{color:var(--cyan);border-color:#245264;background:#10232b}
+.mini.copy{color:var(--gold2);border-color:#4b3d22;background:#17130b}
+.power{margin-top:10px;padding:9px 11px;border:1px solid #2d3a4c;background:#0b1119;border-radius:11px;color:#8995a6;font-size:.58rem;line-height:1.7}
+.power b{color:#dbe3ee}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,25px);opacity:0;background:#151d29;border:1px solid #354257;border-radius:10px;padding:9px 13px;font-size:.65rem;font-weight:900;transition:.2s;z-index:20;box-shadow:0 15px 40px #0009}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
 @media(max-width:850px){.main{grid-template-columns:1fr}.controls{order:2}.preview{min-height:0}.results{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.app{padding:11px}.head{align-items:flex-start}.sig{font-size:.56rem;padding:5px 8px}.row,.btns,.results{grid-template-columns:1fr}.rname{font-size:1.08rem}}
 </style>
@@ -66,16 +173,20 @@ button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1080px;mar
 </section>
 </div><div class="toast" id="toast"></div>
 
+<!-- استدعاء المكتبة المحلية -->
+<script src="assets/js/html2canvas.min.js"></script>
+
 <script>
 const $=id=>document.getElementById(id);
 const name=$('name'),font=$('font'),level=$('level'),badge=$('badge'),followers=$('followers');
 const pname=$('pname'),pbadge=$('pbadge'),followersCard=$('followersCard'),results=$('results'),filters=$('filters'),toast=$('toast');
 let active='الكل';
 
+/* ضبط مصفوفة التشكيلات لتكون متناسقة ومتوافقة مع الجوالات */
 const marks={
- above:['\u0301','\u0302','\u0304','\u0307','\u0308','\u030A','\u030C','\u0310','\u0311','\u031B','\u0342','\u0343','\u0344','\u0346','\u0347','\u0348','\u0349','\u034A','\u034B','\u034C','\u034D','\u034E','\u034F'],
- below:['\u0316','\u0317','\u0318','\u0319','\u031A','\u0320','\u0321','\u0322','\u0323','\u0324','\u0325','\u0326','\u0327','\u0328','\u0329','\u032A','\u032B','\u032C','\u032D','\u032E','\u032F','\u0330','\u0331','\u0332','\u0333','\u0334','\u0335','\u0336','\u0337','\u0338','\u0339','\u033A','\u033B','\u033C','\u033D','\u033E','\u033F'],
-overlay:['\u0336','\u0337','\u0338','\u0334','\u0347','\u0348','\u034A','\u034B']
+ above:['\u0301','\u0302','\u0304','\u0307','\u0308','\u030A','\u030C','\u0310','\u0311'],
+ below:['\u0316','\u0317','\u0318','\u0319','\u0320','\u0323','\u0324','\u0325','\u0326'],
+ overlay:['\u0336','\u0337','\u0338','\u0334']
 };
 
 const arabicVariants={
@@ -88,25 +199,30 @@ const arabicVariants={
 
 function clean(s){return s.trim().replace(/\s+/g,' ')}
 function chars(s){return [...s]}
+
 function addMarks(s,kind,amount){
  const pool=marks[kind], a=amount%pool.length;
  return chars(s).map((c,i)=>{
    if(c===' '||/[\u200c\u200d]/.test(c))return c;
-   return c+pool[(i*3+a)%pool.length];
+   return c+pool[(i*2+a)%pool.length];
  }).join('');
 }
+
 function alternate(s,seed=0){
  return chars(s).map((c,i)=>{
    const v=arabicVariants[c];
    return v?v[(i+seed)%v.length]:c;
  }).join('');
 }
+
 function elongate(s,mode=1){
  const out=[];const a=chars(s);
  a.forEach((c,i)=>{out.push(c);if(c!==' '&&i<a.length-1&&a[i+1]!==' '){if(mode===1)out.push('ـ');if(mode===2&&i%2===0)out.push('ــ');if(mode===3)out.push('ـ');}});
  return out.join('');
 }
+
 function inside(s,sep){return chars(s).join(sep)}
+
 function wrapInner(s,kind){
  const a=chars(s);
  if(kind===1)return a.map((c,i)=>c+(i%2?'۟':'ٰ')).join('');
@@ -115,6 +231,7 @@ function wrapInner(s,kind){
  if(kind===4)return a.map((c,i)=>c+(i%2?'̲':'̳')).join('');
  return s;
 }
+
 function english(s,type){
  if(type===1)return s.replace(/[A-Za-z0-9]/g,c=>String.fromCharCode(c.charCodeAt(0)+0xfee0));
  if(type===2)return s.toLowerCase().replace(/[a-z]/g,c=>({a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'s',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ'}[c]||c));
@@ -126,7 +243,7 @@ function generate(s){
  const L=+level.value, out=[];
  const push=(label,value,cat='الحروف')=>{if(value&&value!==s&&!out.some(x=>x.value===value))out.push({label,value,cat})};
  push('تشكيل مركب 01',addMarks(s,'above',L),'تشكيل');
- push('تشكيل مركب 02',addMarks(s,'below',L+4),'تشكيل');
+ push('تشكيل مركب 02',addMarks(s,'below',L+2),'تشكيل');
  push('خط داخلي',wrapInner(s,1),'داخل الحروف');
  push('خط داخلي مزدوج',wrapInner(s,2),'داخل الحروف');
  push('حروف مشطوبة',wrapInner(s,3),'داخل الحروف');
@@ -141,8 +258,8 @@ function generate(s){
  push('مسافات ذكية',inside(s,'  '),'تقطيع');
  if(/[A-Za-z]/.test(s)){push('English Fullwidth',english(s,1),'English');push('English Small Caps',english(s,2),'English');push('English Spaced',english(s,3),'English')}
  if(L>=2){push('تشكيل + كشيدة',elongate(addMarks(s,'above',L+1),1),'مركب');push('تشكيل سفلي + كشيدة',elongate(addMarks(s,'below',L+2),2),'مركب')}
- if(L>=3){push('معجق مركب A',addMarks(wrapInner(elongate(alternate(s,1),1),2),'above',5),'معجق 🔥');push('معجق مركب B',wrapInner(addMarks(elongate(s,2),'below',6),3),'معجق 🔥');push('معجق مركب C',addMarks(alternate(elongate(s,1),2),'above',8),'معجق 🔥')}
- if(L>=4){push('مجنون A',addMarks(wrapInner(elongate(alternate(s,3),2),4),'above',10),'مجنون 👑');push('مجنون B',wrapInner(addMarks(alternate(s,4),'below',12),2),'مجنون 👑')}
+ if(L>=3){push('معجق مركب A',addMarks(wrapInner(elongate(alternate(s,1),1),2),'above',3),'معجق 🔥');push('معجق مركب B',wrapInner(addMarks(elongate(s,2),'below',4),3),'معجق 🔥');push('معجق مركب C',addMarks(alternate(elongate(s,1),2),'above',5),'معجق 🔥')}
+ if(L>=4){push('مجنون A',addMarks(wrapInner(elongate(alternate(s,3),2),4),'above',5),'مجنون 👑');push('مجنون B',wrapInner(addMarks(alternate(s,4),'below',6),2),'مجنون 👑')}
  return out;
 }
 
@@ -151,6 +268,7 @@ function buildFilters(){
  filters.innerHTML=cats.map(c=>`<button class="filter ${c===active?'active':''}">${c}</button>`).join('');
  [...filters.children].forEach((b,i)=>b.onclick=()=>{active=cats[i];buildFilters();render()});
 }
+
 function render(){
  const list=generate(clean(name.value)||'أبو باسم');
  const shown=active==='الكل'?list:list.filter(x=>x.cat===active);
@@ -165,6 +283,7 @@ function render(){
   results.appendChild(r);
  });
 }
+
 function update(){pname.textContent=clean(name.value)||'أبو باسم';pname.style.fontFamily=font.value;pbadge.textContent=badge.value;followersCard.textContent=followers.value||'0';render()}
 async function copy(t){try{await navigator.clipboard.writeText(t);show('تم نسخ الاسم ✓')}catch{show('تعذر النسخ')}}
 function show(t){toast.textContent=t;toast.classList.add('show');clearTimeout(window.t);window.t=setTimeout(()=>toast.classList.remove('show'),1600)}
@@ -172,7 +291,20 @@ function show(t){toast.textContent=t;toast.classList.add('show');clearTimeout(wi
 $('decorate').onclick=()=>{active='الكل';buildFilters();render();show('🔥 تم توليد زخارف جديدة')};
 $('random').onclick=()=>{const a=generate(clean(name.value)||'أبو باسم');const x=a[Math.floor(Math.random()*a.length)];pname.textContent=x.value;show('🎲 اخترتلك نتيجة')};
 $('photo').onchange=e=>{const f=e.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=v=>{$('avatar').src=v.target.result;show('تم تغيير الصورة ✓')};r.readAsDataURL(f)};
-$('save').onclick=async()=>{try{const c=await html2canvas($('profile'),{backgroundColor:'#05070a',scale:3});const a=document.createElement('a');a.download=`Basem_Zorba_Name_${Date.now()}.png`;a.href=c.toDataURL();a.click();show('تم حفظ الصورة ✓')}catch{show('تعذر التصدير')}};
+$('save').onclick=async()=>{
+  if(typeof html2canvas === 'undefined'){
+    show('جاري تحميل مكتبة التصوير...');
+    return;
+  }
+  try{
+    const c=await html2canvas($('profile'),{backgroundColor:'#05070a',scale:3});
+    const a=document.createElement('a');
+    a.download=`Basem_Zorba_Name_${Date.now()}.png`;
+    a.href=c.toDataURL();
+    a.click();
+    show('تم حفظ الصورة ✓')
+  }catch{show('تعذر التصدير')}
+};
 $('wa').onclick=()=>window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent('🔥 اسم مزغرف من Basem Zorba Name Studio 🔥\n\n'+pname.textContent)}`,'_blank');
 buildFilters();update();
 </script>
