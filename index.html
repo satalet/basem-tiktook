@@ -117,12 +117,13 @@
         }
 
         .display-name {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: bold;
             margin-bottom: 5px;
             min-height: 45px;
             color: var(--text-white);
             word-break: break-word;
+            line-height: 1.5;
         }
 
         .sub-badge {
@@ -287,11 +288,12 @@
         }
 
         .result-text {
-            font-size: 22px;
+            font-size: 20px;
             text-align: center;
             margin: 15px 0;
             min-height: 40px;
             word-break: break-word;
+            line-height: 1.5;
         }
 
         .result-actions {
@@ -329,7 +331,7 @@
             <div class="card" id="preview-card">
                 <div class="badge-top">BASEM ZORBA • VIP</div>
                 <div class="avatar-container" id="avatar-box"></div>
-                <div class="display-name font-aref" id="main-display">أبُو بَاسِم</div>
+                <div class="display-name font-noto" id="main-display">أبُو بَاسِم</div>
                 <div class="sub-badge" id="badge-display">VIP ملكي 👑</div>
                 <div class="input-box-preview">🔥 اسمك، بطريقتك<br>صمم • زخرف • انسخ</div>
                 
@@ -363,26 +365,25 @@
             <div class="form-group">
                 <label>خط المعاينة</label>
                 <select id="select-font" class="form-control" onchange="updateMainDisplayFont()">
+                    <option value="font-noto">نسخ (يدعم التشكيل المزدحم)</option>
+                    <option value="font-amiri">أميري</option>
                     <option value="font-aref">رقعة</option>
                     <option value="font-reem">كوفي</option>
-                    <option value="font-amiri">أميري</option>
                     <option value="font-cairo">كايرو</option>
-                    <option value="font-noto">نسخ</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>مستوى العجقة</label>
+                <label>مستوى العجقة والزخرفة</label>
                 <select id="select-level" class="form-control" onchange="generateAll()">
-                    <option value="medium">متوسط</option>
-                    <option value="high">عالي</option>
-                    <option value="low">بسيط</option>
+                    <option value="high">عالي جداً (عجقة ورموز ثقيلة)</option>
+                    <option value="medium" selected>متوسط (تشكيل + رموز)</option>
+                    <option value="low">خفيف (تشكيل أنيق)</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>الشارة</label>
-
                 <select id="select-badge" class="form-control" onchange="updateBadge()">
                     <option value="VIP ملكي 👑">VIP ملكي 👑</option>
                     <option value="حساب موثق 🌐">حساب موثق 🌐</option>
@@ -405,7 +406,7 @@
             </div>
 
             <div class="btn-group-main">
-                <button class="btn-main btn-gold" onclick="generateAll()">✨ زخرف الاسم جديد</button>
+                <button class="btn-main btn-gold" onclick="generateAll()">✨ اعادة توليد الزخارف</button>
                 <button class="btn-main btn-green" onclick="downloadPNG()">📸 حفظ PNG</button>
                 <button class="btn-main btn-blue" onclick="shareWhatsapp()">💬 واتساب</button>
             </div>
@@ -414,20 +415,20 @@
         <!-- نتائج المحرك الـ 16 -->
         <div class="results-section">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <div class="section-title" style="margin: 0;">🧬 نتائج المحرك</div>
+                <div class="section-title" style="margin: 0;">🧬 نتائج المحرك المزخرفة</div>
                 <span style="font-size: 12px; color: var(--text-gray);" id="results-count">16 نتيجة</span>
             </div>
 
             <div class="filter-tags">
                 <button class="tag-btn active" onclick="filterResults('all', this)">الكل</button>
-                <button class="tag-btn" onclick="filterResults('تشكيل', this)">تشكيل</button>
-                <button class="tag-btn" onclick="filterResults('داخل الحروف', this)">داخل الحروف</button>
-                <button class="tag-btn" onclick="filterResults('الحروف', this)">الحروف</button>
-                <button class="tag-btn" onclick="filterResults('كشيدة', this)">كشيدة</button>
+                <button class="tag-btn" onclick="filterResults('عجقة ثقيلة', this)">عجقة ثقيلة</button>
+                <button class="tag-btn" onclick="filterResults('تشكيل مركب', this)">تشكيل مركب</button>
+                <button class="tag-btn" onclick="filterResults('إطارات ورموز', this)">إطارات ورموز</button>
+                <button class="tag-btn" onclick="filterResults('كشيدة وزخرفة', this)">كشيدة وزخرفة</button>
             </div>
 
             <div class="results-grid" id="results-container">
-                <!-- المولد الأوتوماتيكي سينتج 16 نتيجة هنا -->
+                <!-- المحرك سينتج الـ 16 نتيجة المعجوقة هنا -->
             </div>
         </div>
 
@@ -436,40 +437,84 @@
     <!-- المكتبة المحلية html2canvas -->
     <script src="assets/js/html2canvas.min.js"></script>
     <script>
-        const fonts = ['font-aref', 'font-reem', 'font-amiri', 'font-cairo', 'font-noto'];
-        const categories = ['تشكيل', 'داخل الحروف', 'الحروف', 'كشيدة'];
-
-        function applyTashkeel(text) {
-            return text.replace(/أ/g, 'أُ').replace(/و/g, 'وُ').replace(/ب/g, 'بَ').replace(/س/g, 'سِ');
-        }
-
-        function applyKashida(text) {
-            return text.replace(/اب/g, 'اــب').replace(/سم/g, 'ســم').replace(/بو/g, 'بــو');
+        // خوارزمية تشكيل الاسم
+        function heavyTashkeel(text) {
+            const diacriticals = ['ُ', 'َ', 'ِّ', 'ْ', 'ٍ', 'ً', 'ٌ', 'ٰ', 'ۤ'];
+            return text.split('').map(char => {
+                if (char === ' ') return '  ';
+                return char + diacriticals[Math.floor(Math.random() * diacriticals.length)] + diacriticals[Math.floor(Math.random() * diacriticals.length)];
+            }).join('');
         }
 
         function generateAll() {
             const rawName = document.getElementById('input-name').value || 'أبو باسم';
+            const level = document.getElementById('select-level').value;
             const container = document.getElementById('results-container');
             container.innerHTML = '';
 
-            const styles = [
-                { title: 'تشكيل • تشكيل مرکب 01', text: applyTashkeel(rawName), cat: 'تشكيل', font: 'font-noto' },
-                { title: 'تشكيل • تشكيل مرکب 02', text: 'أَبُـو بَـاسِـم', cat: 'تشكيل', font: 'font-aref' },
-                { title: 'داخل الحروف • خط داخلي مزدوج', text: applyKashida(rawName), cat: 'داخل الحروف', font: 'font-reem' },
-                { title: 'داخل الحروف • حروف مسطرة', text: 'أ ب و  ب ا س م', cat: 'داخل الحروف', font: 'font-cairo' },
-                { title: 'كشيدة • كشيدة عريضة', text: rawName.split('').join('ـ'), cat: 'كشيدة', font: 'font-amiri' },
-                { title: 'تشكيل • أميري فاخر', text: 'أَبُـــو بَاسِمٍ', cat: 'تشكيل', font: 'font-amiri' },
-                { title: 'الحروف • كوفي حديث', text: rawName, cat: 'الحروف', font: 'font-reem' },
-                { title: 'الحروف • رقعة كلاسيك', text: rawName, cat: 'الحروف', font: 'font-aref' },
-                { title: 'داخل الحروف • زخرفة نقاط', text: 'أ.ب.و ب.ا.س.م', cat: 'داخل الحروف', font: 'font-cairo' },
-                { title: 'كشيدة • ممتد طويلاً', text: 'أبـــــو بــــاســـــم', cat: 'كشيدة', font: 'font-noto' },
-                { title: 'تشكيل • مشكل كامل', text: 'أَ بُ و بَ ا سِ مْ', cat: 'تشكيل', font: 'font-noto' },
-                { title: 'الحروف • ديواني ملكي', text: 'أبـو بـاسم', cat: 'الحروف', font: 'font-aref' },
-                { title: 'داخل الحروف • مقطع', text: 'أ-ب-و ب-ا-س-م', cat: 'داخل الحروف', font: 'font-cairo' },
-                { title: 'كشيدة • متناسق', text: 'أبــو بــاســم', cat: 'كشيدة', font: 'font-reem' },
-                { title: 'تشكيل • حركات خفيفة', text: 'أبُو بَاسِم', cat: 'تشكيل', font: 'font-aref' },
-                { title: 'الحروف • خط عريض', text: rawName, cat: 'الحروف', font: 'font-cairo' }
-            ];
+            const t = heavyTashkeel(rawName);
+            const k = rawName.split('').join('ـ');
+
+            let styles = [];
+
+            if (level === 'high') {
+                styles = [
+                    { title: 'عجقة ثقيلة • تاج وهيبة', text: `👑 ꧁${t}꧂ 👑`, cat: 'عجقة ثقيلة', font: 'font-noto' },
+                    { title: 'عجقة ثقيلة • زوايا ملكية', text: `༺${t}༻`, cat: 'عجقة ثقيلة', font: 'font-amiri' },
+                    { title: 'إطارات ورموز • الصليب الذهبي', text: `⚡ ﴿${rawName}﴾ ⚡`, cat: 'إطارات ورموز', font: 'font-aref' },
+                    { title: 'تشكيل مركب • مكثف للغاية', text: `أُبُــوّ بَــاَسِــمْـ`, cat: 'تشكيل مركب', font: 'font-noto' },
+                    { title: 'عجقة ثقيلة • نجمية', text: `★彡 ${t} 彡★`, cat: 'عجقة ثقيلة', font: 'font-reem' },
+                    { title: 'كشيدة وزخرفة • ممتد مع حركات', text: `أَ بـِـُـ و  بـَـا سـِـمـ`, cat: 'كشيدة وزخرفة', font: 'font-noto' },
+                    { title: 'إطارات ورموز • الأجنحة', text: `꧁༺ ${rawName} ༻꧂`, cat: 'إطارات ورموز', font: 'font-amiri' },
+                    { title: 'عجقة ثقيلة • حزم تشكيل', text: `أُ بـٌــوُ  بـَــا سـِــمٌ`, cat: 'عجقة ثقيلة', font: 'font-noto' },
+                    { title: 'تشكيل مركب • خط النسخ الفاخر', text: `أَبُـۥ بَـٰسِـمٍ`, cat: 'تشكيل مركب', font: 'font-noto' },
+                    { title: 'إطارات ورموز • الأقواس الملكية', text: `❮❮ ${t} ❯❯`, cat: 'إطارات ورموز', font: 'font-cairo' },
+                    { title: 'كشيدة وزخرفة • كشيدة مع رموز', text: `♦ ${k} ♦`, cat: 'كشيدة وزخرفة', font: 'font-reem' },
+                    { title: 'عجقة ثقيلة • درع الهيبة', text: `🛡️ 〖${rawName}〗 🛡️`, cat: 'عجقة ثقيلة', font: 'font-aref' },
+                    { title: 'تشكيل مركب • نقط وحركات', text: `أ.ب.و. .ب.ا.س.م`, cat: 'تشكيل مركب', font: 'font-cairo' },
+                    { title: 'إطارات ورموز • الفخامة', text: `⚜️ 『${t}』 ⚜️`, cat: 'إطارات ورموز', font: 'font-amiri' },
+                    { title: 'كشيدة وزخرفة • السيفين', text: `⚔️ ${rawName} ⚔️`, cat: 'كشيدة وزخرفة', font: 'font-aref' },
+                    { title: 'عجقة ثقيلة • النمط الكامل', text: `🔥 ｢${t}｣ 🔥`, cat: 'عجقة ثقيلة', font: 'font-noto' }
+                ];
+            } else if (level === 'medium') {
+                styles = [
+                    { title: 'تشكيل مركب • 01', text: `أُبُو بَاسِم`, cat: 'تشكيل مركب', font: 'font-noto' },
+                    { title: 'إطارات ورموز • تاج خفيف', text: `👑 ${rawName} 👑`, cat: 'إطارات ورموز', font: 'font-aref' },
+                    { title: 'عجقة ثقيلة • أقواس', text: `꧁${rawName}꧂`, cat: 'عجقة ثقيلة', font: 'font-amiri' },
+                    { title: 'كشيدة وزخرفة • متناسق', text: `أبــو بــاســم`, cat: 'كشيدة وزخرفة', font: 'font-reem' },
+                    { title: 'تشكيل مركب • كامل الحركات', text: `أَبُـو بَـاسِـم`, cat: 'تشكيل مركب', font: 'font-noto' },
+                    { title: 'إطارات ورموز • هيبة', text: `★ ${rawName} ★`, cat: 'إطارات ورموز', font: 'font-cairo' },
+                    { title: 'كشيدة وزخرفة • عريضة', text: k, cat: 'كشيدة وزخرفة', font: 'font-amiri' },
+                    { title: 'عجقة ثقيلة • تشكيل مزخرف', text: t, cat: 'عجقة ثقيلة', font: 'font-noto' },
+                    { title: 'تشكيل مركب • أميري فاخر', text: `أَبُـــو بَاسِمٍ`, cat: 'تشكيل مركب', font: 'font-amiri' },
+                    { title: 'إطارات ورموز • إطار مربع', text: `⟦${rawName}⟧`, cat: 'إطارات ورموز', font: 'font-cairo' },
+                    { title: 'كشيدة وزخرفة • حروف متباعدة', text: rawName.split('').join(' '), cat: 'كشيدة وزخرفة', font: 'font-reem' },
+                    { title: 'عجقة ثقيلة • وردي', text: `🌸 ${t} 🌸`, cat: 'عجقة ثقيلة', font: 'font-aref' },
+                    { title: 'تشكيل مركب • رقعة كلاسيك', text: `أبُـو بـاسـم`, cat: 'تشكيل مركب', font: 'font-aref' },
+                    { title: 'إطارات ورموز • الموّثق', text: `✔ ${rawName}`, cat: 'إطارات ورموز', font: 'font-cairo' },
+                    { title: 'كشيدة وزخرفة • خط طولي', text: `│ ${rawName} │`, cat: 'كشيدة وزخرفة', font: 'font-reem' },
+                    { title: 'عجقة ثقيلة • الشعلة', text: `🔥 ${rawName} 🔥`, cat: 'عجقة ثقيلة', font: 'font-noto' }
+                ];
+            } else {
+                styles = [
+                    { title: 'تشكيل بسيط • 01', text: `أبو باسم`, cat: 'تشكيل مركب', font: 'font-noto' },
+                    { title: 'تشكيل بسيط • حركات', text: `أَبُو بَاسِم`, cat: 'تشكيل مركب', font: 'font-amiri' },
+                    { title: 'كشيدة وزخرفة • خفيفة', text: `أبو بـاسم`, cat: 'كشيدة وزخرفة', font: 'font-aref' },
+                    { title: 'إطارات ورموز • نقطة', text: `• ${rawName} •`, cat: 'إطارات ورموز', font: 'font-cairo' },
+                    { title: 'تشكيل بسيط • نسخ', text: rawName, cat: 'تشكيل مركب', font: 'font-noto' },
+                    { title: 'تشكيل بسيط • رقعة', text: rawName, cat: 'تشكيل مركب', font: 'font-aref' },
+                    { title: 'تشكيل بسيط • كوفي', text: rawName, cat: 'تشكيل مركب', font: 'font-reem' },
+                    { title: 'تشكيل بسيط • كايرو', text: rawName, cat: 'تشكيل مركب', font: 'font-cairo' },
+                    { title: 'كشيدة وزخرفة • ممتد', text: `أبــو باسم`, cat: 'كشيدة وزخرفة', font: 'font-reem' },
+                    { title: 'إطارات ورموز • شارة', text: `[${rawName}]`, cat: 'إطارات ورموز', font: 'font-cairo' },
+                    { title: 'تشكيل بسيط • مشكّل', text: `أَبُو بَاسِمٍ`, cat: 'تشكيل مركب', font: 'font-amiri' },
+                    { title: 'كشيدة وزخرفة • وسط', text: `أبــو بــاسم`, cat: 'كشيدة وزخرفة', font: 'font-noto' },
+                    { title: 'إطارات ورموز • سهم', text: `← ${rawName}`, cat: 'إطارات ورموز', font: 'font-cairo' },
+                    { title: 'تشكيل بسيط • ناعم', text: `أبُو بَاسِم`, cat: 'تشكيل مركب', font: 'font-aref' },
+                    { title: 'كشيدة وزخرفة • خط', text: `_ ${rawName} _`, cat: 'كشيدة وزخرفة', font: 'font-reem' },
+                    { title: 'تشكيل بسيط • أساسي', text: rawName, cat: 'تشكيل مركب', font: 'font-cairo' }
+                ];
+            }
 
             styles.forEach((item) => {
                 const card = document.createElement('div');
@@ -486,14 +531,14 @@
                 container.appendChild(card);
             });
 
-            document.getElementById('main-display').innerText = rawName;
+            // تطبيق أول خيار كافتراضي
+            applyToPreview(styles[0].text, styles[0].font);
         }
 
         function applyToPreview(text, fontClass) {
             const mainDisplay = document.getElementById('main-display');
             mainDisplay.innerText = text;
             mainDisplay.className = 'display-name ' + fontClass;
-            alert('تم تطبيق الاسم المزخرف على الكارت!');
         }
 
         function updateMainDisplayFont() {
