@@ -117,13 +117,12 @@
         }
 
         .display-name {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             margin-bottom: 5px;
             min-height: 45px;
             color: var(--text-white);
             word-break: break-word;
-            line-height: 1.5;
         }
 
         .sub-badge {
@@ -288,12 +287,11 @@
         }
 
         .result-text {
-            font-size: 20px;
+            font-size: 22px;
             text-align: center;
             margin: 15px 0;
             min-height: 40px;
             word-break: break-word;
-            line-height: 1.5;
         }
 
         .result-actions {
@@ -331,7 +329,7 @@
             <div class="card" id="preview-card">
                 <div class="badge-top">BASEM ZORBA • VIP</div>
                 <div class="avatar-container" id="avatar-box"></div>
-                <div class="display-name font-noto" id="main-display">أبُو بَاسِم</div>
+                <div class="display-name font-noto" id="main-display">أُبُّوُ بَّاَسِّمُّ</div>
                 <div class="sub-badge" id="badge-display">VIP ملكي 👑</div>
                 <div class="input-box-preview">🔥 اسمك، بطريقتك<br>صمم • زخرف • انسخ</div>
                 
@@ -366,9 +364,9 @@
                 <label>خط المعاينة</label>
                 <select id="select-font" class="form-control" onchange="updateMainDisplayFont()">
                     <option value="font-noto">نسخ (يدعم التشكيل المزدحم)</option>
-                    <option value="font-amiri">أميري</option>
                     <option value="font-aref">رقعة</option>
                     <option value="font-reem">كوفي</option>
+                    <option value="font-amiri">أميري</option>
                     <option value="font-cairo">كايرو</option>
                 </select>
             </div>
@@ -376,9 +374,9 @@
             <div class="form-group">
                 <label>مستوى العجقة والزخرفة</label>
                 <select id="select-level" class="form-control" onchange="generateAll()">
-                    <option value="high">عالي جداً (عجقة ورموز ثقيلة)</option>
-                    <option value="medium" selected>متوسط (تشكيل + رموز)</option>
-                    <option value="low">خفيف (تشكيل أنيق)</option>
+                    <option value="high">عالي جداً (تشكيل + رموز ألعاب)</option>
+                    <option value="medium">متوسط (تشكيل + رموز)</option>
+                    <option value="low">بسيط</option>
                 </select>
             </div>
 
@@ -406,7 +404,7 @@
             </div>
 
             <div class="btn-group-main">
-                <button class="btn-main btn-gold" onclick="generateAll()">✨ اعادة توليد الزخارف</button>
+                <button class="btn-main btn-gold" onclick="generateAll()">✨ إعادة توليد الزخارف</button>
                 <button class="btn-main btn-green" onclick="downloadPNG()">📸 حفظ PNG</button>
                 <button class="btn-main btn-blue" onclick="shareWhatsapp()">💬 واتساب</button>
             </div>
@@ -423,12 +421,12 @@
                 <button class="tag-btn active" onclick="filterResults('all', this)">الكل</button>
                 <button class="tag-btn" onclick="filterResults('عجقة ثقيلة', this)">عجقة ثقيلة</button>
                 <button class="tag-btn" onclick="filterResults('تشكيل مركب', this)">تشكيل مركب</button>
-                <button class="tag-btn" onclick="filterResults('إطارات ورموز', this)">إطارات ورموز</button>
-                <button class="tag-btn" onclick="filterResults('كشيدة وزخرفة', this)">كشيدة وزخرفة</button>
+                <button class="tag-btn" onclick="filterResults('إطارات', this)">إطارات</button>
+                <button class="tag-btn" onclick="filterResults('كشيدة', this)">كشيدة</button>
             </div>
 
             <div class="results-grid" id="results-container">
-                <!-- المحرك سينتج الـ 16 نتيجة المعجوقة هنا -->
+                <!-- المولد الأوتوماتيكي سينتج 16 نتيجة هنا -->
             </div>
         </div>
 
@@ -437,84 +435,45 @@
     <!-- المكتبة المحلية html2canvas -->
     <script src="assets/js/html2canvas.min.js"></script>
     <script>
-        // خوارزمية تشكيل الاسم
-        function heavyTashkeel(text) {
-            const diacriticals = ['ُ', 'َ', 'ِّ', 'ْ', 'ٍ', 'ً', 'ٌ', 'ٰ', 'ۤ'];
+        // مصفوفات الزخرفة الأسطورية المزدوجة لببجي والألعاب
+        const heavyDiacritics = ['ُ', 'ِّ', 'ً', 'ْ', 'َّ', 'ِ', 'َ', 'ـّ', 'ٌ'];
+
+        function applyExtremeTashkeel(text) {
             return text.split('').map(char => {
-                if (char === ' ') return '  ';
-                return char + diacriticals[Math.floor(Math.random() * diacriticals.length)] + diacriticals[Math.floor(Math.random() * diacriticals.length)];
+                if (char === ' ') return ' ';
+                const d1 = heavyDiacritics[Math.floor(Math.random() * heavyDiacritics.length)];
+                const d2 = heavyDiacritics[Math.floor(Math.random() * heavyDiacritics.length)];
+                return char + d1 + d2;
             }).join('');
+        }
+
+        function applyKashidaExtreme(text) {
+            return text.split('').join('ــ');
         }
 
         function generateAll() {
             const rawName = document.getElementById('input-name').value || 'أبو باسم';
-            const level = document.getElementById('select-level').value;
             const container = document.getElementById('results-container');
             container.innerHTML = '';
 
-            const t = heavyTashkeel(rawName);
-            const k = rawName.split('').join('ـ');
-
-            let styles = [];
-
-            if (level === 'high') {
-                styles = [
-                    { title: 'عجقة ثقيلة • تاج وهيبة', text: `👑 ꧁${t}꧂ 👑`, cat: 'عجقة ثقيلة', font: 'font-noto' },
-                    { title: 'عجقة ثقيلة • زوايا ملكية', text: `༺${t}༻`, cat: 'عجقة ثقيلة', font: 'font-amiri' },
-                    { title: 'إطارات ورموز • الصليب الذهبي', text: `⚡ ﴿${rawName}﴾ ⚡`, cat: 'إطارات ورموز', font: 'font-aref' },
-                    { title: 'تشكيل مركب • مكثف للغاية', text: `أُبُــوّ بَــاَسِــمْـ`, cat: 'تشكيل مركب', font: 'font-noto' },
-                    { title: 'عجقة ثقيلة • نجمية', text: `★彡 ${t} 彡★`, cat: 'عجقة ثقيلة', font: 'font-reem' },
-                    { title: 'كشيدة وزخرفة • ممتد مع حركات', text: `أَ بـِـُـ و  بـَـا سـِـمـ`, cat: 'كشيدة وزخرفة', font: 'font-noto' },
-                    { title: 'إطارات ورموز • الأجنحة', text: `꧁༺ ${rawName} ༻꧂`, cat: 'إطارات ورموز', font: 'font-amiri' },
-                    { title: 'عجقة ثقيلة • حزم تشكيل', text: `أُ بـٌــوُ  بـَــا سـِــمٌ`, cat: 'عجقة ثقيلة', font: 'font-noto' },
-                    { title: 'تشكيل مركب • خط النسخ الفاخر', text: `أَبُـۥ بَـٰسِـمٍ`, cat: 'تشكيل مركب', font: 'font-noto' },
-                    { title: 'إطارات ورموز • الأقواس الملكية', text: `❮❮ ${t} ❯❯`, cat: 'إطارات ورموز', font: 'font-cairo' },
-                    { title: 'كشيدة وزخرفة • كشيدة مع رموز', text: `♦ ${k} ♦`, cat: 'كشيدة وزخرفة', font: 'font-reem' },
-                    { title: 'عجقة ثقيلة • درع الهيبة', text: `🛡️ 〖${rawName}〗 🛡️`, cat: 'عجقة ثقيلة', font: 'font-aref' },
-                    { title: 'تشكيل مركب • نقط وحركات', text: `أ.ب.و. .ب.ا.س.م`, cat: 'تشكيل مركب', font: 'font-cairo' },
-                    { title: 'إطارات ورموز • الفخامة', text: `⚜️ 『${t}』 ⚜️`, cat: 'إطارات ورموز', font: 'font-amiri' },
-                    { title: 'كشيدة وزخرفة • السيفين', text: `⚔️ ${rawName} ⚔️`, cat: 'كشيدة وزخرفة', font: 'font-aref' },
-                    { title: 'عجقة ثقيلة • النمط الكامل', text: `🔥 ｢${t}｣ 🔥`, cat: 'عجقة ثقيلة', font: 'font-noto' }
-                ];
-            } else if (level === 'medium') {
-                styles = [
-                    { title: 'تشكيل مركب • 01', text: `أُبُو بَاسِم`, cat: 'تشكيل مركب', font: 'font-noto' },
-                    { title: 'إطارات ورموز • تاج خفيف', text: `👑 ${rawName} 👑`, cat: 'إطارات ورموز', font: 'font-aref' },
-                    { title: 'عجقة ثقيلة • أقواس', text: `꧁${rawName}꧂`, cat: 'عجقة ثقيلة', font: 'font-amiri' },
-                    { title: 'كشيدة وزخرفة • متناسق', text: `أبــو بــاســم`, cat: 'كشيدة وزخرفة', font: 'font-reem' },
-                    { title: 'تشكيل مركب • كامل الحركات', text: `أَبُـو بَـاسِـم`, cat: 'تشكيل مركب', font: 'font-noto' },
-                    { title: 'إطارات ورموز • هيبة', text: `★ ${rawName} ★`, cat: 'إطارات ورموز', font: 'font-cairo' },
-                    { title: 'كشيدة وزخرفة • عريضة', text: k, cat: 'كشيدة وزخرفة', font: 'font-amiri' },
-                    { title: 'عجقة ثقيلة • تشكيل مزخرف', text: t, cat: 'عجقة ثقيلة', font: 'font-noto' },
-                    { title: 'تشكيل مركب • أميري فاخر', text: `أَبُـــو بَاسِمٍ`, cat: 'تشكيل مركب', font: 'font-amiri' },
-                    { title: 'إطارات ورموز • إطار مربع', text: `⟦${rawName}⟧`, cat: 'إطارات ورموز', font: 'font-cairo' },
-                    { title: 'كشيدة وزخرفة • حروف متباعدة', text: rawName.split('').join(' '), cat: 'كشيدة وزخرفة', font: 'font-reem' },
-                    { title: 'عجقة ثقيلة • وردي', text: `🌸 ${t} 🌸`, cat: 'عجقة ثقيلة', font: 'font-aref' },
-                    { title: 'تشكيل مركب • رقعة كلاسيك', text: `أبُـو بـاسـم`, cat: 'تشكيل مركب', font: 'font-aref' },
-                    { title: 'إطارات ورموز • الموّثق', text: `✔ ${rawName}`, cat: 'إطارات ورموز', font: 'font-cairo' },
-                    { title: 'كشيدة وزخرفة • خط طولي', text: `│ ${rawName} │`, cat: 'كشيدة وزخرفة', font: 'font-reem' },
-                    { title: 'عجقة ثقيلة • الشعلة', text: `🔥 ${rawName} 🔥`, cat: 'عجقة ثقيلة', font: 'font-noto' }
-                ];
-            } else {
-                styles = [
-                    { title: 'تشكيل بسيط • 01', text: `أبو باسم`, cat: 'تشكيل مركب', font: 'font-noto' },
-                    { title: 'تشكيل بسيط • حركات', text: `أَبُو بَاسِم`, cat: 'تشكيل مركب', font: 'font-amiri' },
-                    { title: 'كشيدة وزخرفة • خفيفة', text: `أبو بـاسم`, cat: 'كشيدة وزخرفة', font: 'font-aref' },
-                    { title: 'إطارات ورموز • نقطة', text: `• ${rawName} •`, cat: 'إطارات ورموز', font: 'font-cairo' },
-                    { title: 'تشكيل بسيط • نسخ', text: rawName, cat: 'تشكيل مركب', font: 'font-noto' },
-                    { title: 'تشكيل بسيط • رقعة', text: rawName, cat: 'تشكيل مركب', font: 'font-aref' },
-                    { title: 'تشكيل بسيط • كوفي', text: rawName, cat: 'تشكيل مركب', font: 'font-reem' },
-                    { title: 'تشكيل بسيط • كايرو', text: rawName, cat: 'تشكيل مركب', font: 'font-cairo' },
-                    { title: 'كشيدة وزخرفة • ممتد', text: `أبــو باسم`, cat: 'كشيدة وزخرفة', font: 'font-reem' },
-                    { title: 'إطارات ورموز • شارة', text: `[${rawName}]`, cat: 'إطارات ورموز', font: 'font-cairo' },
-                    { title: 'تشكيل بسيط • مشكّل', text: `أَبُو بَاسِمٍ`, cat: 'تشكيل مركب', font: 'font-amiri' },
-                    { title: 'كشيدة وزخرفة • وسط', text: `أبــو بــاسم`, cat: 'كشيدة وزخرفة', font: 'font-noto' },
-                    { title: 'إطارات ورموز • سهم', text: `← ${rawName}`, cat: 'إطارات ورموز', font: 'font-cairo' },
-                    { title: 'تشكيل بسيط • ناعم', text: `أبُو بَاسِم`, cat: 'تشكيل مركب', font: 'font-aref' },
-                    { title: 'كشيدة وزخرفة • خط', text: `_ ${rawName} _`, cat: 'كشيدة وزخرفة', font: 'font-reem' },
-                    { title: 'تشكيل بسيط • أساسي', text: rawName, cat: 'تشكيل مركب', font: 'font-cairo' }
-                ];
-            }
+            const styles = [
+                { title: 'عجقة ثقيلة • تشكيل مزدوج أسطوري', text: applyExtremeTashkeel(rawName), cat: 'تشكيل مركب', font: 'font-noto' },
+                { title: 'عجقة ثقيلة • أجنحة ببجي VIP', text: `꧁${applyExtremeTashkeel(rawName)}꧂`, cat: 'عجقة ثقيلة', font: 'font-noto' },
+                { title: 'كشيدة • ممتد طويلاً جداً', text: applyKashidaExtreme(rawName), cat: 'كشيدة', font: 'font-reem' },
+                { title: 'عجقة ثقيلة • السيوف والتاج', text: `⚔️ ${applyExtremeTashkeel(rawName)} ⚔️`, cat: 'عجقة ثقيلة', font: 'font-aref' },
+                { title: 'تشكيل مركب • أميري فاخر جداً', text: `أَ${rawName}ٍّ`, cat: 'تشكيل مركب', font: 'font-amiri' },
+                { title: 'إطارات • شعلة النار', text: `🔥 ${rawName} 🔥`, cat: 'إطارات', font: 'font-cairo' },
+                { title: 'عجقة ثقيلة • هيبة الكوفي', text: `༺${rawName}༻`, cat: 'عجقة ثقيلة', font: 'font-reem' },
+                { title: 'تشكيل مركب • رقعة مشكّل ثقيل', text: applyExtremeTashkeel(rawName), cat: 'تشكيل مركب', font: 'font-aref' },
+                { title: 'إطارات • البرق والصاعقة', text: `⚡ ${applyExtremeTashkeel(rawName)} ⚡`, cat: 'إطارات', font: 'font-noto' },
+                { title: 'عجقة ثقيلة • رموز الأسطورة الصينية', text: `王者 ${rawName} 〆`, cat: 'عجقة ثقيلة', font: 'font-cairo' },
+                { title: 'كشيدة • ممتد أسطوري', text: `أبــــــو بــــــاســــــم`, cat: 'كشيدة', font: 'font-noto' },
+                { title: 'إطارات • الورود الملكية', text: `🌸 ${applyExtremeTashkeel(rawName)} 🌸`, cat: 'إطارات', font: 'font-noto' },
+                { title: 'تشكيل مركب • نسخ مكثف جداً', text: applyExtremeTashkeel(rawName), cat: 'تشكيل مركب', font: 'font-noto' },
+                { title: 'عجقة ثقيلة • التنين والين يانغ', text: `ᯓ ${rawName} ☯︎`, cat: 'عجقة ثقيلة', font: 'font-aref' },
+                { title: 'تشكيل مركب • تشكيل كلاسيكي', text: `أَبُــو بَــاسِــمٍ`, cat: 'تشكيل مركب', font: 'font-amiri' },
+                { title: 'إطارات • تاج الملك', text: `♛ ${rawName} ♛`, cat: 'إطارات', font: 'font-cairo' }
+            ];
 
             styles.forEach((item) => {
                 const card = document.createElement('div');
@@ -531,8 +490,9 @@
                 container.appendChild(card);
             });
 
-            // تطبيق أول خيار كافتراضي
-            applyToPreview(styles[0].text, styles[0].font);
+            // تحديث شاشة المعاينة
+            const currentFont = document.getElementById('select-font').value;
+            applyToPreview(styles[0].text, currentFont);
         }
 
         function applyToPreview(text, fontClass) {
@@ -543,7 +503,8 @@
 
         function updateMainDisplayFont() {
             const font = document.getElementById('select-font').value;
-            document.getElementById('main-display').className = 'display-name ' + font;
+            const currentText = document.getElementById('main-display').innerText;
+            applyToPreview(currentText, font);
         }
 
         function updateBadge() {
