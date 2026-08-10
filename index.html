@@ -1,306 +1,289 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basem Zorba - Real Name</title>
-    
-    <!-- استدعاء الخطوط مباشرة من Google Fonts لضمان عملها على الجوال -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;700;900&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Basem Zorba — Real Name Decorator</title>
 
-    <style>
-        :root {
-            --bg-main: #0d1117;
-            --bg-card: #161b22;
-            --border-color: #30363d;
-            --accent-gold: #d4af37;
-            --text-white: #f0f6fc;
-            --text-gray: #8b949e;
-        }
+<!-- استدعاء الخطوط مباشرة من Google Fonts لضمان التوافق التام على الجوال -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;700;900&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-        }
+<style>
+/* -------------------------------------------------------------
+   1. تنسیقات الصفحة العامة والتصاميم
+------------------------------------------------------------- */
+:root{--bg:#07090d;--p:#0e131b;--p2:#111823;--line:#242e3d;--txt:#f7f8fb;--muted:#7e8a9b;--gold:#f5ca63;--gold2:#ffe49b;--cyan:#59d9ff;--green:#22c979}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(800px 420px at 50% -160px,#f5ca6315,transparent 70%),var(--bg);color:var(--txt);font-family:'Cairo',sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.app{max-width:1080px;margin:auto;padding:18px}
+.head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{display:flex;gap:11px;align-items:center}
+.logo{width:46px;height:46px;border:1px solid #554625;border-radius:14px;display:grid;place-items:center;color:var(--gold2);font-size:23px;background:#161209}
+.brand b{display:block;font-size:.95rem}
+.brand small{color:var(--muted);font-size:.62rem}
+.sig{font-size:.68rem;font-weight:900;color:var(--gold2);border:1px solid #4e4126;background:#151109;padding:6px 11px;border-radius:99px}
+.hero{text-align:center;padding:24px 0 20px}
+.hero small{color:var(--gold);font-weight:900;letter-spacing:2px;font-size:.62rem}
+.hero h1{font-size:clamp(1.7rem,5vw,2.8rem);margin:6px 0;font-weight:900}
+.hero h1 span{color:var(--gold2)}
+.hero p{margin:auto;color:var(--muted);font-size:.78rem;max-width:650px}
+.main{display:grid;grid-template-columns:330px 1fr;gap:15px}
+.box{background:linear-gradient(180deg,#101620f5,#0b1017f5);border:1px solid var(--line);border-radius:19px;overflow:hidden;box-shadow:0 18px 55px #0007}
+.boxhead{padding:15px 17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.boxhead b{font-size:.78rem}
+.boxhead span{color:var(--muted);font-size:.6rem}
+.controls{padding:15px 17px}
+.field{margin-bottom:11px}
+label{display:block;color:#cbd5e1;font-size:.67rem;font-weight:800;margin-bottom:6px}
+input,select{width:100%;background:#080c12;border:1px solid #273245;color:#fff;border-radius:10px;padding:9px 11px;outline:0;font-size:.75rem}
+input:focus,select:focus{border-color:#68778d}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:13px}
+.btn{border:0;border-radius:10px;padding:9px;font-size:.64rem;font-weight:900}
+.gold{background:linear-gradient(135deg,#dcae45,#ffe292);color:#171108}
+.dark{background:#17202c;color:#dce5ef;border:1px solid #2b384a}
+.green{background:#159856;color:#fff}
+.cyan{background:#142c36;color:var(--cyan);border:1px solid #245264}
+.preview{padding:18px;display:grid;place-items:center;min-height:455px;background:radial-gradient(300px 260px at 50% 45%,#f5ca630b,transparent 70%)}
+.profile{width:min(350px,100%);min-height:410px;border-radius:27px;padding:27px 20px 17px;background:radial-gradient(180px 110px at 50% 0,#f5ca6312,transparent 80%),linear-gradient(155deg,#151b24,#05070a 78%);border:1px solid #4b412a;box-shadow:0 25px 75px #000a;text-align:center;display:flex;flex-direction:column;align-items:center;overflow:hidden;position:relative}
+.profile .tag{position:absolute;top:12px;right:12px;color:var(--gold2);font-size:.52rem;font-weight:900;border:1px solid #5b4b28;border-radius:99px;padding:4px 8px;background:#151109}
+.avatar{width:88px;height:88px;padding:3px;border-radius:50%;background:linear-gradient(145deg,#ffe59a,#9b6a19);margin:13px 0}
+.avatar img{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%;background:#141b25}
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-white);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 10px;
-            min-height: 100vh;
-        }
+/* تحسين إظهار الزخارف المركبة والجوال */
+.pname{
+    font-size:1.45rem;
+    line-height:2.2;
+    font-weight:900;
+    max-width:100%;
+    overflow-wrap:anywhere;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+}
+.pbadge{color:var(--gold2);font-size:.67rem;font-weight:800}
+.pbio{width:100%;margin-top:12px;padding:9px;border:1px dashed #ffffff15;border-radius:11px;color:#b6c0ce;font-size:.62rem;line-height:1.7}
+.stats{width:100%;margin-top:auto;padding-top:15px;display:grid;grid-template-columns:repeat(3,1fr)}
+.stat{border-top:1px solid #ffffff0d;padding-top:8px}
+.stat b{display:block;font-size:.72rem}
+.stat span{font-size:.52rem;color:#6d798a}
+.author{font-size:.51rem;color:#788495;direction:ltr;margin-top:11px}
+.author strong{color:#d5bd74}
+.engine{margin-top:15px}
+.filters{display:flex;gap:6px;overflow:auto;padding:12px 15px 0;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filter{white-space:nowrap;background:#0a0f16;border:1px solid #273245;color:#7f8b9c;border-radius:99px;padding:6px 10px;font-size:.59rem;font-weight:900}
+.filter.active{background:var(--gold2);border-color:var(--gold2);color:#171108}
+.results{padding:12px 15px 17px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.res{background:#0b1018;border:1px solid #202b3a;border-radius:13px;padding:11px;min-width:0}
+.res:hover{border-color:#39475b}
+.rmeta{font-size:.52rem;color:#69778a;font-weight:800}
 
-        .card {
-            background: linear-gradient(145deg, #121721, #1a2332);
-            border: 1px solid var(--accent-gold);
-            border-radius: 20px;
-            padding: 25px;
-            width: 100%;
-            max-width: 420px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            position: relative;
-            margin-bottom: 25px;
-        }
+/* تحسين إظهار نصوص النتائج مع الزخرفة */
+.rname{
+    font-size:1.02rem;
+    color:#fff;
+    direction:auto;
+    unicode-bidi:plaintext;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    margin:3px 0 8px;
+    min-height:35px;
+    line-height:2;
+    text-rendering:optimizeLegibility;
+}
+.rbuttons{display:flex;gap:5px}
+.mini{flex:1;border:1px solid #2a3749;background:#151e2b;color:#dbe4ee;border-radius:8px;padding:6px 5px;font-size:.57rem;font-weight:900}
+.mini.apply{color:var(--cyan);border-color:#245264;background:#10232b}
+.mini.copy{color:var(--gold2);border-color:#4b3d22;background:#17130b}
+.power{margin-top:10px;padding:9px 11px;border:1px solid #2d3a4c;background:#0b1119;border-radius:11px;color:#8995a6;font-size:.58rem;line-height:1.7}
+.power b{color:#dbe3ee}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,25px);opacity:0;background:#151d29;border:1px solid #354257;border-radius:10px;padding:9px 13px;font-size:.65rem;font-weight:900;transition:.2s;z-index:20;box-shadow:0 15px 40px #0009}
+.toast.show{opacity:1;transform:translate(-50%,0)}
 
-        .badge-top {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(212, 175, 55, 0.15);
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
-            font-size: 10px;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .avatar-ring {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-gold);
-            margin: 10px auto 15px;
-            background: #0d1117;
-        }
-
-        .display-name {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            min-height: 45px;
-            color: var(--text-white);
-        }
-
-        .sub-badge {
-            color: var(--accent-gold);
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .input-box {
-            border: 1px dashed var(--border-color);
-            border-radius: 10px;
-            padding: 10px;
-            margin-bottom: 20px;
-            color: var(--text-gray);
-            font-size: 13px;
-        }
-
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-            margin-bottom: 15px;
-        }
-
-        .stat-item .num {
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .stat-item .label {
-            font-size: 12px;
-            color: var(--text-gray);
-        }
-
-        .footer-tag {
-            font-size: 10px;
-            color: var(--text-gray);
-        }
-
-        .controls-panel {
-            width: 100%;
-            max-width: 420px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            padding: 15px;
-        }
-
-        .controls-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .filter-tags {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-
-        .tag-btn {
-            background: #21262d;
-            border: 1px solid var(--border-color);
-            color: var(--text-white);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 12px;
-            white-space: nowrap;
-            cursor: pointer;
-        }
-
-        .tag-btn.active {
-            background: #f1e05a;
-            color: #000;
-            font-weight: bold;
-        }
-
-        .results-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .result-card {
-            background: #0d1117;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 12px;
-        }
-
-        .result-title {
-            font-size: 10px;
-            color: var(--text-gray);
-            margin-bottom: 5px;
-        }
-
-        .result-text {
-            font-size: 20px;
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .result-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 6px;
-            border-radius: 6px;
-            border: none;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-        .btn-copy {
-            background: #238636;
-            color: white;
-        }
-
-        .btn-apply {
-            background: #1f6feb;
-            color: white;
-        }
-
-        /* فئات الخطوط للزخارف */
-        .font-amiri { font-family: 'Amiri', serif; }
-        .font-aref { font-family: 'Aref Ruqaa', serif; }
-        .font-reem { font-family: 'Reem Kufi', sans-serif; }
-        .font-cairo { font-family: 'Cairo', sans-serif; }
-    </style>
+@media(max-width:850px){.main{grid-template-columns:1fr}.controls{order:2}.preview{min-height:0}.results{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.app{padding:11px}.head{align-items:flex-start}.sig{font-size:.56rem;padding:5px 8px}.row,.btns,.results{grid-template-columns:1fr}.rname{font-size:1.08rem}}
+</style>
 </head>
 <body>
+<div class="app">
+<header class="head"><div class="brand"><div class="logo">✦</div><div><b>استوديو الأسماء</b><small>REAL DECORATOR ENGINE</small></div></div><div class="sig">Basem Zorba</div></header>
+<section class="hero"><small>BASEM ZORBA • ORIGINAL ENGINE</small><h1>هسا الاسم نفسه <span>بتزخرف 🔥</span></h1><p>المحرك يغيّر الحروف والتشكيل والكشيدة والعلامات الداخلية — مش بس يحط رموز حول الاسم.</p></section>
 
-    <!-- كارت المعاينة -->
-    <div class="card" id="preview-card">
-        <div class="badge-top">BASEM ZORBA • VIP</div>
-        <div class="avatar-ring"></div>
-        <div class="display-name font-aref" id="main-display">أبُو بَاسِم</div>
-        <div class="sub-badge">VIP ملكي 👑</div>
-        <div class="input-box">🔥 اسمك، بطريقتك<br>صمم • زخرف • انسخ</div>
-        
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="num">1.2M</div>
-                <div class="label">المتابعين</div>
-            </div>
-            <div class="stat-item">
-                <div class="num">15.4M</div>
-                <div class="label">الإعجابات</div>
-            </div>
-            <div class="stat-item">
-                <div class="num">340</div>
-                <div class="label">يتابع</div>
-            </div>
-        </div>
-        <div class="footer-tag">crafted by Basem Zorba</div>
-    </div>
+<div class="main">
+<section class="box">
+<div class="boxhead"><b>🎛️ تحكم</b><span>اكتب وجرب</span></div>
+<div class="controls">
+<div class="field"><label>الاسم</label><input id="name" value="أبو باسم" placeholder="اكتب اسمك..."></div>
+<div class="row">
+<div class="field"><label>خط المعاينة</label><select id="font"><option value="'Reem Kufi',sans-serif">كوفي</option><option value="'Aref Ruqaa',serif">رقعة</option><option value="'Amiri',serif">أميري</option><option value="'Cairo',sans-serif">كايرو</option></select></div>
+<div class="field"><label>مستوى العجقة</label><select id="level"><option value="1">خفيف</option><option value="2" selected>متوسط</option><option value="3">معجق 🔥</option><option value="4">مجنون 👑</option></select></div>
+</div>
+<div class="row">
+<div class="field"><label>الشارة</label><select id="badge"><option>👑 VIP ملكي</option><option>🎮 Gaming Pro</option><option>⚡ Creator</option><option>💎 Diamond</option><option>🔥 Legendary</option></select></div>
+<div class="field"><label>المتابعون</label><input id="followers" value="1.2M"></div>
+</div>
+<div class="field"><label>صورة البروفايل</label><input id="photo" type="file" accept="image/*"></div>
+<div class="btns"><button class="btn gold" id="decorate">🔥 زخرف الاسم</button><button class="btn dark" id="random">🎲 نتيجة جديدة</button><button class="btn green" id="save">📸 حفظ PNG</button><button class="btn cyan" id="wa">💬 واتساب</button></div>
+<div class="power"><b>الفكرة:</b> كل نتيجة تحت هنا تغيّر الاسم من الداخل: علامات مركبة، حركات، خطوط، كشائد، بدائل حروف، وفواصل ذكية — مع الحفاظ قدر الإمكان على قراءة الاسم.</div>
+</div></section>
 
-    <!-- لوحة التحكم والنتائج -->
-    <div class="controls-panel">
-        <div class="controls-header">
-            <h3>🧬 نتائج المحرك</h3>
-            <span style="font-size: 12px; color: var(--text-gray);">16 نتيجة</span>
-        </div>
+<section class="box">
+<div class="boxhead"><b>👁️ المعاينة</b><span>LIVE</span></div>
+<div class="preview"><div class="profile" id="profile">
+<div class="tag">BASEM ZORBA • VIP</div><div class="avatar"><img id="avatar" alt=""></div>
+<div class="pname" id="pname">أبو باسم</div><div class="pbadge" id="pbadge">👑 VIP ملكي</div>
+<div class="pbio">🔥 اسمك، بطريقتك<br>صمّم • زخرف • انسخ</div>
+<div class="stats"><div class="stat"><b id="followersCard">1.2M</b><span>المتابعين</span></div><div class="stat"><b>15.4M</b><span>الإعجابات</span></div><div class="stat"><b>340</b><span>يتابع</span></div></div>
+<div class="author">crafted by <strong>Basem Zorba</strong></div>
+</div></div></section>
+</div>
 
-        <div class="filter-tags">
-            <button class="tag-btn active">الكل</button>
-            <button class="tag-btn">تشكيل</button>
-            <button class="tag-btn">داخل الحروف</button>
-            <button class="tag-btn">الحروف</button>
-            <button class="tag-btn">كشيدة</button>
-        </div>
+<section class="box engine">
+<div class="boxhead"><b>🧬 نتائج المحرك</b><span id="count">0</span></div>
+<div class="filters" id="filters"></div>
+<div class="results" id="results"></div>
+</section>
+</div><div class="toast" id="toast"></div>
 
-        <div class="results-grid">
-            <div class="result-card">
-                <div class="result-title">تشكيل • تشكيل مرکب 01</div>
-                <div class="result-text font-aref">أبُو بَاسِم</div>
-                <div class="result-actions">
-                    <button class="btn btn-copy" onclick="copyText('أبُو بَاسِم')">نسخ 📋</button>
-                    <button class="btn btn-apply" onclick="applyText('أبُو بَاسِم', 'font-aref')">تطبيق 👁️</button>
-                </div>
-            </div>
+<!-- استدعاء المكتبة المحلية -->
+<script src="assets/js/html2canvas.min.js"></script>
 
-            <div class="result-card">
-                <div class="result-title">داخل الحروف • خط داخلي مزدوج</div>
-                <div class="result-text font-reem">أبــو بـاســم</div>
-                <div class="result-actions">
-                    <button class="btn btn-copy" onclick="copyText('أبــو بـاســم')">نسخ 📋</button>
-                    <button class="btn btn-apply" onclick="applyText('أبــو بـاســم', 'font-reem')">تطبيق 👁️</button>
-                </div>
-            </div>
+<script>
+const $=id=>document.getElementById(id);
+const name=$('name'),font=$('font'),level=$('level'),badge=$('badge'),followers=$('followers');
+const pname=$('pname'),pbadge=$('pbadge'),followersCard=$('followersCard'),results=$('results'),filters=$('filters'),toast=$('toast');
+let active='الكل';
 
-            <div class="result-card">
-                <div class="result-title">تشكيل • خط أميري تقليدي</div>
-                <div class="result-text font-amiri">أَبُو بَاسِمٍ</div>
-                <div class="result-actions">
-                    <button class="btn btn-copy" onclick="copyText('أَبُو بَاسِمٍ')">نسخ 📋</button>
-                    <button class="btn btn-apply" onclick="applyText('أَبُو بَاسِمٍ', 'font-amiri')">تطبيق 👁️</button>
-                </div>
-            </div>
-        </div>
-    </div>
+/* ضبط مصفوفة التشكيلات لتكون متناسقة ومتوافقة مع الجوالات */
+const marks={
+ above:['\u0301','\u0302','\u0304','\u0307','\u0308','\u030A','\u030C','\u0310','\u0311'],
+ below:['\u0316','\u0317','\u0318','\u0319','\u0320','\u0323','\u0324','\u0325','\u0326'],
+ overlay:['\u0336','\u0337','\u0338','\u0334']
+};
 
-    <!-- استدعاء html2canvas المحلي -->
-    <script src="assets/js/html2canvas.min.js"></script>
-    <script>
-        function applyText(text, fontClass) {
-            const mainDisplay = document.getElementById('main-display');
-            mainDisplay.innerText = text;
-            mainDisplay.className = 'display-name ' + fontClass;
-        }
+const arabicVariants={
+ 'ا':['ا','آ','أ','إ','ٱ'],'أ':['أ','آ','ا'],'إ':['إ','ا','آ'],'ب':['ب','بـ'],'ت':['ت','تـ'],'ث':['ث','ثـ'],
+ 'ج':['ج','جـ'],'ح':['ح','حـ'],'خ':['خ','خـ'],'د':['د'],'ذ':['ذ'],'ر':['ر','رـ'],'ز':['ز','زـ'],
+ 'س':['س','سـ'],'ش':['ش','شـ'],'ص':['ص','صـ'],'ض':['ض','ضـ'],'ط':['ط','طـ'],'ظ':['ظ','ظـ'],
+ 'ع':['ع','عـ'],'غ':['غ','غـ'],'ف':['ف','فـ'],'ق':['ق','قـ'],'ك':['ك','كـ'],'ل':['ل','لـ'],
+ 'م':['م','مـ'],'ن':['ن','نـ'],'ه':['ه','هـ'],'و':['و','وـ'],'ي':['ي','يـ'],'ى':['ى']
+};
 
-        function copyText(text) {
-            navigator.clipboard.writeText(text);
-            alert('تم النسخ: ' + text);
-        }
-    </script>
+function clean(s){return s.trim().replace(/\s+/g,' ')}
+function chars(s){return [...s]}
+
+function addMarks(s,kind,amount){
+ const pool=marks[kind], a=amount%pool.length;
+ return chars(s).map((c,i)=>{
+   if(c===' '||/[\u200c\u200d]/.test(c))return c;
+   return c+pool[(i*2+a)%pool.length];
+ }).join('');
+}
+
+function alternate(s,seed=0){
+ return chars(s).map((c,i)=>{
+   const v=arabicVariants[c];
+   return v?v[(i+seed)%v.length]:c;
+ }).join('');
+}
+
+function elongate(s,mode=1){
+ const out=[];const a=chars(s);
+ a.forEach((c,i)=>{out.push(c);if(c!==' '&&i<a.length-1&&a[i+1]!==' '){if(mode===1)out.push('ـ');if(mode===2&&i%2===0)out.push('ــ');if(mode===3)out.push('ـ');}});
+ return out.join('');
+}
+
+function inside(s,sep){return chars(s).join(sep)}
+
+function wrapInner(s,kind){
+ const a=chars(s);
+ if(kind===1)return a.map((c,i)=>c+(i%2?'۟':'ٰ')).join('');
+ if(kind===2)return a.map((c,i)=>c+(i%2?'̷':'̸')).join('');
+ if(kind===3)return a.map((c,i)=>c+(i%2?'͟':'͞')).join('');
+ if(kind===4)return a.map((c,i)=>c+(i%2?'̲':'̳')).join('');
+ return s;
+}
+
+function english(s,type){
+ if(type===1)return s.replace(/[A-Za-z0-9]/g,c=>String.fromCharCode(c.charCodeAt(0)+0xfee0));
+ if(type===2)return s.toLowerCase().replace(/[a-z]/g,c=>({a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'s',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ'}[c]||c));
+ if(type===3)return inside(s,' ');
+ return s;
+}
+
+function generate(s){
+ const L=+level.value, out=[];
+ const push=(label,value,cat='الحروف')=>{if(value&&value!==s&&!out.some(x=>x.value===value))out.push({label,value,cat})};
+ push('تشكيل مركب 01',addMarks(s,'above',L),'تشكيل');
+ push('تشكيل مركب 02',addMarks(s,'below',L+2),'تشكيل');
+ push('خط داخلي',wrapInner(s,1),'داخل الحروف');
+ push('خط داخلي مزدوج',wrapInner(s,2),'داخل الحروف');
+ push('حروف مشطوبة',wrapInner(s,3),'داخل الحروف');
+ push('حروف مسطّرة',wrapInner(s,4),'داخل الحروف');
+ push('بدائل عربية',alternate(s,L),'الحروف');
+ push('بدائل عربية II',alternate(s,L+2),'الحروف');
+ push('كشيدة خفيفة',elongate(s,1),'كشيدة');
+ push('كشيدة متقطعة',chars(s).map((c,i)=>i%2&&c!==' '?c+'ـ':c).join(''),'كشيدة');
+ push('كشيدة قوية',elongate(s,2),'كشيدة');
+ push('تفكيك داخلي',inside(s,'・'),'تقطيع');
+ push('تفكيك نقطي',inside(s,'·'),'تقطيع');
+ push('مسافات ذكية',inside(s,'  '),'تقطيع');
+ if(/[A-Za-z]/.test(s)){push('English Fullwidth',english(s,1),'English');push('English Small Caps',english(s,2),'English');push('English Spaced',english(s,3),'English')}
+ if(L>=2){push('تشكيل + كشيدة',elongate(addMarks(s,'above',L+1),1),'مركب');push('تشكيل سفلي + كشيدة',elongate(addMarks(s,'below',L+2),2),'مركب')}
+ if(L>=3){push('معجق مركب A',addMarks(wrapInner(elongate(alternate(s,1),1),2),'above',3),'معجق 🔥');push('معجق مركب B',wrapInner(addMarks(elongate(s,2),'below',4),3),'معجق 🔥');push('معجق مركب C',addMarks(alternate(elongate(s,1),2),'above',5),'معجق 🔥')}
+ if(L>=4){push('مجنون A',addMarks(wrapInner(elongate(alternate(s,3),2),4),'above',5),'مجنون 👑');push('مجنون B',wrapInner(addMarks(alternate(s,4),'below',6),2),'مجنون 👑')}
+ return out;
+}
+
+const cats=['الكل','تشكيل','داخل الحروف','الحروف','كشيدة','تقطيع','مركب','معجق 🔥','مجنون 👑','English'];
+function buildFilters(){
+ filters.innerHTML=cats.map(c=>`<button class="filter ${c===active?'active':''}">${c}</button>`).join('');
+ [...filters.children].forEach((b,i)=>b.onclick=()=>{active=cats[i];buildFilters();render()});
+}
+
+function render(){
+ const list=generate(clean(name.value)||'أبو باسم');
+ const shown=active==='الكل'?list:list.filter(x=>x.cat===active);
+ $('count').textContent=`${shown.length} نتيجة`;
+ results.innerHTML='';
+ shown.forEach(x=>{
+  const r=document.createElement('div');r.className='res';
+  r.innerHTML=`<div class="rmeta">${x.cat} • ${x.label}</div><div class="rname"></div><div class="rbuttons"><button class="mini apply">تطبيق 👁️</button><button class="mini copy">نسخ 📋</button></div>`;
+  r.querySelector('.rname').textContent=x.value;
+  r.querySelector('.apply').onclick=()=>{pname.textContent=x.value;show('تم تطبيق الاسم المزغرف ✓')};
+  r.querySelector('.copy').onclick=()=>copy(x.value);
+  results.appendChild(r);
+ });
+}
+
+function update(){pname.textContent=clean(name.value)||'أبو باسم';pname.style.fontFamily=font.value;pbadge.textContent=badge.value;followersCard.textContent=followers.value||'0';render()}
+async function copy(t){try{await navigator.clipboard.writeText(t);show('تم نسخ الاسم ✓')}catch{show('تعذر النسخ')}}
+function show(t){toast.textContent=t;toast.classList.add('show');clearTimeout(window.t);window.t=setTimeout(()=>toast.classList.remove('show'),1600)}
+[name,font,badge,followers].forEach(x=>x.addEventListener('input',update));
+$('decorate').onclick=()=>{active='الكل';buildFilters();render();show('🔥 تم توليد زخارف جديدة')};
+$('random').onclick=()=>{const a=generate(clean(name.value)||'أبو باسم');const x=a[Math.floor(Math.random()*a.length)];pname.textContent=x.value;show('🎲 اخترتلك نتيجة')};
+$('photo').onchange=e=>{const f=e.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=v=>{$('avatar').src=v.target.result;show('تم تغيير الصورة ✓')};r.readAsDataURL(f)};
+$('save').onclick=async()=>{
+  if(typeof html2canvas === 'undefined'){
+    show('جاري تحميل مكتبة التصوير...');
+    return;
+  }
+  try{
+    const c=await html2canvas($('profile'),{backgroundColor:'#05070a',scale:3});
+    const a=document.createElement('a');
+    a.download=`Basem_Zorba_Name_${Date.now()}.png`;
+    a.href=c.toDataURL();
+    a.click();
+    show('تم حفظ الصورة ✓')
+  }catch{show('تعذر التصدير')}
+};
+$('wa').onclick=()=>window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent('🔥 اسم مزغرف من Basem Zorba Name Studio 🔥\n\n'+pname.textContent)}`,'_blank');
+buildFilters();update();
+</script>
 </body>
 </html>
