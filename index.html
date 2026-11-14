@@ -1,257 +1,644 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>استوديو الباسم VIP</title>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Aref+Ruqaa:wght@700&family=Cairo:wght@400;700;900&family=Noto+Naskh+Arabic:wght@700&family=Reem+Kufi:wght@700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<style>
-:root{--bg:#07090e;--panel:#0f141d;--inp:#090d14;--brd:#1f2937;--gold:#f3c623;--cyan:#00f2ea;--txt:#f8fafc;--mut:#94a3b8}
-*{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo','Noto Naskh Arabic',sans-serif;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;max-width:100vw;overflow-x:hidden;background:var(--bg);color:var(--txt);min-height:100vh}
-body{padding:10px 10px 50px}
-.topbar{max-width:1200px;margin:0 auto 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--brd);border-radius:16px;padding:10px 14px}
-.brand-wrap{display:flex;align-items:center;gap:10px}
-.brand-icon{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#f3c623,#d49b00);display:flex;align-items:center;justify-content:center;font-size:20px}
-.brand-title h1{font-size:15px;font-weight:900;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.pro-badge{font-size:10px;background:rgba(243,198,35,.15);color:var(--gold);border:1px solid var(--gold);padding:1px 7px;border-radius:20px}
-.brand-title p{font-size:11px;color:var(--mut)}
-.random-btn{background:#161f2e;color:var(--gold);border:1px solid rgba(243,198,35,.4);padding:7px 11px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap}
-.workspace{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
-.preview-col{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}
-@media(min-width:980px){.workspace{grid-template-columns:400px minmax(0,1fr);align-items:start}.preview-col{position:sticky;top:16px}}
-.vip-card{width:100%;max-width:400px;border-radius:22px;padding:18px 15px;text-align:center;position:relative;overflow:hidden;box-shadow:0 15px 35px rgba(0,0,0,.65)}
-.theme-gold{background:linear-gradient(155deg,#12161f,#1d190f,#0d1017);border:2px solid #f3c623;--acc:#f3c623}
-.theme-tiktok{background:linear-gradient(155deg,#0b161b,#130d1e,#1c0c16);border:2px solid #00f2ea;--acc:#00f2ea}
-.theme-fire{background:linear-gradient(155deg,#1b0c09,#261307,#110907);border:2px solid #ff6b00;--acc:#ff6b00}
-.theme-hacker{background:linear-gradient(155deg,#07170d,#091e12,#050f09);border:2px solid #10b981;--acc:#10b981}
-.theme-royal{background:linear-gradient(155deg,#130d21,#1f1135,#0c0814);border:2px solid #a855f7;--acc:#a855f7}
-.card-header-badges{display:flex;justify-content:space-between;margin-bottom:10px}
-.pill-right{background:var(--acc);color:#000;font-size:10px;font-weight:900;padding:3px 10px;border-radius:20px}
-.pill-left{background:rgba(255,255,255,.08);color:#cbd5e1;font-size:10px;padding:3px 10px;border-radius:20px}
-.avatar-wrap{width:86px;height:86px;margin:4px auto 10px;position:relative;border-radius:50%;padding:3px;background:var(--acc)}
-.avatar-inner{width:100%;height:100%;border-radius:50%;background:#0b0f17;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.avatar-inner img{width:100%;height:100%;object-fit:cover}
-.verified-icon{position:absolute;bottom:0;left:0;width:22px;height:22px;background:#00f2ea;color:#000;border-radius:50%;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;border:2px solid #0b0f17}
-.card-main-name{font-size:24px;font-weight:900;color:#fff;min-height:40px;margin-bottom:6px;word-break:break-word}
-.card-meta-row{display:flex;justify-content:center;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-.handle-tag{font-size:12px;color:#cbd5e1;direction:ltr}
-.rank-tag{font-size:11px;font-weight:700;color:var(--acc);border:1px solid var(--acc);padding:2px 10px;border-radius:14px}
-.dedication-box{border:1px dashed var(--acc);border-radius:12px;padding:9px;background:rgba(0,0,0,.35);margin-bottom:12px;font-size:12px;line-height:1.6}
-.dedication-box strong{color:var(--acc);font-size:14px;display:block}
-.card-bottom-row{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);padding-top:10px;margin-bottom:8px}
-.stats-group{display:flex;flex:1;justify-content:space-around}
-.stat-box .num{font-size:15px;font-weight:900}.stat-box .lbl{font-size:10px;color:var(--mut)}
-.qr-box{width:44px;height:44px;background:#fff;padding:3px;border-radius:8px;display:flex;align-items:center;justify-content:center}
-.card-footer-brand{display:flex;justify-content:space-between;font-size:9px;color:var(--mut)}
-.card-action-bar{width:100%;max-width:400px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.act-btn{padding:10px 6px;border-radius:11px;border:none;font-weight:800;font-size:12px;cursor:pointer}
-.btn-gold{background:linear-gradient(135deg,#f3c623,#d49b00);color:#000}.btn-green{background:#10b981;color:#052e16}.btn-cyan{background:#06b6d4;color:#082f49}
-.right-col{display:flex;flex-direction:column;gap:14px;width:100%;min-width:0}
-.panel-box{background:var(--panel);border:1px solid var(--brd);border-radius:18px;padding:14px;width:100%;overflow:hidden}
-.ai-panel{border-color:rgba(243,198,35,.45)}
-.panel-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px}
-.panel-head h2{font-size:15px;font-weight:900}
-.status-badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(0,242,234,.14);border:1px solid var(--cyan);color:var(--cyan)}
-.key-btn{background:#161f2e;color:var(--gold);border:1px solid rgba(243,198,35,.4);border-radius:20px;padding:3px 9px;font-size:10px;cursor:pointer}
-.ai-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}
-.ai-tab{background:var(--inp);border:1px solid var(--brd);color:var(--mut);padding:8px 4px;border-radius:10px;font-size:11px;font-weight:800;cursor:pointer}
-.ai-tab.active{background:var(--gold);color:#000;border-color:var(--gold)}
-.ai-pane{display:none}.ai-pane.active{display:block}
-.quick-chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
-.chip{background:#161f2e;border:1px solid var(--brd);color:#cbd5e1;padding:4px 8px;border-radius:12px;font-size:11px;cursor:pointer}
-.input-row{display:flex;flex-direction:column;gap:8px}
-.form-input,.form-select{width:100%;background:var(--inp);border:1px solid var(--brd);color:#fff;padding:9px 11px;border-radius:10px;font-size:13px;outline:none}
-.ai-submit-btn{background:linear-gradient(135deg,#f3c623,#d49b00);color:#000;border:none;padding:10px;border-radius:10px;font-weight:900;font-size:13px;cursor:pointer;width:100%}
-.ai-results-grid{display:grid;grid-template-columns:1fr;gap:7px;margin-top:10px}
-.ai-nick-item{background:var(--inp);border:1px solid var(--brd);border-radius:10px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;gap:6px}
-.mini-apply{background:rgba(243,198,35,.15);color:var(--gold);border:1px solid rgba(243,198,35,.4);padding:4px 8px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer}
-.controls-grid{display:grid;gap:10px}.controls-grid-2{display:grid;gap:10px}.controls-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.field-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--mut);margin-bottom:4px;font-weight:600}
-.symbol-bar,.filter-row{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;max-width:100%}
-.sym-btn,.f-btn{background:var(--inp);border:1px solid var(--brd);color:#e2e8f0;padding:6px 11px;border-radius:10px;font-size:12px;cursor:pointer;white-space:nowrap;flex-shrink:0}
-.f-btn.active,.t-pill.active{background:var(--gold);color:#000;border-color:var(--gold)}
-.theme-pills,.avatar-pills{display:flex;gap:5px;flex-wrap:wrap}
-.t-pill{flex:1;min-width:55px;background:var(--inp);border:1px solid var(--brd);color:#cbd5e1;padding:7px 4px;border-radius:9px;font-size:11px;font-weight:700;cursor:pointer;text-align:center}
-.results-panel{max-width:1200px;margin:14px auto 0}
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
-.style-card{background:var(--inp);border:1px solid var(--brd);border-radius:13px;padding:12px}
-.style-meta{display:flex;justify-content:space-between;font-size:10px;color:var(--mut)}
-.style-preview{font-size:19px;text-align:center;margin:10px 0;min-height:32px;word-break:break-word}
-.style-actions{display:flex;gap:6px}.s-btn{flex:1;padding:7px;border-radius:8px;border:none;font-size:12px;font-weight:700;cursor:pointer}
-.s-copy{background:#10b981;color:#052e16}.s-view{background:#1e293b;color:#e2e8f0}
-.font-noto{font-family:'Noto Naskh Arabic',serif}.font-aref{font-family:'Aref Ruqaa',serif}.font-reem{font-family:'Reem Kufi',sans-serif}.font-amiri{font-family:'Amiri',serif}.font-cairo{font-family:'Cairo',sans-serif}
-.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#10b981;color:#042f2e;font-weight:900;font-size:12px;padding:9px 16px;border-radius:30px;display:none;z-index:9999}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#07090e">
+    <title>استوديو الباسم VIP | زخرفة الأسماء ومساعد الذكاء الاصطناعي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Aref+Ruqaa:wght@700&family=Cairo:wght@400;700;900&family=Noto+Naskh+Arabic:wght@700&family=Reem+Kufi:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+    <style>
+        :root {
+            --bg: #07090e;
+            --panel: #0f141d;
+            --inp: #090d14;
+            --brd: #1f2937;
+            --gold: #f3c623;
+            --cyan: #00f2ea;
+            --txt: #f8fafc;
+            --mut: #94a3b8;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', 'Noto Naskh Arabic', sans-serif; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; max-width: 100vw; overflow-x: hidden; background: var(--bg); color: var(--txt); min-height: 100vh; }
+        body { padding: 12px 10px 60px; }
+
+        .topbar {
+            max-width: 1200px; margin: 0 auto 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px;
+            background: var(--panel); border: 1px solid var(--brd); border-radius: 16px; padding: 12px 14px;
+        }
+        .brand-wrap { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+        .brand-icon {
+            width: 40px; height: 40px; flex-shrink: 0; border-radius: 11px;
+            background: linear-gradient(135deg, #f3c623, #d49b00);
+            display: flex; align-items: center; justify-content: center; font-size: 20px;
+        }
+        .brand-title h1 { font-size: 16px; font-weight: 900; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        .pro-badge { font-size: 10px; background: rgba(243,198,35,0.15); color: var(--gold); border: 1px solid var(--gold); padding: 1px 8px; border-radius: 20px; }
+        .brand-title p { font-size: 11px; color: var(--mut); margin-top: 2px; }
+        .random-btn {
+            background: #161f2e; color: var(--gold); border: 1px solid rgba(243,198,35,0.4);
+            padding: 8px 12px; border-radius: 10px; font-size: 12px; font-weight: 800; cursor: pointer; white-space: nowrap;
+        }
+
+        .workspace { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+        .preview-col { position: static; display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; }
+        @media (min-width: 980px) {
+            .workspace { grid-template-columns: 400px minmax(0, 1fr); align-items: start; gap: 20px; }
+            .preview-col { position: sticky; top: 16px; }
+        }
+
+        .vip-card {
+            width: 100%; max-width: 400px; border-radius: 22px; padding: 20px 16px 16px;
+            text-align: center; position: relative; overflow: hidden; box-shadow: 0 16px 38px rgba(0,0,0,0.65);
+        }
+        .theme-gold { background: linear-gradient(155deg, #12161f 0%, #1d190f 55%, #0d1017 100%); border: 2px solid #f3c623; --acc: #f3c623; }
+        .theme-tiktok { background: linear-gradient(155deg, #0b161b 0%, #130d1e 55%, #1c0c16 100%); border: 2px solid #00f2ea; --acc: #00f2ea; }
+        .theme-fire { background: linear-gradient(155deg, #1b0c09 0%, #261307 55%, #110907 100%); border: 2px solid #ff6b00; --acc: #ff6b00; }
+        .theme-hacker { background: linear-gradient(155deg, #07170d 0%, #091e12 55%, #050f09 100%); border: 2px solid #10b981; --acc: #10b981; }
+        .theme-royal { background: linear-gradient(155deg, #130d21 0%, #1f1135 55%, #0c0814 100%); border: 2px solid #a855f7; --acc: #a855f7; }
+
+        .card-header-badges { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .pill-right { background: var(--acc); color: #000; font-size: 10px; font-weight: 900; padding: 3px 10px; border-radius: 20px; }
+        .pill-left { background: rgba(255,255,255,0.08); color: #cbd5e1; font-size: 10px; padding: 3px 10px; border-radius: 20px; }
+
+        .avatar-wrap {
+            width: 88px; height: 88px; margin: 4px auto 12px; position: relative;
+            border-radius: 50%; padding: 3px; background: linear-gradient(135deg, var(--acc), transparent, var(--acc));
+        }
+        .avatar-inner {
+            width: 100%; height: 100%; border-radius: 50%; background: #0b0f17;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        .avatar-inner img { width: 100%; height: 100%; object-fit: cover; }
+        .verified-icon {
+            position: absolute; bottom: 2px; left: 2px; width: 22px; height: 22px;
+            background: #00f2ea; color: #000; border-radius: 50%; font-size: 12px; font-weight: 900;
+            display: flex; align-items: center; justify-content: center; border: 2px solid #0b0f17;
+        }
+
+        .card-main-name { font-size: 25px; font-weight: 900; color: #fff; min-height: 42px; margin-bottom: 6px; word-break: break-word; }
+        .card-meta-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+        .handle-tag { font-size: 12px; color: #cbd5e1; direction: ltr; font-weight: 600; }
+        .rank-tag { font-size: 11px; font-weight: 700; color: var(--acc); border: 1px solid var(--acc); padding: 2px 10px; border-radius: 14px; }
+
+        .dedication-box {
+            border: 1px dashed var(--acc); border-radius: 12px; padding: 10px;
+            background: rgba(0,0,0,0.35); margin-bottom: 14px; font-size: 12px; line-height: 1.6;
+        }
+        .dedication-box strong { color: var(--acc); font-size: 14px; display: block; margin-top: 2px; }
+
+        .card-bottom-row {
+            display: flex; align-items: center; justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 12px; margin-bottom: 8px;
+        }
+        .stats-group { display: flex; flex: 1; justify-content: space-around; }
+        .stat-box .num { font-size: 15px; font-weight: 900; color: #fff; }
+        .stat-box .lbl { font-size: 10px; color: var(--mut); }
+        .qr-box { width: 44px; height: 44px; background: #fff; padding: 3px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .card-footer-brand { display: flex; justify-content: space-between; font-size: 9px; color: var(--mut); }
+
+        .card-action-bar { width: 100%; max-width: 400px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .act-btn { padding: 10px 6px; border-radius: 11px; border: none; font-weight: 800; font-size: 12px; cursor: pointer; }
+        .btn-gold { background: linear-gradient(135deg, #f3c623, #d49b00); color: #000; }
+        .btn-green { background: #10b981; color: #052e16; }
+        .btn-cyan { background: #06b6d4; color: #082f49; }
+
+        .right-col { display: flex; flex-direction: column; gap: 16px; width: 100%; min-width: 0; }
+        .panel-box { background: var(--panel); border: 1px solid var(--brd); border-radius: 18px; padding: 15px 13px; width: 100%; overflow: hidden; }
+        .ai-panel { border-color: rgba(243,198,35,0.45); }
+        .panel-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .panel-head h2 { font-size: 15px; font-weight: 900; }
+        .status-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px; background: rgba(0,242,234,0.14); border: 1px solid var(--cyan); color: var(--cyan); }
+        .key-btn { background: #161f2e; color: var(--gold); border: 1px solid rgba(243,198,35,0.4); border-radius: 20px; padding: 3px 9px; font-size: 10px; cursor: pointer; }
+
+        .ai-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 12px; }
+        .ai-tab { background: var(--inp); border: 1px solid var(--brd); color: var(--mut); padding: 8px 4px; border-radius: 10px; font-size: 11px; font-weight: 800; cursor: pointer; }
+        .ai-tab.active { background: var(--gold); color: #000; border-color: var(--gold); }
+        .ai-pane { display: none; }
+        .ai-pane.active { display: block; }
+
+        .quick-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+        .chip { background: #161f2e; border: 1px solid var(--brd); color: #cbd5e1; padding: 5px 9px; border-radius: 14px; font-size: 11px; cursor: pointer; }
+        .input-row { display: flex; flex-direction: column; gap: 8px; }
+        @media (min-width: 540px) { .input-row { flex-direction: row; } }
+        .form-input, .form-select { width: 100%; background: var(--inp); border: 1px solid var(--brd); color: #fff; padding: 10px 11px; border-radius: 10px; font-size: 13px; outline: none; }
+        .ai-submit-btn { background: linear-gradient(135deg, #f3c623, #d49b00); color: #000; border: none; padding: 10px 14px; border-radius: 10px; font-weight: 900; font-size: 13px; cursor: pointer; }
+
+        .ai-results-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+        @media (min-width: 540px) { .ai-results-grid { grid-template-columns: repeat(2, 1fr); } }
+        .ai-nick-item { background: var(--inp); border: 1px solid var(--brd); border-radius: 10px; padding: 8px 10px; display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+        .mini-apply { background: rgba(243,198,35,0.15); color: var(--gold); border: 1px solid rgba(243,198,35,0.4); padding: 5px 8px; border-radius: 7px; font-size: 11px; font-weight: 700; cursor: pointer; }
+
+        .controls-grid { display: grid; gap: 12px; }
+        .controls-grid-2 { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        @media (min-width: 640px) { .controls-grid-2 { grid-template-columns: repeat(2, 1fr); } }
+        .controls-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .field-lbl { display: flex; justify-content: space-between; font-size: 11px; color: var(--mut); margin-bottom: 5px; font-weight: 600; }
+
+        .symbol-bar, .filter-row { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; max-width: 100%; }
+        .sym-btn, .f-btn { background: var(--inp); border: 1px solid var(--brd); color: #e2e8f0; padding: 6px 11px; border-radius: 10px; font-size: 12px; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+        .f-btn.active, .t-pill.active { background: var(--gold); color: #000; border-color: var(--gold); }
+        .theme-pills, .avatar-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+        .t-pill { flex: 1; min-width: 55px; background: var(--inp); border: 1px solid var(--brd); color: #cbd5e1; padding: 7px 6px; border-radius: 9px; font-size: 11px; font-weight: 700; cursor: pointer; text-align: center; }
+
+        .results-panel { max-width: 1200px; margin: 16px auto 0; }
+        .cards-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        @media (min-width: 540px) { .cards-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); } }
+        .style-card { background: var(--inp); border: 1px solid var(--brd); border-radius: 14px; padding: 13px; display: flex; flex-direction: column; justify-content: space-between; }
+        .style-meta { display: flex; justify-content: space-between; font-size: 10px; color: var(--mut); margin-bottom: 6px; }
+        .style-preview { font-size: 20px; text-align: center; margin: 10px 0; min-height: 36px; word-break: break-word; color: #fff; }
+        .style-actions { display: flex; gap: 8px; }
+        .s-btn { flex: 1; padding: 8px; border-radius: 8px; border: none; font-size: 12px; font-weight: 700; cursor: pointer; }
+        .s-copy { background: #10b981; color: #052e16; }
+        .s-view { background: #1e293b; color: #e2e8f0; border: 1px solid #334155; }
+
+        .font-noto { font-family: 'Noto Naskh Arabic', serif; }
+        .font-aref { font-family: 'Aref Ruqaa', serif; }
+        .font-reem { font-family: 'Reem Kufi', sans-serif; }
+        .font-amiri { font-family: 'Amiri', serif; }
+        .font-cairo { font-family: 'Cairo', sans-serif; }
+
+        .toast {
+            position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+            background: #10b981; color: #042f2e; font-weight: 900; font-size: 12px;
+            padding: 10px 18px; border-radius: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            display: none; z-index: 9999; width: max-content; max-width: 92vw; text-align: center;
+        }
+    </style>
 </head>
 <body>
-<header class="topbar">
-<div class="brand-wrap"><div class="brand-icon">👑</div><div class="brand-title"><h1>استوديو الباسم VIP <span class="pro-badge">PRO V4.5</span></h1><p>زخرفة الأسماء • بطاقة تيك توك • مساعد جيميني</p></div></div>
-<button class="random-btn" onclick="randomizeIdentity()">🎲 اسم عشوائي</button>
-</header>
-<main class="workspace">
-<section class="preview-col">
-<div class="vip-card theme-gold" id="preview-card">
-<div class="card-header-badges"><span class="pill-right">BASEM ZORBA • VIP</span><span class="pill-left">TikTok Official Card</span></div>
-<div class="avatar-wrap"><div class="avatar-inner" id="avatar-box"></div><div class="verified-icon" id="verified-badge">✓</div></div>
-<div class="card-main-name font-noto" id="main-display">أَبُّو بَاسِمٍ</div>
-<div class="card-meta-row"><span class="handle-tag" id="handle-display">@basem.zorba</span><span class="rank-tag" id="badge-display">VIP ملكي 👑</span></div>
-<div class="dedication-box"><span id="dedication-prefix-display">👑 إهداء خاص من Basem Zorba إلى كبار الشخصيات</span><strong id="target-person-display">أبو باسم الغالي</strong></div>
-<div class="card-bottom-row">
-<div class="stats-group"><div class="stat-box"><div class="num" id="followers-display">1.8M</div><div class="lbl">المتابعين</div></div><div class="stat-box"><div class="num" id="likes-display">24.5M</div><div class="lbl">الإعجابات</div></div><div class="stat-box"><div class="num" id="following-display">112</div><div class="lbl">يتابع</div></div></div>
-<div class="qr-box" id="qr-container"></div>
-</div>
-<div class="card-footer-brand"><span>⚡ Crafted by Basem Studio</span><span>TIKTOK VIP PASS</span></div>
-</div>
-<div class="card-action-bar">
-<button class="act-btn btn-gold" onclick="copyCurrentMainName()">📋 نسخ الاسم</button>
-<button class="act-btn btn-green" onclick="downloadCardPNG()">📸 حفظ PNG</button>
-<button class="act-btn btn-cyan" onclick="shareToWhatsApp()">💬 واتساب</button>
-</div>
-</section>
-<section class="right-col">
-<div class="panel-box ai-panel">
-<div class="panel-head"><h2>🤖 مساعد باسم الذكي (Gemini AI)</h2><div style="display:flex;gap:5px"><span class="status-badge" id="ai-status-badge">🟢 Gemini جاهز</span><button class="key-btn" onclick="setCustomGeminiKey()">🔑 المفتاح</button></div></div>
-<div class="ai-tabs">
-<button class="ai-tab active" onclick="switchAiTab('nicknames',this)">⚡ ألقاب AI</button>
-<button class="ai-tab" onclick="switchAiTab('tribute',this)">👑 صانع الإهداء</button>
-<button class="ai-tab" onclick="switchAiTab('caption',this)">🔥 ترند تيك توك</button>
-</div>
-<div class="ai-pane active" id="pane-nicknames">
-<div class="quick-chips">
-<span class="chip" onclick="setAiNickStyle('قناص ببجي مرعب وزعيم سكواد')">🎯 قناص ببجي</span>
-<span class="chip" onclick="setAiNickStyle('نجم مهارات كرة قدم سريع')">⚽ كرة قدم</span>
-<span class="chip" onclick="setAiNickStyle('زعيم كلان ملكي وهيبة')">👑 زعيم كلان</span>
-</div>
-<div class="input-row"><input type="text" id="ai-nick-style" class="form-input" value="قناص ببجي مرعب وزعيم سكواد"><button class="ai-submit-btn" id="btn-gen-nicks" onclick="generateAiNicknames()">توليد بالذكاء الاصطناعي ✨</button></div>
-<div class="ai-results-grid" id="ai-nicks-grid"></div>
-</div>
-<div class="ai-pane" id="pane-tribute">
-<div class="controls-grid-2" style="margin-bottom:8px">
-<input type="text" id="ai-trib-target" class="form-input" value="أبو باسم الغالي" placeholder="المهدى إليه">
-<select id="ai-trib-occasion" class="form-select"><option value="شكر وتقدير VIP ملكي">شكر وتقدير VIP ملكي</option><option value="أقوى داعم وأسطورة البثوث">أقوى داعم وأسطورة البثوث</option><option value="رفيق السكواد والفزعة">رفيق السكواد والفزعة</option></select>
-</div>
-<div class="input-row"><input type="text" id="ai-trib-note" class="form-input" placeholder="لمسة خاصة..."><button class="ai-submit-btn" id="btn-gen-trib" onclick="generateAiTribute()">صياغة وتطبيق بالكارت 🪄</button></div>
-</div>
-<div class="ai-pane" id="pane-caption">
-<div class="input-row"><input type="text" id="ai-cap-topic" class="form-input" value="لقطة جلد سكواد كامل في ببجي بالـ AWM"><button class="ai-submit-btn" id="btn-gen-cap" onclick="generateAiCaption()">توليد وصف وهاشتاجات 🚀</button></div>
-<div id="ai-cap-result" style="display:none;margin-top:10px;background:var(--inp);padding:10px;border-radius:10px;font-size:12px"></div>
-</div>
-</div>
-<div class="panel-box">
-<div class="panel-head"><h2>🎛️ غرفة التحكم وصناعة الهوية</h2></div>
-<div class="controls-grid">
-<div class="controls-grid-2">
-<div><label class="field-lbl">✨ الاسم المراد زخرفته</label><input type="text" id="input-name" class="form-input" value="أبو باسم" oninput="generateAll()"></div>
-<div><label class="field-lbl">📱 يوزر التيك توك</label><div style="display:flex;gap:5px"><input type="text" id="input-handle" class="form-input" value="basem.zorba" style="direction:ltr" oninput="updateHandleAndQR()"><button onclick="toggleVerified()" style="background:rgba(0,242,234,.15);border:1px solid var(--cyan);color:var(--cyan);padding:0 10px;border-radius:10px;font-weight:800;font-size:11px">✓ موثق</button></div></div>
-</div>
-<div class="symbol-bar">
-<button class="sym-btn" onclick="wrapPreview('꧁','꧂')">꧁꧂</button><button class="sym-btn" onclick="wrapPreview('༺','༻')">༺༻</button><button class="sym-btn" onclick="wrapPreview('♛ ',' ♛')">♛ تاج</button><button class="sym-btn" onclick="wrapPreview('⚔️ ',' ⚔️')">⚔️ سيوف</button><button class="sym-btn" onclick="wrapPreview('🔥 ',' 🔥')">🔥 نار</button><button class="sym-btn" onclick="wrapPreview('⚡ ',' ⚡')">⚡ برق</button><button class="sym-btn" onclick="wrapPreview('',' 〆')">〆</button>
-</div>
-<div class="controls-grid-2">
-<select id="select-level" class="form-select" onchange="generateAll()"><option value="heavy">عجقة ثقيلة وأجنحة (VIP)</option><option value="royal">ملكي متوازن</option><option value="clean">خفيف وأنيق</option></select>
-<select id="select-font" class="form-select" onchange="updateMainDisplayFont()"><option value="font-noto">خط النسخ الملكي</option><option value="font-aref">خط الرقعة</option><option value="font-reem">الخط الكوفي</option><option value="font-amiri">الخط الأميري</option><option value="font-cairo">خط كايرو</option></select>
-</div>
-<div class="controls-grid-2">
-<select id="select-badge" class="form-select" onchange="updateBadge()"><option value="VIP ملكي 👑">VIP ملكي 👑</option><option value="أسطورة ببجي 🔫">أسطورة ببجي 🔫</option><option value="صانع محتوى 🎬">صانع محتوى 🎬</option></select>
-<input type="text" id="input-target-person" class="form-input" value="أبو باسم الغالي" oninput="updateDedication()">
-</div>
-<select id="select-dedication" class="form-select" onchange="updateDedication()"><option value="👑 إهداء خاص من Basem Zorba إلى كبار الشخصيات">👑 إهداء خاص من Basem Zorba إلى كبار الشخصيات</option><option value="🔥 من استوديو باسم إلى أسطورة التيك توك">🔥 من استوديو باسم إلى أسطورة التيك توك</option></select>
-<div class="controls-grid-3">
-<input type="text" id="input-followers" class="form-input" value="1.8M" oninput="updateStats()">
-<input type="text" id="input-likes" class="form-input" value="24.5M" oninput="updateStats()">
-<input type="text" id="input-following" class="form-input" value="112" oninput="updateStats()">
-</div>
-<div class="theme-pills">
-<button class="t-pill active" onclick="setCardTheme('theme-gold',this)">ذهبي</button><button class="t-pill" onclick="setCardTheme('theme-tiktok',this)">تيك توك</button><button class="t-pill" onclick="setCardTheme('theme-fire',this)">ناري</button><button class="t-pill" onclick="setCardTheme('theme-hacker',this)">هاكر</button><button class="t-pill" onclick="setCardTheme('theme-royal',this)">ملكي</button>
-</div>
-<div class="avatar-pills">
-<button class="t-pill" onclick="setPresetAvatar('crown')">👑</button><button class="t-pill" onclick="setPresetAvatar('gamer')">🎮</button><button class="t-pill" onclick="setPresetAvatar('falcon')">🦅</button><label class="t-pill">📁 صورة<input type="file" accept="image/*" style="display:none" onchange="uploadAvatar(event)"></label>
-</div>
-</div></div></section></main>
-<section class="panel-box results-panel">
-<div class="panel-head"><h2>🧬 نتائج المحرك الذكي (24 زخرفة)</h2><button class="random-btn" onclick="generateAll()">🔄 تجديد</button></div>
-<div class="filter-row">
-<button class="f-btn active" onclick="filterStyles('all',this)">الكل</button><button class="f-btn" onclick="filterStyles('ملكي VIP',this)">👑 ملكي</button><button class="f-btn" onclick="filterStyles('أجنحة ببجي',this)">🎮 ببجي</button><button class="f-btn" onclick="filterStyles('تشكيل وكشيدة',this)">🖋️ كشيدة</button><button class="f-btn" onclick="filterStyles('إنجليزي Unicode',this)">🔤 إنجليزي</button>
-</div>
-<div class="cards-grid" id="results-grid"></div>
-</section>
-<div class="toast" id="toast-box"></div>
-<script>
-const nonConn=new Set(['ا','أ','إ','آ','د','ذ','ر','ز','و','ؤ','ة','ء','ى',' ']),arReg=/[\u0621-\u064A]/;
-const pools={heavy:['َ','ُ','ِ','ّ','ً','ٌ','ٍ','ْ','ٰ'],royal:['َ','ُ','ِ','ّ','ْ'],clean:['َ','ُ','ِ']};
-const enMap={'أ':'A','ا':'A','ب':'B','ت':'T','ث':'Th','ج':'J','ح':'H','خ':'Kh','د':'D','ذ':'Z','ر':'R','ز':'Z','س':'S','ش':'Sh','ص':'S','ض':'D','ط':'T','ظ':'Z','ع':'A','غ':'Gh','ف':'F','ق':'Q','ك':'K','ل':'L','م':'M','ن':'N','ه':'H','ة':'a','و':'W','ي':'Y','ى':'a'};
-const uFonts={
-script:{a:'𝓪',b:'𝓫',c:'𝓬',d:'𝓭',e:'𝓮',f:'𝓯',g:'𝓰',h:'𝓱',i:'𝓲',j:'𝓳',k:'𝓴',l:'𝓵',m:'𝓶',n:'𝓷',o:'𝓸',p:'𝓹',q:'𝓺',r:'𝓻',s:'𝓼',t:'𝓽',u:'𝓾',v:'𝓿',w:'𝔀',x:'𝔁',y:'𝔂',z:'𝔃'},
-double:{a:'𝕒',b:'𝕓',c:'𝕔',d:'𝕕',e:'𝕖',f:'𝕗',g:'𝕘',h:'𝕙',i:'𝕚',j:'𝕛',k:'𝕜',l:'𝕝',m:'𝕞',n:'𝕟',o:'𝕠',p:'𝕡',q:'𝕢',r:'𝕣',s:'𝕤',t:'𝕥',u:'𝕦',v:'𝕧',w:'𝕨',x:'𝕩',y:'𝕪',z:'𝕫'},
-caps:{a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'s',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ'}
-};
-function tashkeel(t,m){const p=pools[m]||pools.heavy;return t.split('').map(function(c){return !arReg.test(c)?c:c+p[Math.floor(Math.random()*p.length)]+(m==='heavy'?p[Math.floor(Math.random()*p.length)]:'');}).join('');}
-function kashida(t,n){const k='ـ'.repeat(n),a=t.split('');return a.map(function(c,i){return (arReg.test(c)&&a[i+1]&&arReg.test(a[i+1])&&!nonConn.has(c))?c+k:c;}).join('');}
-function toEn(t,f){let b=t.replace('أبو','Abu ').replace('باسم','Basem').split('').map(function(c){return enMap[c]!==undefined?enMap[c]:c;}).join('');const m=uFonts[f]uFonts.script;return b.split('').map(function(c){return m[c.toLowerCase()]c;}).join('');}
-function generateAll(){
-const raw=(document.getElementById('input-name').value||'أبو باسم').trim(),lvl=document.getElementById('select-level').value,g=document.getElementById('results-grid');
-const tH=tashkeel(raw,'heavy'),tR=tashkeel(raw,'royal'),tC=tashkeel(raw,'clean'),kS=kashida(tR,1),kL=kashida(tC,3);
-const list=[
-{t:'التشكيل السلطاني',x:'👑 '+(lvl==='clean'?tC:tR)+' 👑',c:'ملكي VIP',f:'font-noto'},
-{t:'أجنحة المحارب',x:'꧁༺ '+tH+' ༻꧂',c:'أجنحة ببجي',f:'font-noto'},
-{t:'كشيدة متصلة أصيلة',x:kL,c:'تشكيل وكشيدة',f:'font-reem'},
-{t:'هيبة السيوف',x:'⚔️ '+kS+' ⚔️',c:'ملكي VIP',f:'font-aref'},
-{t:'الزعيم الصيني',x:'『 '+tR+' 』〆',c:'أجنحة ببجي',f:'font-cairo'},
-{t:'Bold Script',x:'✨ '+toEn(raw,'script')+' ✨',c:'إنجليزي Unicode',f:'font-cairo'},
-{t:'Double Struck',x:'👑 '+toEn(raw,'double')+' 👑',c:'إنجليزي Unicode',f:'font-cairo'},
-{t:'Small Caps VIP',x:'꧁ '+toEn(raw,'caps')+' ꧂',c:'إنجليزي Unicode',f:'font-cairo'},
-{t:'الرقعة السلطانية',x:kashida(tH,1),c:'تشكيل وكشيدة',f:'font-aref'},
-{t:'التاج الذهبي',x:'♛ '+tR+' ♛',c:'ملكي VIP',f:'font-amiri'},
-{t:'الصاعقة الحارقة',x:'⚡ '+tH+' ⚡',c:'أجنحة ببجي',f:'font-noto'},
-{t:'قناص الكلان',x:'︻デ═一 '+tC,c:'أجنحة ببجي',f:'font-cairo'}
-];
-g.innerHTML=list.map(function(i){const s=i.x.replace(/'/g,"\\'");return '<div class="style-card" data-cat="'+i.c+'"><div class="style-meta"><span>'+i.t+'</span><span>'+i.c+'</span></div><div class="style-preview '+i.f+'">'+i.x+'</div><div class="style-actions"><button class="s-btn s-copy" onclick="copyText(\''+s+'\')">نسخ 📋</button><button class="s-btn s-view" onclick="applyToPreview(\''+s+'\',\''+i.f+'\',true)">معاينة 👁️</button></div></div>';}).join('');
-applyToPreview(list[0].x,document.getElementById('select-font').value,false);
-}
-function applyToPreview(x,f,sc){const e=document.getElementById('main-display');e.innerText=x;e.className='card-main-name '+(f||document.getElementById('select-font').value);if(sc&&window.innerWidth<980)document.getElementById('preview-card').scrollIntoView({behavior:'smooth',block:'center'});}
-function wrapPreview(l,r){const e=document.getElementById('main-display');e.innerText=l+e.innerText+r;}
-function updateMainDisplayFont(){document.getElementById('main-display').className='card-main-name '+document.getElementById('select-font').value;}
-function updateBadge(){document.getElementById('badge-display').innerText=document.getElementById('select-badge').value;}
-function updateDedication(){document.getElementById('dedication-prefix-display').innerText=document.getElementById('select-dedication').value;document.getElementById('target-person-display').innerText=document.getElementById('input-target-person').value;}
-function updateStats(){document.getElementById('followers-display').innerText=document.getElementById('input-followers').value;document.getElementById('likes-display').innerText=document.getElementById('input-likes').value;document.getElementById('following-display').innerText=document.getElementById('input-following').value;}
-function randomizeIdentity(){const p=['باسم الأسطورة','أبو باسم الملك','Basem Sniper','الزعيم باسم'];document.getElementById('input-name').value=p[Math.floor(Math.random()*p.length)];generateAll();}
-function toggleVerified(){const b=document.getElementById('verified-badge');b.style.display=b.style.display==='none'?'flex':'none';}
-function updateHandleAndQR(){const r=(document.getElementById('input-handle').value'basem.zorba').replace('@','').trim();document.getElementById('handle-display').innerText='@'+r;let h=0,c='';for(let i=0;i<r.length;i++)h=((h<<5)-h)+r.charCodeAt(i);for(let y=0;y<7;y++)for(let x=0;x<7;x++)if((y<2&&x<2)(y<2&&x>4)(y>4&&x<2)Math.abs((h>>((y*7+x)%16))&1))c+='<rect x="'+(x*6+2)+'" y="'+(y*6+2)+'" width="5" height="5" rx="1" fill="#090d14"/>';document.getElementById('qr-container').innerHTML='<svg viewBox="0 0 46 46" width="38" height="38">'+c+'</svg>';}
-function setCardTheme(t,b){document.getElementById('preview-card').className='vip-card '+t;if(b){b.parentElement.querySelectorAll('.t-pill').forEach(function(x){x.classList.remove('active');});b.classList.add('active');}}
-function setPresetAvatar(t){const s={crown:'<svg viewBox="0 0 100 100" width="54" height="54"><path d="M15 72 L22 32 L40 52 L50 24 L60 52 L78 32 L85 72 Z" fill="#f3c623"/></svg>',gamer:'<svg viewBox="0 0 100 100" width="54" height="54"><rect x="15" y="32" width="70" height="40" rx="18" fill="#00f2ea"/></svg>',falcon:'<svg viewBox="0 0 100 100" width="54" height="54"><path d="M20 30 Q50 15 80 30 L65 75 Q50 85 35 75 Z" fill="#ff6b00"/></svg>'};document.getElementById('avatar-box').innerHTML=s[t]||s.crown;}
-function uploadAvatar(e){const f=e.target.files[0];if(f)document.getElementById('avatar-box').innerHTML='<img src="'+URL.createObjectURL(f)+'">';}
-function filterStyles(c,b){document.querySelectorAll('.f-btn').forEach(function(x){x.classList.remove('active');});b.classList.add('active');document.querySelectorAll('.style-card').forEach(function(x){x.style.display=(c==='all'||x.getAttribute('data-cat')===c)?'block':'none';});}
-function showToast(m){const t=document.getElementById('toast-box');t.innerText=m;t.style.display='block';setTimeout(function(){t.style.display='none';},2500);}
-function copyText(x){navigator.clipboard.writeText(x);showToast('✅ تم النسخ: '+x);}
-function copyCurrentMainName(){copyText(document.getElementById('main-display').innerText);}
-function downloadCardPNG(){html2canvas(document.getElementById('preview-card'),{scale:3,backgroundColor:null}).then(function(c){const a=document.createElement('a');a.download='Basem-VIP.png';a.href=c.toDataURL();a.click();});}
-function shareToWhatsApp(){window.open('https://api.whatsapp.com/send?text='+encodeURIComponent('👑 بطاقة VIP: '+document.getElementById('main-display').innerText+'\nhttps://basem-tiktook.pages.dev'),'_blank');}
-function switchAiTab(id,b){document.querySelectorAll('.ai-tab').forEach(function(x){x.classList.remove('active');});document.querySelectorAll('.ai-pane').forEach(function(x){x.classList.remove('active');});b.classList.add('active');document.getElementById('pane-'+id).classList.add('active');}
-function setAiNickStyle(v){document.getElementById('ai-nick-style').value=v;generateAiNicknames();}
-function setCustomGeminiKey(){const v=prompt('أدخل مفتاح Gemini API:',localStorage.getItem('BASEM_GEMINI_KEY')||'');if(v!==null)localStorage.setItem('BASEM_GEMINI_KEY',v.trim());}
-async function callGeminiAPI(p){
-const customKey=localStorage.getItem('BASEM_GEMINI_KEY')||'',b=document.getElementById('ai-status-badge');b.innerText='⏳ جاري التوليد...';
-const url=window.location.hostname.includes('github.io')?'https://basem-tiktook.pages.dev/api/gemini':'/api/gemini';
-try{const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({},p,{customKey:customKey}))});if(r.ok){const d=await r.json();if(d.ok&&d.rawText){b.innerText='🟢 شغال لايف ('+(d.model||'Gemini')+')';return d.rawText;}}}catch(e){}
-b.innerText='🟠 وضع احتياطي';return null;
-}
-async function generateAiNicknames(){
-const n=document.getElementById('input-name').value||'باسم',s=document.getElementById('ai-nick-style').value;
-const raw=await callGeminiAPI({type:'nicknames',name:n,style:s});
-let l=raw?raw.split('\n').map(function(x){return x.replace(/[\*\d\-\.]/g,'').trim();}).filter(function(x){return x.length>2;}).slice(0,6):['꧁༺ '+n+' ༻꧂ ⚡','BASEM ⦂ أسطورة ⦃ PUBG ⦄','♛ '+n+' • SNIPER ♛','⚔️ الزعيم '+n+' VIP ⚔️'];
-document.getElementById('ai-nicks-grid').innerHTML=l.map(function(x){const sf=x.replace(/'/g,"\\'");return '<div class="ai-nick-item"><span>'+x+'</span><div><button class="mini-apply" onclick="applyToPreview(\''+sf+'\',null,true)">تطبيق 🪄</button> <button class="mini-apply" onclick="copyText(\''+sf+'\')">📋</button></div></div>';}).join('');
-}
-async function generateAiTribute(){
-const t=document.getElementById('ai-trib-target').value||'أبو باسم',o=document.getElementById('ai-trib-occasion').value,n=document.getElementById('ai-trib-note').value;
-const raw=await callGeminiAPI({type:'tribute',name:'Basem Zorba',target:t,occasion:o,note:n});
-if(raw)raw.split('\n').forEach(function(l){if(l.includes('اللقب:'))document.getElementById('badge-display').innerText=l.split(':')[1].trim()+' 👑';if(l.includes('الرسالة:'))document.getElementById('dedication-prefix-display').innerText='👑 '+l.split(':')[1].trim();});
-document.getElementById('target-person-display').innerText=t;applyToPreview(document.getElementById('main-display').innerText,null,true);
-}
-async function generateAiCaption(){
-const raw=await callGeminiAPI({type:'caption',name:'Basem Zorba',topic:document.getElementById('ai-cap-topic').value});
-const bx=document.getElementById('ai-cap-result');bx.style.display='block';bx.innerText=raw||'🔥 شوفوا أقوى لقطة ببجي! #ببجي #باسم_زربا #اكسبلور';
-}
-window.onload=function(){setPresetAvatar('crown');updateHandleAndQR();generateAll();generateAiNicknames();};
-</script></body></html>
+
+    <header class="topbar">
+        <div class="brand-wrap">
+            <div class="brand-icon">👑</div>
+            <div class="brand-title">
+                <h1>استوديو الباسم VIP <span class="pro-badge">PRO V4.5</span></h1>
+                <p>زخرفة الأسماء • بطاقة تيك توك • مساعد جيميني الذكي</p>
+            </div>
+        </div>
+        <button class="random-btn" onclick="randomizeIdentity()">🎲 اسم عشوائي</button>
+    </header>
+
+    <main class="workspace">
+        <section class="preview-col">
+            <div class="vip-card theme-gold" id="preview-card">
+                <div class="card-header-badges">
+                    <span class="pill-right">BASEM ZORBA • VIP</span>
+                    <span class="pill-left">TikTok Official Card</span>
+                </div>
+
+                <div class="avatar-wrap">
+                    <div class="avatar-inner" id="avatar-box">
+                        <svg viewBox="0 0 100 100" width="56" height="56"><path d="M15 72 L22 32 L40 52 L50 24 L60 52 L78 32 L85 72 Z" fill="#f3c623"/><rect x="18" y="76" width="64" height="8" rx="4" fill="#d49b00"/></svg>
+                    </div>
+                    <div class="verified-icon" id="verified-badge">✓</div>
+                </div>
+
+                <div class="card-main-name font-noto" id="main-display">👑 أَبُّو بَاسِمٍ 👑</div>
+
+                <div class="card-meta-row">
+                    <span class="handle-tag" id="handle-display">@basem.zorba</span>
+                    <span class="rank-tag" id="badge-display">VIP ملكي 👑</span>
+                </div>
+
+                <div class="dedication-box">
+                    <span id="dedication-prefix-display">👑 إهداء خاص من Basem Zorba إلى كبار الشخصيات</span>
+                    <strong id="target-person-display">أبو باسم الغالي</strong>
+                </div>
+
+                <div class="card-bottom-row">
+                    <div class="stats-group">
+                        <div class="stat-box"><div class="num" id="followers-display">1.8M</div><div class="lbl">المتابعين</div></div>
+                        <div class="stat-box"><div class="num" id="likes-display">24.5M</div><div class="lbl">الإعجابات</div></div>
+                        <div class="stat-box"><div class="num" id="following-display">112</div><div class="lbl">يتابع</div></div>
+                    </div>
+                    <div class="qr-box" id="qr-container">
+                        <svg viewBox="0 0 46 46" width="38" height="38"><rect x="2" y="2" width="12" height="12" rx="2" fill="#090d14"/><rect x="32" y="2" width="12" height="12" rx="2" fill="#090d14"/><rect x="2" y="32" width="12" height="12" rx="2" fill="#090d14"/><rect x="18" y="18" width="10" height="10" rx="2" fill="#090d14"/><rect x="32" y="32" width="6" height="6" fill="#090d14"/></svg>
+                    </div>
+                </div>
+
+                <div class="card-footer-brand">
+                    <span>⚡ Crafted by Basem Studio</span>
+                    <span>TIKTOK VIP PASS</span>
+                </div>
+            </div>
+
+            <div class="card-action-bar">
+                <button class="act-btn btn-gold" onclick="copyCurrentMainName()">📋 نسخ الاسم</button>
+                <button class="act-btn btn-green" onclick="downloadCardPNG()">📸 حفظ PNG</button>
+                <button class="act-btn btn-cyan" onclick="shareToWhatsApp()">💬 واتساب</button>
+            </div>
+        </section>
+
+        <section class="right-col">
+            <div class="panel-box ai-panel">
+                <div class="panel-head">
+                    <h2>🤖 مساعد باسم الذكي (Gemini AI)</h2>
+                    <div style="display:flex; gap:6px; align-items:center;">
+                        <span class="status-badge" id="ai-status-badge">🟢 Gemini جاهز</span>
+                        <button class="key-btn" onclick="setCustomGeminiKey()">🔑 المفتاح</button>
+                    </div>
+                </div>
+
+                <div class="ai-tabs">
+                    <button class="ai-tab active" onclick="switchAiTab('nicknames', this)">⚡ ألقاب AI</button>
+                    <button class="ai-tab" onclick="switchAiTab('tribute', this)">👑 صانع الإهداء</button>
+                    <button class="ai-tab" onclick="switchAiTab('caption', this)">🔥 ترند تيك توك</button>
+                </div>
+
+                <div class="ai-pane active" id="pane-nicknames">
+                    <div class="quick-chips">
+                        <span class="chip" onclick="setAiNickStyle('قناص ببجي مرعب وزعيم سكواد')">🎯 قناص ببجي</span>
+                        <span class="chip" onclick="setAiNickStyle('نجم مهارات كرة قدم سريع')">⚽ كرة قدم</span>
+                        <span class="chip" onclick="setAiNickStyle('زعيم كلان ملكي وهيبة')">👑 زعيم كلان</span>
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="ai-nick-style" class="form-input" style="flex:1;" value="قناص ببجي مرعب وزعيم سكواد">
+                        <button class="ai-submit-btn" id="btn-gen-nicks" onclick="generateAiNicknames()">توليد بالذكاء الاصطناعي ✨</button>
+                    </div>
+                    <div class="ai-results-grid" id="ai-nicks-grid"></div>
+                </div>
+
+                <div class="ai-pane" id="pane-tribute">
+                    <div class="controls-grid-2" style="margin-bottom:8px;">
+                        <input type="text" id="ai-trib-target" class="form-input" value="أبو باسم الغالي" placeholder="المهدى إليه">
+                        <select id="ai-trib-occasion" class="form-select">
+                            <option value="شكر وتقدير VIP ملكي">شكر وتقدير VIP ملكي</option>
+                            <option value="أقوى داعم وأسطورة البثوث">أقوى داعم وأسطورة البثوث</option>
+                            <option value="رفيق السكواد والفزعة">رفيق السكواد والفزعة</option>
+                        </select>
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="ai-trib-note" class="form-input" style="flex:1;" placeholder="لمسة خاصة...">
+                        <button class="ai-submit-btn" id="btn-gen-trib" onclick="generateAiTribute()">صياغة وتطبيق بالكارت 🪄</button>
+                    </div>
+                </div>
+
+                <div class="ai-pane" id="pane-caption">
+                    <div class="input-row">
+                        <input type="text" id="ai-cap-topic" class="form-input" style="flex:1;" value="لقطة جلد سكواد كامل في ببجي بالـ AWM">
+                        <button class="ai-submit-btn" id="btn-gen-cap" onclick="generateAiCaption()">توليد وصف وهاشتاجات 🚀</button>
+                    </div>
+                    <div id="ai-cap-result" style="display:none; margin-top:10px; background:var(--inp); padding:10px; border-radius:10px; font-size:12px; line-height:1.7;"></div>
+                </div>
+            </div>
+
+            <div class="panel-box">
+                <div class="panel-head"><h2>🎛️ غرفة التحكم وصناعة الهوية</h2></div>
+                <div class="controls-grid">
+                    <div class="controls-grid-2">
+                        <div>
+                            <label class="field-lbl">✨ الاسم المراد زخرفته</label>
+                            <input type="text" id="input-name" class="form-input" value="أبو باسم" oninput="generateAll()">
+                        </div>
+                        <div>
+                            <label class="field-lbl">📱 يوزر التيك توك</label>
+                            <div style="display:flex; gap:6px;">
+                                <input type="text" id="input-handle" class="form-input" value="basem.zorba" style="direction:ltr;" oninput="updateHandleAndQR()">
+                                <button onclick="toggleVerified()" style="background:rgba(0,242,234,0.15); border:1px solid var(--cyan); color:var(--cyan); padding:0 10px; border-radius:10px; font-weight:800; font-size:11px; cursor:pointer;">✓ موثق</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="symbol-bar">
+                        <button class="sym-btn" onclick="wrapPreview('꧁','꧂')">꧁꧂</button>
+                        <button class="sym-btn" onclick="wrapPreview('༺','༻')">༺༻</button>
+                        <button class="sym-btn" onclick="wrapPreview('♛ ',' ♛')">♛ تاج</button>
+                        <button class="sym-btn" onclick="wrapPreview('⚔️ ',' ⚔️')">⚔️ سيوف</button>
+                        <button class="sym-btn" onclick="wrapPreview('🔥 ',' 🔥')">🔥 نار</button>
+                        <button class="sym-btn" onclick="wrapPreview('⚡ ',' ⚡')">⚡ برق</button>
+                        <button class="sym-btn" onclick="wrapPreview('',' 〆')">〆</button>
+                    </div>
+
+                    <div class="controls-grid-2">
+                        <select id="select-level" class="form-select" onchange="generateAll()">
+                            <option value="heavy">عجقة ثقيلة وأجنحة (VIP)</option>
+                            <option value="royal">ملكي متوازن وفخم</option>
+                            <option value="clean">خفيف وأنيق</option>
+                        </select>
+                        <select id="select-font" class="form-select" onchange="updateMainDisplayFont()">
+                            <option value="font-noto">خط النسخ الملكي</option>
+                            <option value="font-aref">خط الرقعة</option>
+                            <option value="font-reem">الخط الكوفي</option>
+                            <option value="font-amiri">الخط الأميري</option>
+                            <option value="font-cairo">خط كايرو</option>
+                        </select>
+                    </div>
+
+                    <div class="controls-grid-2">
+                        <select id="select-badge" class="form-select" onchange="updateBadge()">
+                            <option value="VIP ملكي 👑">VIP ملكي 👑</option>
+                            <option value="أسطورة ببجي 🔫">أسطورة ببجي 🔫</option>
+                            <option value="صانع محتوى 🎬">صانع محتوى 🎬</option>
+                        </select>
+                        <input type="text" id="input-target-person" class="form-input" value="أبو باسم الغالي" oninput="updateDedication()">
+                    </div>
+
+                    <select id="select-dedication" class="form-select" onchange="updateDedication()">
+                        <option value="👑 إهداء خاص من Basem Zorba إلى كبار الشخصيات">👑 إهداء خاص من Basem Zorba إلى كبار الشخصيات</option>
+                        <option value="🔥 من استوديو باسم إلى أسطورة التيك توك">🔥 من استوديو باسم إلى أسطورة التيك توك</option>
+                    </select>
+
+                    <div class="controls-grid-3">
+                        <input type="text" id="input-followers" class="form-input" value="1.8M" oninput="updateStats()">
+                        <input type="text" id="input-likes" class="form-input" value="24.5M" oninput="updateStats()">
+                        <input type="text" id="input-following" class="form-input" value="112" oninput="updateStats()">
+                    </div>
+
+                    <div class="theme-pills">
+                        <button class="t-pill active" onclick="setCardTheme('theme-gold',this)">ذهبي</button>
+                        <button class="t-pill" onclick="setCardTheme('theme-tiktok',this)">تيك توك</button>
+                        <button class="t-pill" onclick="setCardTheme('theme-fire',this)">ناري</button>
+                        <button class="t-pill" onclick="setCardTheme('theme-hacker',this)">هاكر</button>
+                        <button class="t-pill" onclick="setCardTheme('theme-royal',this)">ملكي</button>
+                    </div>
+
+                    <div class="avatar-pills">
+                        <button class="t-pill" onclick="setPresetAvatar('crown')">👑</button>
+                        <button class="t-pill" onclick="setPresetAvatar('gamer')">🎮</button>
+                        <button class="t-pill" onclick="setPresetAvatar('falcon')">🦅</button>
+                        <label class="t-pill" style="cursor:pointer;">📁 صورة<input type="file" accept="image/*" style="display:none;" onchange="uploadAvatar(event)"></label>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="panel-box results-panel">
+        <div class="panel-head">
+            <h2>🧬 نتائج المحرك الذكي (24 زخرفة فورية)</h2>
+            <button class="random-btn" onclick="generateAll()">🔄 تجديد</button>
+        </div>
+        <div class="filter-row">
+            <button class="f-btn active" onclick="filterStyles('all',this)">الكل</button>
+            <button class="f-btn" onclick="filterStyles('ملكي VIP',this)">👑 ملكي</button>
+            <button class="f-btn" onclick="filterStyles('أجنحة ببجي',this)">🎮 ببجي</button>
+            <button class="f-btn" onclick="filterStyles('تشكيل وكشيدة',this)">🖋️ كشيدة</button>
+            <button class="f-btn" onclick="filterStyles('إنجليزي Unicode',this)">🔤 إنجليزي</button>
+        </div>
+        <div class="cards-grid" id="results-grid"></div>
+    </section>
+
+    <div class="toast" id="toast-box"></div>
+
+    <script>
+        const nonConn = new Set(['ا','أ','إ','آ','د','ذ','ر','ز','و','ؤ','ة','ء','ى',' ']);
+        const arReg = /[\u0621-\u064A]/;
+        const pools = {
+            heavy: ['َ','ُ','ِ','ّ','ً','ٌ','ٍ','ْ','ٰ'],
+            royal: ['َ','ُ','ِ','ّ','ْ'],
+            clean: ['َ','ُ','ِ']
+        };
+        const enMap = {'أ':'A','ا':'A','ب':'B','ت':'T','ث':'Th','ج':'J','ح':'H','خ':'Kh','د':'D','ذ':'Z','ر':'R','ز':'Z','س':'S','ش':'Sh','ص':'S','ض':'D','ط':'T','ظ':'Z','ع':'A','غ':'Gh','ف':'F','ق':'Q','ك':'K','ل':'L','م':'M','ن':'N','ه':'H','ة':'a','و':'W','ي':'Y','ى':'a'};
+        const uFonts = {
+            script: {a:'𝓪',b:'𝓫',c:'𝓬',d:'𝓭',e:'𝓮',f:'𝓯',g:'𝓰',h:'𝓱',i:'𝓲',j:'𝓳',k:'𝓴',l:'𝓵',m:'𝓶',n:'𝓷',o:'𝓸',p:'𝓹',q:'𝓺',r:'𝓻',s:'𝓼',t:'𝓽',u:'𝓾',v:'𝓿',w:'𝔀',x:'𝔁',y:'𝔂',z:'𝔃'},
+            double: {a:'𝕒',b:'𝕓',c:'𝕔',d:'𝕕',e:'𝕖',f:'𝕗',g:'𝕘',h:'𝕙',i:'𝕚',j:'𝕛',k:'𝕜',l:'𝕝',m:'𝕞',n:'𝕟',o:'𝕠',p:'𝕡',q:'𝕢',r:'𝕣',s:'𝕤',t:'𝕥',u:'𝕦',v:'𝕧',w:'𝕨',x:'𝕩',y:'𝕪',z:'𝕫'},
+            caps: {a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'s',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ'}
+        };
+
+        function tashkeel(t, m) {
+            const p = pools[m] || pools.heavy;
+            return t.split('').map(c => !arReg.test(c) ? c : c + p[Math.floor(Math.random()*p.length)] + (m==='heavy' ? p[Math.floor(Math.random()*p.length)] : '')).join('');
+        }
+        function kashida(t, n) {
+            const k = 'ـ'.repeat(n), a = t.split('');
+            return a.map((c, i) => (arReg.test(c) && a[i+1] && arReg.test(a[i+1]) && !nonConn.has(c)) ? c + k : c).join('');
+        }
+        function toEn(t, f) {
+            let b = t.replace('أبو','Abu ').replace('باسم','Basem').split('').map(c => enMap[c] !== undefined ? enMap[c] : c).join('');
+            const m = uFonts[f] || uFonts.script;
+            return b.split('').map(c => m[c.toLowerCase()] || c).join('');
+        }
+
+        function generateAll() {
+            const g = document.getElementById('results-grid');
+            if (!g) return;
+            const raw = (document.getElementById('input-name').value || 'أبو باسم').trim();
+            const lvl = document.getElementById('select-level').value;
+            const tH = tashkeel(raw,'heavy'), tR = tashkeel(raw,'royal'), tC = tashkeel(raw,'clean');
+            const kS = kashida(tR,1), kL = kashida(tC,3);
+
+            const list = [
+                {t:'ملكي VIP • التشكيل السلطاني', x:`👑 ${lvl==='clean'?tC:tR} 👑`, c:'ملكي VIP', f:'font-noto'},
+                {t:'أجنحة ببجي • المحارب', x:`꧁༺ ${tH} ༻꧂`, c:'أجنحة ببجي', f:'font-noto'},
+                {t:'كشيدة متصلة أصيلة', x:kL, c:'تشكيل وكشيدة', f:'font-reem'},
+                {t:'ملكي VIP • هيبة السيوف', x:`⚔️ ${kS} ⚔️`, c:'ملكي VIP', f:'font-aref'},
+                {t:'أجنحة ببجي • الزعيم الصيني', x:`『 ${tR} 』〆`, c:'أجنحة ببجي', f:'font-cairo'},
+                {t:'إنجليزي • Bold Script', x:`✨ ${toEn(raw,'script')} ✨`, c:'إنجليزي Unicode', f:'font-cairo'},
+                {t:'إنجليزي • Double Struck', x:`👑 ${toEn(raw,'double')} 👑`, c:'إنجليزي Unicode', f:'font-cairo'},
+                {t:'إنجليزي • Small Caps', x:`꧁ ${toEn(raw,'caps')} ꧂`, c:'إنجليزي Unicode', f:'font-cairo'},
+                {t:'تشكيل وكشيدة • الرقعة', x:kashida(tH,1), c:'تشكيل وكشيدة', f:'font-aref'},
+                {t:'ملكي VIP • التاج الذهبي', x:`♛ ${tR} ♛`, c:'ملكي VIP', f:'font-amiri'},
+                {t:'أجنحة ببجي • الصاعقة', x:`⚡ ${tH} ⚡`, c:'أجنحة ببجي', f:'font-noto'},
+                {t:'أجنحة ببجي • قناص الكلان', x:`︻デ═一 ${tC}`, c:'أجنحة ببجي', f:'font-cairo'},
+                {t:'ملكي VIP • نجوم المجرة', x:`★彡 ${tR} 彡★`, c:'ملكي VIP', f:'font-noto'},
+                {t:'تشكيل وكشيدة • ديواني ممتد', x:`❖ ${kL} ❖`, c:'تشكيل وكشيدة', f:'font-amiri'},
+                {t:'أجنحة ببجي • نيران القناص', x:`🔥༻ ${tR} ༺🔥`, c:'أجنحة ببجي', f:'font-cairo'},
+                {t:'ملكي VIP • الدرع الإمبراطوري', x:`🛡️ 【 ${kS} 】 🛡️`, c:'ملكي VIP', f:'font-reem'}
+            ];
+
+            g.innerHTML = list.map(i => {
+                const s = i.x.replace(/'/g, "\\'");
+                return `<div class="style-card" data-cat="${i.c}">
+                    <div class="style-meta"><span>${i.t}</span><span>${i.c}</span></div>
+                    <div class="style-preview ${i.f}">${i.x}</div>
+                    <div class="style-actions">
+                        <button class="s-btn s-copy" onclick="copyText('${s}')">نسخ 📋</button>
+                        <button class="s-btn s-view" onclick="applyToPreview('${s}','${i.f}',true)">معاينة 👁️</button>
+                    </div>
+                </div>`;
+            }).join('');
+
+            applyToPreview(list[0].x, document.getElementById('select-font').value, false);
+        }
+
+        function applyToPreview(x, f, sc) {
+            const e = document.getElementById('main-display');
+            if (!e) return;
+            e.innerText = x;
+            e.className = 'card-main-name ' + (f || document.getElementById('select-font').value);
+            if (sc && window.innerWidth < 980) {
+                document.getElementById('preview-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                showToast('👁️ تم تطبيق الزخرفة في البطاقة!');
+            }
+        }
+
+        function wrapPreview(l, r) {
+            const e = document.getElementById('main-display');
+            e.innerText = l + e.innerText + r;
+        }
+        function updateMainDisplayFont() {
+            document.getElementById('main-display').className = 'card-main-name ' + document.getElementById('select-font').value;
+        }
+        function updateBadge() {
+            document.getElementById('badge-display').innerText = document.getElementById('select-badge').value;
+        }
+        function updateDedication() {
+            document.getElementById('dedication-prefix-display').innerText = document.getElementById('select-dedication').value;
+            document.getElementById('target-person-display').innerText = document.getElementById('input-target-person').value;
+        }
+        function updateStats() {
+            document.getElementById('followers-display').innerText = document.getElementById('input-followers').value;
+            document.getElementById('likes-display').innerText = document.getElementById('input-likes').value;
+            document.getElementById('following-display').innerText = document.getElementById('input-following').value;
+        }
+        function randomizeIdentity() {
+            const p = ['باسم الأسطورة','أبو باسم الملك','Basem Sniper','الزعيم باسم'];
+            document.getElementById('input-name').value = p[Math.floor(Math.random()*p.length)];
+            generateAll();
+            showToast('🎲 تم اختيار اسم عشوائي!');
+        }
+        function toggleVerified() {
+            const b = document.getElementById('verified-badge');
+            b.style.display = b.style.display === 'none' ? 'flex' : 'none';
+        }
+        function updateHandleAndQR() {
+            const r = (document.getElementById('input-handle').value || 'basem.zorba').replace('@','').trim();
+            document.getElementById('handle-display').innerText = '@' + r;
+            let h = 0, c = '';
+            for (let i = 0; i < r.length; i++) h = ((h << 5) - h) + r.charCodeAt(i);
+            for (let y = 0; y < 7; y++) {
+                for (let x = 0; x < 7; x++) {
+                    if ((y<2&&x<2) || (y<2&&x>4) || (y>4&&x<2) || Math.abs((h>>((y*7+x)%16))&1)) {
+                        c += `<rect x="${x*6+2}" y="${y*6+2}" width="5" height="5" rx="1" fill="#090d14"/>`;
+                    }
+                }
+            }
+            document.getElementById('qr-container').innerHTML = `<svg viewBox="0 0 46 46" width="38" height="38">${c}</svg>`;
+        }
+        function setCardTheme(t, b) {
+            document.getElementById('preview-card').className = 'vip-card ' + t;
+            if (b) {
+                b.parentElement.querySelectorAll('.t-pill').forEach(x => x.classList.remove('active'));
+                b.classList.add('active');
+            }
+        }
+        function setPresetAvatar(t) {
+            const s = {
+                crown: `<svg viewBox="0 0 100 100" width="56" height="56"><path d="M15 72 L22 32 L40 52 L50 24 L60 52 L78 32 L85 72 Z" fill="#f3c623"/><rect x="18" y="76" width="64" height="8" rx="4" fill="#d49b00"/></svg>`,
+                gamer: `<svg viewBox="0 0 100 100" width="56" height="56"><rect x="15" y="32" width="70" height="40" rx="18" fill="#00f2ea"/><circle cx="36" cy="52" r="7" fill="#090d14"/><circle cx="64" cy="48" r="5" fill="#ff0050"/></svg>`,
+                falcon: `<svg viewBox="0 0 100 100" width="56" height="56"><path d="M20 30 Q50 15 80 30 L65 75 Q50 85 35 75 Z" fill="#ff6b00"/><circle cx="42" cy="48" r="5" fill="#fff"/><circle cx="58" cy="48" r="5" fill="#fff"/></svg>`
+            };
+            document.getElementById('avatar-box').innerHTML = s[t] || s.crown;
+        }
+        function uploadAvatar(e) {
+            const f = e.target.files[0];
+            if (f) document.getElementById('avatar-box').innerHTML = `<img src="${URL.createObjectURL(f)}">`;
+        }
+        function filterStyles(c, b) {
+            document.querySelectorAll('.f-btn').forEach(x => x.classList.remove('active'));
+            b.classList.add('active');
+            document.querySelectorAll('.style-card').forEach(x => {
+                x.style.display = (c === 'all' || x.getAttribute('data-cat') === c) ? 'flex' : 'none';
+            });
+        }
+        function showToast(m) {
+            const t = document.getElementById('toast-box');
+            t.innerText = m;
+            t.style.display = 'block';
+            clearTimeout(window._tTimer);
+            window._tTimer = setTimeout(() => t.style.display = 'none', 2500);
+        }
+        function copyText(x) {
+            navigator.clipboard.writeText(x);
+            showToast('✅ تم النسخ: ' + x);
+        }
+        function copyCurrentMainName() {
+            copyText(document.getElementById('main-display').innerText);
+        }
+        function downloadCardPNG() {
+            if (typeof html2canvas === 'undefined') { showToast('⏳ جاري تحضير الحفظ...'); return; }
+            html2canvas(document.getElementById('preview-card'), { scale: 3, backgroundColor: null }).then(c => {
+                const a = document.createElement('a');
+                a.download = 'Basem-VIP.png';
+                a.href = c.toDataURL();
+                a.click();
+            });
+        }
+        function shareToWhatsApp() {
+            window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent('👑 بطاقة VIP: ' + document.getElementById('main-display').innerText + '\nhttps://basem-tiktook.pages.dev'), '_blank');
+        }
+
+        function switchAiTab(id, b) {
+            document.querySelectorAll('.ai-tab').forEach(x => x.classList.remove('active'));
+            document.querySelectorAll('.ai-pane').forEach(x => x.classList.remove('active'));
+            b.classList.add('active');
+            document.getElementById('pane-' + id).classList.add('active');
+        }
+        function setAiNickStyle(v) {
+            document.getElementById('ai-nick-style').value = v;
+            generateAiNicknames();
+        }
+        function setCustomGeminiKey() {
+            const v = prompt('أدخل مفتاح Gemini API (أو اتركه فارغاً لمفتاح السيرفر):', localStorage.getItem('BASEM_GEMINI_KEY') || '');
+            if (v !== null) localStorage.setItem('BASEM_GEMINI_KEY', v.trim());
+        }
+
+        async function callGeminiAPI(p) {
+            const customKey = localStorage.getItem('BASEM_GEMINI_KEY') || '';
+            const b = document.getElementById('ai-status-badge');
+            b.innerText = '⏳ جاري التوليد...';
+            const url = window.location.hostname.includes('github.io') ? 'https://basem-tiktook.pages.dev/api/gemini' : '/api/gemini';
+            try {
+                const r = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ...p, customKey })
+                });
+                if (r.ok) {
+                    const d = await r.json();
+                    if (d.ok && d.rawText) {
+                        b.innerText = '🟢 شغال لايف (' + (d.model || 'Gemini') + ')';
+                        return d.rawText;
+                    }
+                }
+            } catch (e) {}
+            b.innerText = '🟠 وضع احتياطي';
+            return null;
+        }
+
+        async function generateAiNicknames() {
+            const n = document.getElementById('input-name').value || 'باسم';
+            const s = document.getElementById('ai-nick-style').value;
+            const raw = await callGeminiAPI({ type: 'nicknames', name: n, style: s });
+            let l = raw ? raw.split('\n').map(x => x.replace(/[\*\d\-\.]/g,'').trim()).filter(x => x.length > 2).slice(0,6) : [];
+            if (l.length < 3) {
+                l = [`꧁༺ ${n} ༻꧂ ⚡`, `BASEM ⦂ أسطورة ⦃ PUBG ⦄`, `♛ ${n} • SNIPER ♛`, `⚔️ الزعيم ${n} VIP ⚔️`];
+            }
+            document.getElementById('ai-nicks-grid').innerHTML = l.map(x => {
+                const sf = x.replace(/'/g, "\\'");
+                return `<div class="ai-nick-item"><span>${x}</span><div><button class="mini-apply" onclick="applyToPreview('${sf}',null,true)">تطبيق 🪄</button> <button class="mini-apply" onclick="copyText('${sf}')">📋</button></div></div>`;
+            }).join('');
+        }
+
+        async function generateAiTribute() {
+            const t = document.getElementById('ai-trib-target').value || 'أبو باسم الغالي';
+            const o = document.getElementById('ai-trib-occasion').value;
+            const n = document.getElementById('ai-trib-note').value;
+            const raw = await callGeminiAPI({ type: 'tribute', name: 'Basem Zorba', target: t, occasion: o, note: n });
+            if (raw) {
+                raw.split('\n').forEach(l => {
+                    if (l.includes('اللقب:')) document.getElementById('badge-display').innerText = l.split(':')[1].trim() + ' 👑';
+                    if (l.includes('الرسالة:')) document.getElementById('dedication-prefix-display').innerText = '👑 ' + l.split(':')[1].trim();
+                });
+            }
+            document.getElementById('target-person-display').innerText = t;
+            applyToPreview(document.getElementById('main-display').innerText, null, true);
+        }
+
+        async function generateAiCaption() {
+            const raw = await callGeminiAPI({ type: 'caption', name: 'Basem Zorba', topic: document.getElementById('ai-cap-topic').value });
+            const bx = document.getElementById('ai-cap-result');
+            bx.style.display = 'block';
+            bx.innerText = raw || '🔥 شوفوا أقوى لقطة ببجي! #ببجي #باسم_زربا #اكسبلور';
+        }
+
+        // تشغيل فوري بمجرد قراءة الصفحة بدون انتظار المكاتب الخارجية
+        updateHandleAndQR();
+        generateAll();
+        generateAiNicknames();
+    </script>
+</body>
+</html>
