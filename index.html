@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#07090e">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>استوديو الباسم VIP | زخرفة الأسماء ومساعد الذكاء الاصطناعي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700;900&family=Noto+Naskh+Arabic:wght@400;600;700&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --bg-dark: #07090e;
+            --bg-panel: #0f141d;
+            --bg-input: #090d14;
+            --border-subtle: #1f2937;
+            --gold: #f3c623;
+            --gold-glow: rgba(243, 198, 35, 0.25);
+            --cyan: #00f2ea;
+            --pink: #ff0050;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', 'Noto Naskh Arabic', sans-serif; -webkit-tap-highlight-color: transparent; }
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at 15% 10%, rgba(243, 198, 35, 0.08), transparent 35%),
+                              radial-gradient(circle at 85% 20%, rgba(0, 242, 234, 0.05), transparent 35%);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+        body { padding: 12px 10px 60px; }
+
+        /* الهيدر المتجاوب */
+        .topbar {
+            max-width: 1240px;
+            margin: 0 auto 16px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            background: rgba(15, 20, 29, 0.92);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 12px 14px;
+        }
+        .brand-wrap { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+        .brand-icon {
+            width: 40px; height: 40px; flex-shrink: 0; border-radius: 11px;
+            background: linear-gradient(135deg, #f3c623, #d49b00);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: #000; font-weight: 900;
+            box-shadow: 0 4px 14px var(--gold-glow);
+        }
+        .brand-title { min-width: 0; }
+        .brand-title h1 { font-size: 16px; font-weight: 900; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; line-height: 1.3; }
+        .pro-badge {
+            font-size: 10px; background: rgba(243, 198, 35, 0.15); color: var(--gold);
+            border: 1px solid var(--gold); padding: 1px 8px; border-radius: 20px; white-space: nowrap;
+        }
+        .brand-title p { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+        .random-btn {
+            background: #161f2e; color: var(--gold); border: 1px solid rgba(243, 198, 35, 0.35);
+            padding: 8px 12px; border-radius: 10px; font-size: 12px; font-weight: 800;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;
+            white-space: nowrap;
+        }
+/* التخطيط العام: بدون تداخل على الجوال */
+        .workspace {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 16px;
+            width: 100%;
+        }
+
+        /* على الجوال الكرت عادي غير لاصق نهائياً */
+        .preview-col {
+            position: static;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            min-width: 0;
+        }
+
+        /* التثبيت يشتغل فقط على شاشات الكمبيوتر الكبيرة */
+        @media (min-width: 980px) {
+            body { padding: 18px 16px 60px; }
+            .brand-title h1 { font-size: 20px; }
+            .workspace { grid-template-columns: 400px minmax(0, 1fr); align-items: start; gap: 22px; }
+            .preview-col { position: sticky; top: 16px; }
+        }
+
+        /* بطاقة البروفايل VIP */
+        .vip-card {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 22px;
+            padding: 20px 16px 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 16px 38px rgba(0,0,0,0.65);
+        }
+        .theme-gold { background: linear-gradient(155deg, #12161f 0%, #1d190f 55%, #0d1017 100%); border: 2px solid #f3c623; --card-accent: #f3c623; }
+        .theme-tiktok { background: linear-gradient(155deg, #0b161b 0%, #130d1e 55%, #1c0c16 100%); border: 2px solid #00f2ea; --card-accent: #00f2ea; }
+        .theme-fire { background: linear-gradient(155deg, #1b0c09 0%, #261307 55%, #110907 100%); border: 2px solid #ff6b00; --card-accent: #ff6b00; }
+        .theme-hacker { background: linear-gradient(155deg, #07170d 0%, #091e12 55%, #050f09 100%); border: 2px solid #10b981; --card-accent: #10b981; }
+        .theme-royal { background: linear-gradient(155deg, #130d21 0%, #1f1135 55%, #0c0814 100%); border: 2px solid #a855f7; --card-accent: #a855f7; }
+
+        .card-header-badges { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; gap: 6px; }
+        .pill-right { background: var(--card-accent); color: #000; font-size: 10px; font-weight: 900; padding: 3px 10px; border-radius: 20px; }
+        .pill-left { background: rgba(255,255,255,0.08); color: #cbd5e1; font-size: 10px; padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12); }
+
+        .avatar-wrap {
+            width: 88px; height: 88px; margin: 4px auto 12px; position: relative;
+            border-radius: 50%; padding: 3px; background: linear-gradient(135deg, var(--card-accent), transparent, var(--card-accent));
+        }
+        .avatar-inner {
+            width: 100%; height: 100%; border-radius: 50%; background: #0b0f17;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        .avatar-inner img { width: 100%; height: 100%; object-fit: cover; }
+        .verified-icon {
+            position: absolute; bottom: 2px; left: 2px; width: 22px; height: 22px;
+            background: #00f2ea; color: #000; border-radius: 50%; font-size: 12px; font-weight: 900;
+            display: flex; align-items: center; justify-content: center; border: 2px solid #0b0f17;
+        }
+
+        .card-main-name {
+            font-size: 24px; font-weight: 900; color: #fff; min-height: 42px;
+            margin-bottom: 6px; word-break: break-word; text-shadow: 0 3px 12px rgba(0,0,0,0.6);
+            padding: 0 4px;
+        }
+        .card-meta-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+        .handle-tag { font-size: 12px; color: #cbd5e1; direction: ltr; font-weight: 600; }
+        .rank-tag {
+            font-size: 11px; font-weight: 700; color: var(--card-accent);
+            background: rgba(255,255,255,0.05); border: 1px solid var(--card-accent);
+            padding: 2px 10px; border-radius: 14px;
+        }
+.dedication-box {
+            border: 1px dashed var(--card-accent); border-radius: 12px; padding: 10px;
+            background: rgba(0,0,0,0.32); margin-bottom: 14px; font-size: 12px; line-height: 1.6;
+            word-break: break-word;
+        }
+        .dedication-box strong { color: var(--card-accent); font-size: 14px; display: block; margin-top: 2px; }
+
+        .card-bottom-row {
+            display: flex; align-items: center; justify-content: space-between; gap: 8px;
+            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 12px; margin-bottom: 8px;
+        }
+        .stats-group { display: flex; flex: 1; justify-content: space-around; }
+        .stat-box .num { font-size: 15px; font-weight: 900; color: #fff; }
+        .stat-box .lbl { font-size: 10px; color: var(--text-muted); }
+        .qr-box {
+            width: 46px; height: 46px; flex-shrink: 0; background: #fff; padding: 3px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .card-footer-brand { display: flex; justify-content: space-between; font-size: 9px; color: var(--text-muted); }
+
+        .card-action-bar {
+            width: 100%; max-width: 400px;
+            display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;
+        }
+        .act-btn {
+            padding: 10px 6px; border-radius: 11px; border: none; font-weight: 800; font-size: 12px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px;
+            text-align: center; white-space: nowrap;
+        }
+        .btn-gold { background: linear-gradient(135deg, #f3c623, #d49b00); color: #000; }
+        .btn-green { background: #10b981; color: #052e16; }
+        .btn-cyan { background: #06b6d4; color: #082f49; }
+
+        /* اللوحات اليمنى */
+        .right-col { display: flex; flex-direction: column; gap: 16px; width: 100%; min-width: 0; }
+        .panel-box {
+            background: var(--bg-panel); border: 1px solid var(--border-subtle);
+            border-radius: 18px; padding: 15px 13px; width: 100%; min-width: 0; overflow: hidden;
+        }
+        @media (min-width: 640px) { .panel-box { padding: 20px; } }
+
+        .ai-panel {
+            background: linear-gradient(145deg, rgba(18, 25, 38, 0.96), rgba(12, 17, 26, 0.98));
+            border: 1px solid rgba(243, 198, 35, 0.4);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+        .panel-head { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .panel-head h2 { font-size: 15px; font-weight: 900; display: flex; align-items: center; gap: 6px; }
+        .status-badge {
+            font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px;
+            background: rgba(0, 242, 234, 0.14); border: 1px solid var(--cyan); color: var(--cyan);
+        }
+        .key-btn {
+            background: #161f2e; color: var(--gold); border: 1px solid rgba(243, 198, 35, 0.4);
+            border-radius: 20px; padding: 3px 9px; font-size: 10px; font-weight: 700; cursor: pointer;
+        }
+
+        .ai-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-bottom: 12px; }
+        .ai-tab {
+            background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-muted);
+            padding: 8px 4px; border-radius: 10px; font-size: 11px; font-weight: 800; cursor: pointer;
+            text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .ai-tab.active { background: var(--gold); color: #000; border-color: var(--gold); }
+        .ai-pane { display: none; }
+        .ai-pane.active { display: block; }
+
+        .quick-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+        .chip {
+            background: #161f2e; border: 1px solid var(--border-subtle); color: #cbd5e1;
+            padding: 5px 9px; border-radius: 14px; font-size: 11px; cursor: pointer;
+        }
+.input-row { display: flex; flex-direction: column; gap: 8px; }
+        @media (min-width: 540px) { .input-row { flex-direction: row; } }
+
+        .form-input, .form-select {
+            width: 100%; min-width: 0; background: var(--bg-input); border: 1px solid var(--border-subtle);
+            color: #fff; padding: 10px 11px; border-radius: 10px; font-size: 13px; outline: none;
+        }
+        .form-input:focus, .form-select:focus { border-color: var(--gold); }
+        .ai-submit-btn {
+            background: linear-gradient(135deg, #f3c623, #d49b00); color: #000; border: none;
+            padding: 10px 14px; border-radius: 10px; font-weight: 900; font-size: 13px; cursor: pointer;
+            white-space: nowrap; width: 100%;
+        }
+        @media (min-width: 540px) { .ai-submit-btn { width: auto; } }
+
+        .ai-results-grid {
+            display: grid; grid-template-columns: minmax(0, 1fr);
+            gap: 8px; margin-top: 12px;
+        }
+        @media (min-width: 540px) {
+            .ai-results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        .ai-nick-item {
+            background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: 10px;
+            padding: 8px 10px; display: flex; justify-content: space-between; align-items: center; gap: 6px;
+            min-width: 0;
+        }
+        .ai-nick-text { font-size: 13px; font-weight: 700; color: #fff; word-break: break-word; min-width: 0; flex: 1; }
+        .mini-apply {
+            background: rgba(243, 198, 35, 0.15); color: var(--gold); border: 1px solid rgba(243, 198, 35, 0.4);
+            padding: 5px 8px; border-radius: 7px; font-size: 11px; font-weight: 700; cursor: pointer; white-space: nowrap;
+        }
+
+        .controls-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+        .controls-grid-2 { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+        .controls-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+        @media (min-width: 640px) {
+            .controls-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+        }
+        .field-lbl { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted); margin-bottom: 5px; font-weight: 600; flex-wrap: wrap; gap: 4px; }
+
+        /* أشرطة الرموز والفلاتر مع تمرير سلس بدون توسيع الشاشة */
+        .symbol-bar, .filter-row {
+            display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px;
+            max-width: 100%; scrollbar-width: thin; -webkit-overflow-scrolling: touch;
+        }
+        .sym-btn {
+            background: var(--bg-input); border: 1px solid var(--border-subtle); color: #e2e8f0;
+            padding: 6px 11px; border-radius: 8px; font-size: 12px; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+        }
+
+        .theme-pills, .avatar-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+        .t-pill {
+            flex: 1; min-width: 58px; background: var(--bg-input); border: 1px solid var(--border-subtle);
+            color: #cbd5e1; padding: 7px 6px; border-radius: 9px; font-size: 11px; font-weight: 700; cursor: pointer; text-align: center;
+        }
+        .t-pill.active { border-color: var(--gold); color: var(--gold); background: rgba(243, 198, 35, 0.12); }
+
+        /* قسم الـ 24 نتيجة */
+        .results-panel { max-width: 1240px; margin: 16px auto 0; }
+        .f-btn {
+            background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-muted);
+            padding: 7px 13px; border-radius: 20px; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+        }
+        .f-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
+.cards-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 12px;
+        }
+        @media (min-width: 540px) {
+            .cards-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+        }
+        .style-card {
+            background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: 14px;
+            padding: 13px; display: flex; flex-direction: column; justify-content: space-between; min-width: 0;
+        }
+        .style-meta { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-muted); margin-bottom: 6px; gap: 4px; }
+        .style-preview { font-size: 20px; text-align: center; margin: 10px 0; min-height: 36px; word-break: break-word; color: #fff; }
+        .style-actions { display: flex; gap: 8px; }
+        .s-btn { flex: 1; padding: 8px; border-radius: 8px; border: none; font-size: 12px; font-weight: 700; cursor: pointer; }
+        .s-copy { background: #10b981; color: #052e16; }
+        .s-view { background: #1e293b; color: #e2e8f0; border: 1px solid #334155; }
+
+        .font-noto { font-family: 'Noto Naskh Arabic', serif; }
+        .font-aref { font-family: 'Aref Ruqaa', serif; }
+        .font-reem { font-family: 'Reem Kufi', sans-serif; }
+        .font-amiri { font-family: 'Amiri', serif; }
+        .font-cairo { font-family: 'Cairo', sans-serif; }
+
+        .toast {
+            position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+            background: #10b981; color: #042f2e; font-weight: 900; font-size: 12px;
+            padding: 10px 18px; border-radius: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            display: none; z-index: 9999; width: max-content; max-width: 92vw; text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="brand-wrap">
+            <div class="brand-icon">👑</div>
+            <div class="brand-title">
+                <h1>استوديو الباسم VIP <span class="pro-badge">PRO V4.5 • MOBILE</span></h1>
+                <p>زخرفة الأسماء • بطاقة تيك توك • مساعد جيميني الذكي</p>
+            </div>
+        </div>
+        <button class="random-btn" onclick="randomizeIdentity()">🎲 اسم عشوائي</button>
+    </header>
+
+    <main class="workspace">
+        <!-- قسم البطاقة (في الأعلى على الجوال بدون أن يغطي على الأزرار عند النزول) -->
+        <section class="preview-col" id="top-preview-section">
+            <div class="vip-card theme-gold" id="preview-card">
+                <div class="card-header-badges">
+                    <span class="pill-right">BASEM ZORBA • VIP</span>
+                    <span class="pill-left">TikTok Official Card</span>
+                </div>
+
+                <div class="avatar-wrap">
+                    <div class="avatar-inner" id="avatar-box"></div>
+                    <div class="verified-icon" id="verified-badge">✓</div>
+                </div>
+
+                <div class="card-main-name font-noto" id="main-display">أَبُّو بَاسِمٍ</div>
+
+                <div class="card-meta-row">
+                    <span class="handle-tag" id="handle-display">@basem.zorba</span>
+                    <span class="rank-tag" id="badge-display">VIP ملكي 👑</span>
+                </div>
+
+                <div class="dedication-box">
+                    <span id="dedication-prefix-display">👑 إهداء خاص من Basem Zorba إلى كبار الشخصيات</span>
+                    <strong id="target-person-display">أبو باسم الغالي</strong>
+                </div>
+
+                <div class="card-bottom-row">
+                    <div class="stats-group">
+                        <div class="stat-box">
+                            <div class="num" id="followers-display">1.8M</div>
+                            <div class="lbl">المتابعين</div>
+</div>
+                        <div class="stat-box">
+                            <div class="num" id="likes-display">24.5M</div>
+                            <div class="lbl">الإعجابات</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="num" id="following-display">112</div>
+                            <div class="lbl">يتابع</div>
+                        </div>
+                    </div>
+                    <div class="qr-box" id="qr-container"></div>
+                </div>
+
+                <div class="card-footer-brand">
+                    <span>⚡ Crafted by Basem Studio</span>
+                    <span>TIKTOK VIP PASS</span>
+                </div>
+            </div>
+
+            <div class="card-action-bar">
+                <button class="act-btn btn-gold" onclick="copyCurrentMainName()">📋 نسخ الاسم</button>
+                <button class="act-btn btn-green" onclick="downloadCardPNG()">📸 حفظ PNG</button>
+                <button class="act-btn btn-cyan" onclick="shareToWhatsApp()">💬 واتساب</button>
+            </div>
+        </section>
+
+        <!-- قسم الذكاء الاصطناعي وغرفة التحكم -->
+        <section class="right-col">
+            <div class="panel-box ai-panel">
+                <div class="panel-head">
+                    <div>
+                        <h2>🤖 مساعد باسم الذكي (Gemini AI)</h2>
+                        <p style="font-size:11px; color:var(--text-muted);">ألقاب كلانات، إهداءات ملكية، وترندات التيك توك</p>
+                    </div>
+                    <div style="display:flex; gap:6px; align-items:center;">
+                        <span class="status-badge" id="ai-status-badge">🟢 Gemini جاهز</span>
+                        <button class="key-btn" onclick="setCustomGeminiKey()">🔑 المفتاح</button>
+                    </div>
+                </div>
+
+                <div class="ai-tabs">
+                    <button class="ai-tab active" onclick="switchAiTab('nicknames', this)">⚡ ألقاب AI</button>
+                    <button class="ai-tab" onclick="switchAiTab('tribute', this)">👑 صانع الإهداء</button>
+                    <button class="ai-tab" onclick="switchAiTab('caption', this)">🔥 ترند تيك توك</button>
+                </div>
+
+                <div class="ai-pane active" id="pane-nicknames">
+                    <div class="quick-chips">
+                        <span class="chip" onclick="setAiNickStyle('قناص ببجي مرعب وزعيم سكواد')">🎯 قناص ببجي</span>
+                        <span class="chip" onclick="setAiNickStyle('نجم مهارات كرة قدم سريع')">⚽ مهارات كرة قدم</span>
+                        <span class="chip" onclick="setAiNickStyle('زعيم كلان ملكي وهيبة')">👑 زعيم كلان</span>
+                        <span class="chip" onclick="setAiNickStyle('هاكر غامض وأسطورة ألعاب')">💻 هكر وغامض</span>
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="ai-nick-style" class="form-input" style="flex:1;" value="قناص ببجي مرعب وزعيم سكواد" placeholder="اكتب ستايل اللعب أو المحتوى...">
+                        <button class="ai-submit-btn" id="btn-gen-nicks" onclick="generateAiNicknames()">توليد بالذكاء الاصطناعي ✨</button>
+                    </div>
+                    <div class="ai-results-grid" id="ai-nicks-grid"></div>
+                </div>
+
+                <div class="ai-pane" id="pane-tribute">
+                    <div class="controls-grid-2" style="margin-bottom:10px;">
+                        <div>
+                            <label class="field-lbl">اسم الشخص المُهدى إليه</label>
+                            <input type="text" id="ai-trib-target" class="form-input" value="أبو باسم الغالي">
+                        </div>
+                        <div>
+                            <label class="field-lbl">المناسبة / الستايل</label>
+<select id="ai-trib-occasion" class="form-select">
+                                <option value="شكر وتقدير VIP ملكي">شكر وتقدير VIP ملكي</option>
+                                <option value="أقوى داعم وأسطورة البثوث">أقوى داعم وأسطورة البثوث</option>
+                                <option value="رفيق السكواد والفزعة في ببجي">رفيق السكواد والفزعة في ببجي</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="ai-trib-note" class="form-input" style="flex:1;" placeholder="لمسة خاصة (مثال: ملك الرومات، سندي الغالي)...">
+                        <button class="ai-submit-btn" id="btn-gen-trib" onclick="generateAiTribute()">صياغة وتطبيق بالكارت 🪄</button>
+                    </div>
+                </div>
+
+                <div class="ai-pane" id="pane-caption">
+                    <div class="input-row">
+                        <input type="text" id="ai-cap-topic" class="form-input" style="flex:1;" value="لقطة جلد سكواد كامل في ببجي موبايل بالـ AWM" placeholder="عن شو الفيديو اللي بدك تنزله؟">
+                        <button class="ai-submit-btn" id="btn-gen-cap" onclick="generateAiCaption()">توليد وصف وهاشتاجات 🚀</button>
+                    </div>
+                    <div id="ai-cap-result" style="display:none; margin-top:12px; background:var(--bg-input); border:1px solid var(--border-subtle); border-radius:12px; padding:12px; font-size:13px; line-height:1.7;"></div>
+                </div>
+            </div>
+
+            <!-- غرفة التحكم وصناعة الهوية -->
+            <div class="panel-box">
+                <div class="panel-head">
+                    <h2>🎛️ غرفة التحكم وصناعة الهوية</h2>
+                    <span style="font-size:11px; color:var(--gold);">يدعم العربي والإنجليزي</span>
+                </div>
+
+                <div class="controls-grid">
+                    <div class="controls-grid-2">
+                        <div>
+                            <label class="field-lbl"><span>✨ الاسم المراد زخرفته</span></label>
+                            <input type="text" id="input-name" class="form-input" value="أبو باسم" oninput="generateAll()">
+                        </div>
+                        <div>
+                            <label class="field-lbl"><span>📱 يوزر التيك توك (@Username)</span></label>
+                            <div style="display:flex; gap:6px;">
+                                <input type="text" id="input-handle" class="form-input" value="basem.zorba" style="direction:ltr;" oninput="updateHandleAndQR()">
+                                <button onclick="toggleVerified()" style="background:rgba(0,242,234,0.15); border:1px solid var(--cyan); color:var(--cyan); padding:0 12px; border-radius:10px; font-weight:800; font-size:12px; cursor:pointer; white-space:nowrap;">✓ موثق</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="field-lbl">
+                            <span>⚡ رموز وأجنحة فورية للاسم</span>
+                            <span style="color:var(--gold); cursor:pointer;" onclick="generateAll()">إعادة ضبط</span>
+                        </label>
+                        <div class="symbol-bar">
+                            <button class="sym-btn" onclick="wrapPreview('꧁', '꧂')">꧁꧂</button>
+                            <button class="sym-btn" onclick="wrapPreview('༺', '༻')">༺༻</button>
+                            <button class="sym-btn" onclick="wrapPreview('♛ ', ' ♛')">♛ تاج</button>
+                            <button class="sym-btn" onclick="wrapPreview('⚔️ ', ' ⚔️')">⚔️ سيوف</button>
+                            <button class="sym-btn" onclick="wrapPreview('🔥 ', ' 🔥')">🔥 نار</button>
+<button class="sym-btn" onclick="wrapPreview('⚡ ', ' ⚡')">⚡ برق</button>
+                            <button class="sym-btn" onclick="wrapPreview('★彡 ', ' 彡★')">★ نجوم</button>
+                            <button class="sym-btn" onclick="wrapPreview('', ' 〆')">〆</button>
+                            <button class="sym-btn" onclick="wrapPreview('', ' ツ')">ツ</button>
+                        </div>
+                    </div>
+
+                    <div class="controls-grid-2">
+                        <div>
+                            <label class="field-lbl">🔥 مستوى التشكيل والزخرفة</label>
+                            <select id="select-level" class="form-select" onchange="generateAll()">
+                                <option value="heavy">عجقة ثقيلة وأجنحة (VIP)</option>
+                                <option value="royal">ملكي متوازن وفخم</option>
+                                <option value="clean">خفيف وأنيق</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="field-lbl">🖋️ خط الاسم في البطاقة</label>
+                            <select id="select-font" class="form-select" onchange="updateMainDisplayFont()">
+                                <option value="font-noto">خط النسخ الملكي (تشكيل كامل)</option>
+                                <option value="font-aref">خط الرقعة الديواني</option>
+                                <option value="font-reem">الخط الكوفي الهندسي</option>
+                                <option value="font-amiri">الخط الأميري الكلاسيكي</option>
+                                <option value="font-cairo">خط كايرو العصري</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="controls-grid-2">
+                        <div>
+                            <label class="field-lbl">🏅 شارة الرتبة (Badge)</label>
+                            <select id="select-badge" class="form-select" onchange="updateBadge()">
+                                <option value="VIP ملكي 👑">VIP ملكي 👑</option>
+                                <option value="أسطورة ببجي 🔫">أسطورة ببجي 🔫</option>
+                                <option value="صانع محتوى 🎬">صانع محتوى 🎬</option>
+                                <option value="نجم تيك توك ⭐">نجم تيك توك ⭐</option>
+                                <option value="الزعيم 🦅">الزعيم 🦅</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="field-lbl">🎁 اسم صاحب الإهداء (المُهدى إليه)</label>
+                            <input type="text" id="input-target-person" class="form-input" value="أبو باسم الغالي" oninput="updateDedication()">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="field-lbl">📜 صيغة الإهداء أو البايو</label>
+                        <select id="select-dedication" class="form-select" onchange="updateDedication()">
+                            <option value="👑 إهداء خاص من Basem Zorba إلى كبار الشخصيات">👑 إهداء خاص من Basem Zorba إلى كبار الشخصيات</option>
+                            <option value="🔥 من استوديو باسم إلى أسطورة التيك توك">🔥 من استوديو باسم إلى أسطورة التيك توك</option>
+                            <option value="⚔️ تحية فخر واعتزاز من Basem Zorba إلى">⚔️ تحية فخر واعتزاز من Basem Zorba إلى</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="field-lbl">
+                            <span>📊 المتابعين / الإعجابات / يتابع</span>
+                            <span style="color:var(--cyan); cursor:pointer;" onclick="randomizeStats()">⚡ أرقام مليونية</span>
+</label>
+                        <div class="controls-grid-3">
+                            <input type="text" id="input-followers" class="form-input" value="1.8M" oninput="updateStats()">
+                            <input type="text" id="input-likes" class="form-input" value="24.5M" oninput="updateStats()">
+                            <input type="text" id="input-following" class="form-input" value="112" oninput="updateStats()">
+                        </div>
+                    </div>
+
+                    <div class="controls-grid-2">
+                        <div>
+                            <label class="field-lbl">🎨 ثيم البطاقة (5 ثيمات)</label>
+                            <div class="theme-pills">
+                                <button class="t-pill active" onclick="setCardTheme('theme-gold', this)">ذهبي</button>
+                                <button class="t-pill" onclick="setCardTheme('theme-tiktok', this)">تيك توك</button>
+                                <button class="t-pill" onclick="setCardTheme('theme-fire', this)">ناري</button>
+                                <button class="t-pill" onclick="setCardTheme('theme-hacker', this)">هاكر</button>
+                                <button class="t-pill" onclick="setCardTheme('theme-royal', this)">ملكي</button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="field-lbl">🖼️ صورة البروفايل</label>
+                            <div class="avatar-pills">
+                                <button class="t-pill" onclick="setPresetAvatar('crown')">👑</button>
+                                <button class="t-pill" onclick="setPresetAvatar('gamer')">🎮</button>
+                                <button class="t-pill" onclick="setPresetAvatar('falcon')">🦅</button>
+                                <label class="t-pill" style="cursor:pointer;">📁 صورة <input type="file" accept="image/*" style="display:none;" onchange="uploadAvatar(event)"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- نتائج المحرك الذكي (24 نتيجة) -->
+    <section class="panel-box results-panel">
+        <div class="panel-head">
+            <div>
+                <h2>🧬 نتائج المحرك الذكي (24 زخرفة فورية)</h2>
+                <p style="font-size:11px; color:var(--text-muted);">اضغط "نسخ" لنسخ الاسم، أو "معاينة" لتجربته في البطاقة بالأعلى</p>
+            </div>
+            <button class="random-btn" onclick="generateAll()">🔄 تشكيلات جديدة</button>
+        </div>
+
+        <div class="filter-row">
+            <button class="f-btn active" onclick="filterStyles('all', this)">الكل (24)</button>
+            <button class="f-btn" onclick="filterStyles('ملكي VIP', this)">👑 ملكي VIP</button>
+            <button class="f-btn" onclick="filterStyles('أجنحة ببجي', this)">🎮 أجنحة ببجي</button>
+            <button class="f-btn" onclick="filterStyles('تشكيل وكشيدة', this)">🖋️ تشكيل وكشيدة</button>
+            <button class="f-btn" onclick="filterStyles('إنجليزي Unicode', this)">🔤 إنجليزي Unicode</button>
+        </div>
+
+        <div class="cards-grid" id="results-grid"></div>
+    </section>
+
+    <div class="toast" id="toast-box"></div>
+
+    <script>
+        const nonConnectingChars = new Set(['ا','أ','إ','آ','د','ذ','ر','ز','و','ؤ','ة','ء','ى',' ']);
+        const arabicLetterRegex = /[\u0621-\u064A]/;
+
+        const diacriticsPool = {
+            heavy: ['َ', 'ُ', 'ِ', 'ّ', 'ً', 'ٌ', 'ٍ', 'ْ', 'ٰ'],
+            royal: ['َ', 'ُ', 'ِ', 'ّ', 'ْ'],
+            clean: ['َ', 'ُ', 'ِ']
+        };
+
+        const englishMaps = {
+            script: { a:'𝓪',b:'𝓫',c:'𝓬',d:'𝓭',e:'𝓮',f:'𝓯',g:'𝓰',h:'𝓱',i:'𝓲',j:'𝓳',k:'𝓴',l:'𝓵',m:'𝓶',n:'𝓷',o:'𝓸',p:'𝓹',q:'𝓺',r:'𝓻',s:'𝓼',t:'𝓽',u:'𝓾',v:'𝓿',w:'𝔀',x:'𝔁',y:'𝔂',z:'𝔃',
+A:'𝓐',B:'𝓑',C:'𝓒',D:'𝓓',E:'𝓔',F:'𝓕',G:'𝓖',H:'𝓗',I:'𝓘',J:'𝓙',K:'𝓚',L:'𝓛',M:'𝓜',N:'𝓝',O:'𝓞',P:'𝓟',Q:'𝓠',R:'𝓡',S:'𝓢',T:'𝓣',U:'𝓤',V:'𝓥',W:'𝓦',X:'𝓧',Y:'𝓨',Z:'𝓩' },
+            gothic: { a:'𝔞',b:'𝔟',c:'𝔠',d:'𝔡',e:'𝔢',f:'𝔣',g:'𝔤',h:'𝔥',i:'𝔦',j:'𝔧',k:'𝔨',l:'𝔩',m:'𝔪',n:'𝔫',o:'𝔬',p:'𝔭',q:'𝔮',r:'𝔯',s:'𝔰',t:'𝔱',u:'𝔲',v:'𝔳',w:'𝔴',x:'𝔵',y:'𝔶',z:'𝔷', A:'𝔄',B:'𝔅',C:'ℭ',D:'𝔇',E:'𝔈',F:'𝔉',G:'𝔊',H:'ℌ',I:'ℑ',J:'𝔍',K:'𝔎',L:'𝔏',M:'𝔐',N:'𝔑',O:'𝔒',P:'𝔓',Q:'𝔔',R:'ℜ',S:'𝔖',T:'𝔗',U:'𝔘',V:'𝔙',W:'𝔚',X:'𝔛',Y:'𝔜',Z:'ℨ' },
+            double: { a:'𝕒',b:'𝕓',c:'𝕔',d:'𝕕',e:'𝕖',f:'𝕗',g:'𝕘',h:'𝕙',i:'𝕚',j:'𝕛',k:'𝕜',l:'𝕝',m:'𝕞',n:'𝕟',o:'𝕠',p:'𝕡',q:'𝕢',r:'𝕣',s:'𝕤',t:'𝕥',u:'𝕦',v:'𝕧',w:'𝕨',x:'𝕩',y:'𝕪',z:'𝕫', A:'𝔸',B:'𝔹',C:'ℂ',D:'𝔻',E:'𝔼',F:'𝔽',G:'𝔾',H:'ℍ',I:'𝕀',J:'𝕁',K:'𝕂',L:'𝕃',M:'𝕄',N:'ℕ',O:'𝕆',P:'ℙ',Q:'ℚ',R:'ℝ',S:'𝕊',T:'𝕋',U:'𝕌',V:'𝕍',W:'𝕎',X:'𝕏',Y:'𝕐',Z:'ℤ' },
+            smallCaps: { a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'s',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ' }
+        };
+
+        const arToEnMap = { 'أ':'A','ا':'A','إ':'E','آ':'A','ب':'B','ت':'T','ث':'Th','ج':'J','ح':'H','خ':'Kh','د':'D','ذ':'Z','ر':'R','ز':'Z','س':'S','ش':'Sh','ص':'S','ض':'D','ط':'T','ظ':'Z','ع':'A','غ':'Gh','ف':'F','ق':'Q','ك':'K','ل':'L','م':'M','ن':'N','ه':'H','ة':'a','و':'W','ي':'Y','ى':'a','ئ':'e','ء':'' };
+
+        function smartTashkeel(text, mode = 'heavy') {
+            const pool = diacriticsPool[mode] || diacriticsPool.heavy;
+            return text.split('').map(ch => {
+                if (!arabicLetterRegex.test(ch)) return ch;
+                const d1 = pool[Math.floor(Math.random() * pool.length)];
+                if (mode === 'heavy') {
+                    const d2 = pool[Math.floor(Math.random() * pool.length)];
+                    return ch + d1 + (d1 !== d2 ? d2 : '');
+                }
+                return ch + d1;
+            }).join('');
+        }
+
+        function smartKashida(text, length = 2) {
+            const kashida = 'ـ'.repeat(length);
+            const chars = text.split('');
+            return chars.map((ch, idx) => {
+                const next = chars[idx + 1];
+                if (arabicLetterRegex.test(ch) && next && arabicLetterRegex.test(next) && !nonConnectingChars.has(ch)) {
+                    return ch + kashida;
+                }
+                return ch;
+            }).join('');
+        }
+
+        function convertToEnglishUnicode(text, styleKey) {
+            let base = text;
+            if (arabicLetterRegex.test(text)) {
+                base = text.replace('أبو', 'Abu ').replace('ابو', 'Abu ').replace('باسم', 'Basem').split('').map(c => arToEnMap[c] !== undefined ? arToEnMap[c] : c).join('');
+            }
+            const map = englishMaps[styleKey] || englishMaps.script;
+            return base.split('').map(c => map[c]  map[c.toLowerCase()]  c).join('');
+        }
+
+        function scrollToCardOnMobile() {
+            if (window.innerWidth < 980) {
+                document.getElementById('preview-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function generateAll() {
+            const rawName = (document.getElementById('input-name').value || 'أبو باسم').trim();
+            const level = document.getElementById('select-level').value;
+            const grid = document.getElementById('results-grid');
+            grid.innerHTML = '';
+
+            const tHeavy = smartTashkeel(rawName, 'heavy');
+            const tRoyal = smartTashkeel(rawName, 'royal');
+            const tClean = smartTashkeel(rawName, 'clean');
+            const kShort = smartKashida(tRoyal, 1);
+            const kLong = smartKashida(tClean, 3);
+const styles = [
+                { title: 'ملكي VIP • التشكيل السلطاني', text: 👑 ${level === 'clean' ? tClean : tRoyal} 👑, cat: 'ملكي VIP', font: 'font-noto' },
+                { title: 'أجنحة ببجي • المحارب الأسطوري', text: ꧁༺ ${tHeavy} ༻꧂, cat: 'أجنحة ببجي', font: 'font-noto' },
+                { title: 'تشكيل وكشيدة • خط متصل أصيل', text: kLong, cat: 'تشكيل وكشيدة', font: 'font-reem' },
+                { title: 'ملكي VIP • هيبة السيوف', text: ⚔️ ${kShort} ⚔️, cat: 'ملكي VIP', font: 'font-aref' },
+                { title: 'أجنحة ببجي • الزعيم الصيني', text: 『 ${tRoyal} 』〆, cat: 'أجنحة ببجي', font: 'font-cairo' },
+                { title: 'إنجليزي Unicode • Bold Script', text: ✨ ${convertToEnglishUnicode(rawName, 'script')} ✨, cat: 'إنجليزي Unicode', font: 'font-cairo' },
+                { title: 'إنجليزي Unicode • Gothic Knight', text: ⚔️ ${convertToEnglishUnicode(rawName, 'gothic')} ⚔️, cat: 'إنجليزي Unicode', font: 'font-cairo' },
+                { title: 'إنجليزي Unicode • Double Struck', text: 👑 ${convertToEnglishUnicode(rawName, 'double')} 👑, cat: 'إنجليزي Unicode', font: 'font-cairo' },
+                { title: 'إنجليزي Unicode • Small Caps VIP', text: ꧁ ${convertToEnglishUnicode(rawName, 'smallCaps')} ꧂, cat: 'إنجليزي Unicode', font: 'font-cairo' },
+                { title: 'تشكيل وكشيدة • الرقعة السلطانية', text: smartKashida(tHeavy, 1), cat: 'تشكيل وكشيدة', font: 'font-aref' },
+                { title: 'ملكي VIP • التاج الذهبي', text: ♛ ${tRoyal} ♛, cat: 'ملكي VIP', font: 'font-amiri' },
+                { title: 'أجنحة ببجي • الصاعقة الحارقة', text: ⚡ ${tHeavy} ⚡, cat: 'أجنحة ببجي', font: 'font-noto' },
+                { title: 'أجنحة ببجي • نيران القناص', text: 🔥༻ ${tRoyal} ༺🔥, cat: 'أجنحة ببجي', font: 'font-cairo' },
+                { title: 'تشكيل وكشيدة • ديواني ممتد', text: ❖ ${kLong} ❖, cat: 'تشكيل وكشيدة', font: 'font-amiri' },
+                { title: 'ملكي VIP • نجوم المجرة', text: ★彡 ${tRoyal} 彡★, cat: 'ملكي VIP', font: 'font-noto' },
+                { title: 'أجنحة ببجي • قناص الكلان', text: ︻デ═一 ${tClean}, cat: 'أجنحة ببجي', font: 'font-cairo' },
+                { title: 'ملكي VIP • الدرع الإمبراطوري', text: 🛡️ 【 ${kShort} 】 🛡️, cat: 'ملكي VIP', font: 'font-reem' },
+                { title: 'تشكيل وكشيدة • كوفي هندسي', text: ༺ ${kLong} ༻, cat: 'تشكيل وكشيدة', font: 'font-reem' },
+                { title: 'أجنحة ببجي • ابتسامة الجلاد', text: ꧁ ${tRoyal} ツ ꧂, cat: 'أجنحة ببجي', font: 'font-noto' },
+                { title: 'ملكي VIP • الجوهرة النادرة', text: 💎 ${tClean} 💎, cat: 'ملكي VIP', font: 'font-cairo' },
+                { title: 'تشكيل وكشيدة • نسخ مكثف', text: tHeavy, cat: 'تشكيل وكشيدة', font: 'font-noto' },
+                { title: 'أجنحة ببجي • رمز القوة', text: ☬ ${tRoyal} ☬, cat: 'أجنحة ببجي', font: 'font-aref' },
+                { title: 'ملكي VIP • وسام الشرف', text: ⚜️ ${kShort} ⚜️, cat: 'ملكي VIP', font: 'font-amiri' },
+                { title: 'إنجليزي Unicode • المزيج الملكي', text: 👑 ${rawName} • ${convertToEnglishUnicode(rawName, 'smallCaps')}, cat: 'إنجليزي Unicode', font: 'font-cairo' }
+            ];
+
+            styles.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'style-card';
+                div.setAttribute('data-cat', item.cat);
+                const safeText = item.text.replace(/'/g, "\\'");
+                div.innerHTML = 
+                    <div class="style-meta"><span>${item.title}</span><span>${item.cat}</span></div>
+                    <div class="style-preview ${item.font}">${item.text}</div>
+                    <div class="style-actions">
+                        <button class="s-btn s-copy" onclick="copyText('${safeText}')">نسخ 📋</button>
+                        <button class="s-btn s-view" onclick="applyToPreview('${safeText}', '${item.font}', true)">معاينة 👁️</button>
+                    </div>
+                ;
+                grid.appendChild(div);
+            });
+applyToPreview(styles[0].text, document.getElementById('select-font').value, false);
+        }
+
+        function applyToPreview(text, fontClass, shouldScroll = false) {
+            const el = document.getElementById('main-display');
+            el.innerText = text;
+            el.className = 'card-main-name ' + (fontClass || document.getElementById('select-font').value);
+            if (shouldScroll) {
+                scrollToCardOnMobile();
+                showToast('👁️ تم تطبيق الزخرفة في البطاقة!');
+            }
+        }
+
+        function wrapPreview(left, right) {
+            const el = document.getElementById('main-display');
+            el.innerText = ${left}${el.innerText}${right};
+        }
+
+        function updateMainDisplayFont() {
+            const f = document.getElementById('select-font').value;
+            document.getElementById('main-display').className = 'card-main-name ' + f;
+        }
+
+        function updateBadge() {
+            document.getElementById('badge-display').innerText = document.getElementById('select-badge').value;
+        }
+
+        function updateDedication() {
+            document.getElementById('dedication-prefix-display').innerText = document.getElementById('select-dedication').value;
+            document.getElementById('target-person-display').innerText = document.getElementById('input-target-person').value || 'أبو باسم الغالي';
+        }
+
+        function updateStats() {
+            document.getElementById('followers-display').innerText = document.getElementById('input-followers').value || '0';
+            document.getElementById('likes-display').innerText = document.getElementById('input-likes').value || '0';
+            document.getElementById('following-display').innerText = document.getElementById('input-following').value || '0';
+        }
+
+        function randomizeStats() {
+            const f = (Math.random() * 8 + 1.2).toFixed(1) + 'M';
+            const l = (Math.random() * 60 + 15).toFixed(1) + 'M';
+            const g = Math.floor(Math.random() * 250 + 20);
+            document.getElementById('input-followers').value = f;
+            document.getElementById('input-likes').value = l;
+            document.getElementById('input-following').value = g;
+            updateStats();
+            showToast('⚡ تم توليد إحصائيات مليونية!');
+        }
+
+        function randomizeIdentity() {
+            const pool = ['باسم الأسطورة', 'أبو باسم الملك', 'Basem Sniper', 'الزعيم باسم', 'باسم جلادهم', 'Basem VIP'];
+            const pick = pool[Math.floor(Math.random() * pool.length)];
+            document.getElementById('input-name').value = pick;
+            generateAll();
+            showToast('🎲 تم اختيار اسم عشوائي وتوليد الزخارف!');
+        }
+
+        function toggleVerified() {
+            const b = document.getElementById('verified-badge');
+            b.style.display = b.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        function updateHandleAndQR() {
+            const raw = (document.getElementById('input-handle').value || 'basem.zorba').replace('@', '').trim();
+            document.getElementById('handle-display').innerText = '@' + raw;
+            renderDynamicQRSVG(raw);
+        }
+
+        function renderDynamicQRSVG(seedText) {
+            let hash = 0;
+            for (let i = 0; i < seedText.length; i++) hash = ((hash << 5) - hash) + seedText.charCodeAt(i);
+            let cells = '';
+            for (let r = 0; r < 7; r++) {
+                for (let c = 0; c < 7; c++) {
+                    const isCorner = (r < 2 && c < 2)  (r < 2 && c > 4)  (r > 4 && c < 2);
+                    const bit = Math.abs((hash >> ((r * 7 + c) % 16)) & 1);
+                    if (isCorner || bit === 1) {
+                        cells += <rect x="${c * 6 + 2}" y="${r * 6 + 2}" width="5" height="5" rx="1" fill="#090d14"/>;
+                    }
+                }
+            }
+            document.getElementById('qr-container').innerHTML = <svg viewBox="0 0 46 46" width="40" height="40">${cells}</svg>;
+        }
+function setCardTheme(themeClass, btn) {
+            document.getElementById('preview-card').className = 'vip-card ' + themeClass;
+            if (btn) {
+                btn.parentElement.querySelectorAll('.t-pill').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            }
+        }
+
+        function setPresetAvatar(type) {
+            const svgs = {
+                crown: <svg viewBox="0 0 100 100" width="58" height="58"><path d="M15 72 L22 32 L40 52 L50 24 L60 52 L78 32 L85 72 Z" fill="#f3c623"/><rect x="18" y="76" width="64" height="8" rx="4" fill="#d49b00"/></svg>,
+                gamer: <svg viewBox="0 0 100 100" width="58" height="58"><rect x="15" y="32" width="70" height="40" rx="18" fill="#00f2ea"/><circle cx="36" cy="52" r="7" fill="#090d14"/><circle cx="64" cy="48" r="5" fill="#ff0050"/><circle cx="72" cy="56" r="5" fill="#090d14"/></svg>,
+                falcon: <svg viewBox="0 0 100 100" width="58" height="58"><path d="M20 30 Q50 15 80 30 L65 75 Q50 85 35 75 Z" fill="#ff6b00"/><circle cx="42" cy="48" r="5" fill="#fff"/><circle cx="58" cy="48" r="5" fill="#fff"/><path d="M45 58 L55 58 L50 72 Z" fill="#f3c623"/></svg>
+            };
+            document.getElementById('avatar-box').innerHTML = svgs[type] || svgs.crown;
+        }
+
+        function uploadAvatar(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(file);
+            const box = document.getElementById('avatar-box');
+            box.innerHTML = '';
+            box.appendChild(img);
+        }
+
+        function filterStyles(cat, btn) {
+            document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.style-card').forEach(card => {
+                card.style.display = (cat === 'all' || card.getAttribute('data-cat') === cat) ? 'flex' : 'none';
+            });
+        }
+
+        function copyText(txt) {
+            navigator.clipboard.writeText(txt);
+            showToast('✅ تم نسخ: ' + txt);
+        }
+
+        function copyCurrentMainName() {
+            copyText(document.getElementById('main-display').innerText);
+        }
+
+        function downloadCardPNG() {
+            const card = document.getElementById('preview-card');
+            showToast('⏳ جاري تجهيز البطاقة بدقة HD...');
+            html2canvas(card, { scale: 3, backgroundColor: null, useCORS: true }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'Basem-VIP-Card.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                showToast('📸 تم حفظ بطاقة البروفايل بنجاح!');
+            });
+        }
+
+        function shareToWhatsApp() {
+            const name = document.getElementById('main-display').innerText;
+            const handle = document.getElementById('handle-display').innerText;
+            const msg = 👑 *بطاقة بروفايل تيك توك VIP* 👑\n✨ الاسم المزخرف: ${name}\n📱 الحساب: ${handle}\n🔥 جرب استوديو الباسم VIP:\nhttps://basem-tiktook.pages.dev;
+            window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(msg), '_blank');
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast-box');
+            t.innerText = msg;
+            t.style.display = 'block';
+            clearTimeout(window._toastTimer);
+            window._toastTimer = setTimeout(() => { t.style.display = 'none'; }, 2800);
+        }
+
+        // ==================== مساعد باسم الذكي (يدعم Cloudflare و GitHub Pages معاً) ====================
+        function switchAiTab(tabId, btn) {
+document.querySelectorAll('.ai-tab').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.ai-pane').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('pane-' + tabId).classList.add('active');
+        }
+
+        function setAiNickStyle(val) {
+            document.getElementById('ai-nick-style').value = val;
+            generateAiNicknames();
+        }
+
+        function setCustomGeminiKey() {
+            const cur = localStorage.getItem('BASEM_GEMINI_KEY') || '';
+            const val = prompt('أدخل مفتاح Gemini API مخصص (أو اتركه فارغاً لاستخدام مفتاح السيرفر):', cur);
+            if (val !== null) {
+                localStorage.setItem('BASEM_GEMINI_KEY', val.trim());
+                showToast(val.trim() ? '🔑 تم حفظ المفتاح المخصص!' : '✅ يتم استخدام مفتاح السيرفر');
+            }
+        }
+
+        function updateAiBadge(state, modelName) {
+            const b = document.getElementById('ai-status-badge');
+            if (state === 'loading') {
+                b.style.borderColor = '#f3c623'; b.style.color = '#f3c623';
+                b.innerText = '⏳ جاري التوليد...';
+            } else if (state === 'live') {
+                b.style.borderColor = '#00f2ea'; b.style.color = '#00f2ea';
+                b.innerText = 🟢 شغال لايف (${modelName || 'Gemini'});
+            } else {
+                b.style.borderColor = '#ff6b00'; b.style.color = '#ffb703';
+                b.innerText = '🟠 وضع احتياطي';
+            }
+        }
+
+        async function callGeminiAPI(payload) {
+            const customKey = localStorage.getItem('BASEM_GEMINI_KEY') || '';
+            updateAiBadge('loading');
+            // إذا فتح المستخدم الموقع من github.io يتصل تلقائياً بسيرفر Cloudflare Pages الخاص بباسم
+            const apiUrl = window.location.hostname.includes('github.io')
+                ? 'https://basem-tiktook.pages.dev/api/gemini'
+                : '/api/gemini';
+            try {
+                const res = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ...payload, customKey })
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.ok && data.source === 'gemini-live' && data.rawText) {
+                        updateAiBadge('live', data.model);
+                        return data.rawText;
+                    }
+                }
+            } catch (err) {
+                console.warn('Gemini call error:', err);
+            }
+            updateAiBadge('fallback');
+            return null;
+        }
+
+        function cleanLine(str) {
+            return str.replace(/^[\d\-\*\•\.]+\s*/, '').replace(/\*\*/g, '').replace(/["']/g, '').trim();
+        }
+
+        async function generateAiNicknames() {
+            const btn = document.getElementById('btn-gen-nicks');
+            const style = document.getElementById('ai-nick-style').value.trim() || 'قناص ببجي وزعيم سكواد';
+            const baseName = document.getElementById('input-name').value.trim() || 'باسم';
+            btn.disabled = true; btn.innerText = '⏳ جاري الابتكار...';
+
+            const raw = await callGeminiAPI({ type: 'nicknames', name: baseName, style });
+            let list = [];
+            if (raw) {
+                list = raw.split('\n').map(cleanLine).filter(l => l.length > 2 && !l.includes('Creative') && !l.includes('Personal')).slice(0, 6);
+            }
+            if (list.length < 3) {
+                list = [
+                    ꧁༺ ${baseName} ༻꧂ ⚡,
+                    BASEM ⦂ أسطورة ⦃ PUBG ⦄,
+                    ♛ ${baseName} • SNIPER ♛,
+                    ༺ ${baseName} ༻ 🥷 ₭1,
+                    ⚔️ الزعيم ${baseName} VIP ⚔️,
+                    🔥 ${baseName} ⫷ جلادهم ⫸ 🔥`
+                ];
+            }
+const grid = document.getElementById('ai-nicks-grid');
+            grid.innerHTML = list.map(nick => {
+                const safe = nick.replace(/'/g, "\\'");
+                return <div class="ai-nick-item">
+                    <span class="ai-nick-text">${nick}</span>
+                    <div style="display:flex; gap:4px; flex-shrink:0;">
+                        <button class="mini-apply" onclick="applyAiNickname('${safe}')">تطبيق 🪄</button>
+                        <button class="mini-apply" onclick="copyText('${safe}')">📋</button>
+                    </div>
+                </div>;
+            }).join('');
+
+            btn.disabled = false; btn.innerText = 'توليد بالذكاء الاصطناعي ✨';
+        }
+
+        function applyAiNickname(nick) {
+            document.getElementById('input-name').value = nick;
+            generateAll();
+            applyToPreview(nick, document.getElementById('select-font').value, true);
+        }
+
+        async function generateAiTribute() {
+            const btn = document.getElementById('btn-gen-trib');
+            const target = document.getElementById('ai-trib-target').value.trim() || 'أبو باسم الغالي';
+            const occasion = document.getElementById('ai-trib-occasion').value;
+            const note = document.getElementById('ai-trib-note').value.trim();
+            btn.disabled = true; btn.innerText = '⏳ جاري الصياغة...';
+
+            const raw = await callGeminiAPI({ type: 'tribute', name: 'Basem Zorba', target, occasion, note });
+            let title = 'VIP ملكي 👑';
+            let theme = 'ذهبي';
+            let msg = 👑 إهداء خاص ومملوء بالفخر من Basem Zorba إلى الغالي;
+
+            if (raw) {
+                raw.split('\n').forEach(line => {
+                    const l = cleanLine(line);
+                    if (l.startsWith('اللقب:')) title = l.replace('اللقب:', '').trim() + ' 👑';
+                    else if (l.startsWith('الثيم:')) theme = l.replace('الثيم:', '').trim();
+                    else if (l.startsWith('الرسالة:')) msg = '👑 ' + l.replace('الرسالة:', '').trim();
+                });
+            }
+
+            document.getElementById('badge-display').innerText = title;
+            document.getElementById('dedication-prefix-display').innerText = msg;
+            document.getElementById('input-target-person').value = target;
+            document.getElementById('target-person-display').innerText = target;
+
+            const themeMap = { 'ذهبي':'theme-gold', 'نيون':'theme-tiktok', 'ناري':'theme-fire', 'هاكر':'theme-hacker', 'ملكي':'theme-royal' };
+            setCardTheme(themeMap[theme] || 'theme-gold');
+
+            btn.disabled = false; btn.innerText = 'صياغة وتطبيق بالكارت 🪄';
+            scrollToCardOnMobile();
+            showToast('👑 تم تحديث بطاقة الإهداء والثيم بالذكاء الاصطناعي!');
+        }
+
+        async function generateAiCaption() {
+            const btn = document.getElementById('btn-gen-cap');
+            const topic = document.getElementById('ai-cap-topic').value.trim() || 'لقطة جلد سكواد كامل في ببجي';
+            btn.disabled = true; btn.innerText = '⏳ جاري الكتابة...';
+
+            const raw = await callGeminiAPI({ type: 'caption', name: 'Basem Zorba', topic });
+            let hook = '🔥 اللقطة اللي مستحيل تتكرر مرتين في ببجي!';
+            let desc = 'شوفوا كيف شلت السكواد كامل بآخر ثانية! اكتبولي بالتعليقات تقييمكم من 10 👇';
+            let tags = '#ببجي_موبايل #باسم_زربا #اكسبلور #تيك_توك #pubgmobile #fyp';
+
+            if (raw) {
+                raw.split('\n').forEach(line => {
+                    const l = cleanLine(line);
+                    if (l.startsWith('الخطاف:')) hook = l.replace('الخطاف:', '').trim();
+                    else if (l.startsWith('الوصف:')) desc = l.replace('الوصف:', '').trim();
+                    else if (l.startsWith('الهاشتاجات:')) tags = l.replace('الهاشتاجات:', '').trim();
+                });
+            }
+const fullCopy = ${hook}\n${desc}\n${tags}.replace(/'/g, "\\'");
+            const box = document.getElementById('ai-cap-result');
+            box.style.display = 'block';
+            box.innerHTML = 
+                <div><strong style="color:var(--gold);">🎯 خطاف أول 3 ثوانٍ:</strong> ${hook}</div>
+                <div style="margin:6px 0;"><strong style="color:var(--cyan);">📝 الوصف التفاعلي:</strong> ${desc}</div>
+                <div style="color:#94a3b8; font-size:12px;">${tags}</div>
+                <button class="act-btn btn-gold" style="margin-top:10px; width:100%; padding:9px;" onclick="copyText('${fullCopy}')">📋 نسخ الوصف والهاشتاجات للتيك توك</button>
+            ;
+
+            btn.disabled = false; btn.innerText = 'توليد وصف وهاشتاجات 🚀';
+        }
+
+        window.onload = () => {
+            setPresetAvatar('crown');
+            updateHandleAndQR();
+            generateAll();
+            generateAiNicknames();
+        };
+    </script>
+</body>
+</html>

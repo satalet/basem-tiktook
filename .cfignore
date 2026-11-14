@@ -1,0 +1,5 @@
+.wrangler/
+venv/
+pycache/
+node_modules/
+.git/
